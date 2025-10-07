@@ -2,11 +2,11 @@ import '../css/app.css';
 import { router } from './router';
 // import { createInertiaApp } from '@inertiajs/vue3';
 // import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import AnimateOnScroll from 'primevue/animateonscroll';
+import AnimateOnScroll from 'primevue/animateonscroll'
 import PrimeVue from 'primevue/config';
 // import type { DefineComponent } from 'vue';
 import { createApp,} from 'vue';
-import i18n from './i18n';
+// import i18n from './i18n';
 import AppLayout from './layouts/AppLayout.vue'
 
 
@@ -33,8 +33,9 @@ import AppLayout from './layouts/AppLayout.vue'
 // });
 
 createApp(AppLayout)
-    .use(router)
-    .use(i18n)
+    .use(PrimeVue)
     .directive('animateonscroll', AnimateOnScroll)
-    .use(PrimeVue, { theme: {} })
+
+    .use(router)
+    // .use(i18n)
     .mount('#app')
