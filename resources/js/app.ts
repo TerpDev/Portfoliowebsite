@@ -36,22 +36,20 @@ import { createApp } from 'vue'
 import { router } from './router'
 
 import PrimeVue from 'primevue/config'
+import Aura from '@primevue/themes/aura'
+import 'primeicons/primeicons.css'
 import AnimateOnScroll from 'primevue/animateonscroll'
-
-// (optioneel thema)
-// import Aura from '@primevue/themes/aura'
-// import 'primeicons/primeicons.css'
 
 import AppLayout from './layouts/AppLayout.vue'
 
 const app = createApp(AppLayout)
 
-app.use(PrimeVue) // of: app.use(PrimeVue, { theme: { preset: Aura } })
+// PrimeVue v4 needs a valid preset; do NOT pass an empty object
+app.use(PrimeVue, { theme: { preset: Aura } })
 app.directive('animateonscroll', AnimateOnScroll)
 
 app.use(router)
-// app.use(i18n) // uit als je 'm niet gebruikt
-
 app.mount('#app')
+
 
 

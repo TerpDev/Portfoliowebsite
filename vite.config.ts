@@ -24,9 +24,9 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
-// NIET laravel/wayfinder in CI
 
 export default defineConfig({
     build: { outDir: 'dist', emptyOutDir: true },
     plugins: [vue(), tailwindcss()],
 })
+

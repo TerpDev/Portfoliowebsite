@@ -30,3 +30,4 @@
 import Navbar from '../pages/components/Navbar.vue'
 import Footer from '../pages/components/Footer.vue'
 </script>
+
