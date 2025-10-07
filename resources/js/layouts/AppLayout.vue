@@ -21,6 +21,7 @@
 <template>
     <div>
         <Navbar />
+        <Hero/>
         <router-view />
         <Footer />
     </div>
@@ -29,5 +30,6 @@
 <script setup lang="ts">
 import Navbar from '../pages/components/Navbar.vue'
 import Footer from '../pages/components/Footer.vue'
+import Hero from '../pages/Sections/Hero.vue'
 </script>
 
