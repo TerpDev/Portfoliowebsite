@@ -19,9 +19,14 @@
 <!--    </div>-->
 <!--</template>-->
 <template>
-    <div>
+    <div class="relative isolate min-h-screen dark:bg-black bg-white text-white scroll-smooth">
         <Navbar />
         <Hero/>
+        <About />
+        <Timeline />
+        <Skills />
+        <Projects />
+        <Contact />
         <router-view />
         <Footer />
     </div>
@@ -31,5 +36,10 @@
 import Navbar from '../pages/components/Navbar.vue'
 import Footer from '../pages/components/Footer.vue'
 import Hero from '../pages/Sections/Hero.vue'
+import About from '../pages/Sections/About.vue'
+import Timeline from '../pages/Sections/Timeline.vue'
+import Skills from '../pages/Sections/Skills.vue'
+import Projects from '../pages/Sections/Projects.vue'
+import Contact from '../pages/Sections/Contact.vue'
 </script>
 
