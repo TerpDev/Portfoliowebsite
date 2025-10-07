@@ -37,7 +37,6 @@ import { router } from './router'
 
 import PrimeVue from 'primevue/config'
 // import Aura from '@primevue/themes/aura'   // ✅ correct import
-import 'primeicons/primeicons.css'
 import AnimateOnScroll from 'primevue/animateonscroll'
 
 import AppLayout from './layouts/AppLayout.vue'
