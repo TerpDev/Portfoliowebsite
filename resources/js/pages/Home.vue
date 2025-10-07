@@ -131,7 +131,6 @@ async function submitContact(e: Event) {
 
 <template>
     <Head title="Daniel Terpstra | Software Developer"> </Head>
-
     <AppLayout>
         <section id="hero" class="relative overflow-hidden">
             <!-- Background glows -->
@@ -176,7 +175,7 @@ async function submitContact(e: Event) {
       }"
                 >
       <span
-          class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs text-zinc-300 backdrop-blur"
+          class="inline-flex items-center gap-2 rounded-full border border-zinc-300 dark:border-white/10 bg-white/5 px-4 py-1.5 text-xs text-zinc-700 dark:text-zinc-300 backdrop-blur"
       >
         <span class="inline-block h-2 w-2 rounded-full bg-emerald-400"></span>
         Student Software Developer - Available for work!
@@ -199,11 +198,11 @@ async function submitContact(e: Event) {
                 <p
                     class="mt-6 text-black dark:text-zinc-300 will-change-transform"
                     v-animateonscroll="{
-        enterClass: 'animate-enter fade-in-10 slide-in-from-b-6 animate-duration-600',
+        enterClass: 'animate-enter fade-in-10 font-bold slide-in-from-b-6 animate-duration-600',
         delay: 300
       }"
                 >
-                    I’m a <span class="typing text-violet-400/90"></span>
+                    I’m a <span class="typing font-bold text-violet-400/90"></span>
                 </p>
 
                 <!-- CTAs -->
@@ -450,8 +449,8 @@ async function submitContact(e: Event) {
         <!-- MOBILE timeline-->
         <section id="timeline" class="px-8 py-16 md:hidden">
             <div class="mx-auto max-w-xl">
-                <div class="flex justify-center pb-8">
-                    <h1 class="text-4xl font-bold">Education<span class="text-purple-500">.</span></h1>
+                <div class="flex pb-8">
+                    <h1 class="text-4xl text-black dark:text-white font-bold">Education<span class="text-purple-500">.</span></h1>
                 </div>
 
                 <div class="relative">
@@ -469,11 +468,11 @@ async function submitContact(e: Event) {
                             <div
                                 class="rounded-lg border border-primary/10 p-4 shadow-md backdrop-blur-sm transition duration-300 hover:scale-[1.02] hover:border-primary hover:bg-primary/20"
                             >
-                                <h3 class="mb-1 text-base font-semibold text-white">
+                                <h3 class="mb-1 text-base font-semibold text-black dark:text-white">
                                     Bonhoeffer College locatie Van der Waalslaan
                                     <span class="text-xs font-medium text-zinc-400"> • 4years</span>
                                 </h3>
-                                <p class="text-sm text-zinc-400">
+                                <p class="text-sm text-zinc-700 dark:text-zinc-300">
                                     I completed my secondary education at Bonhoeffer College, where I got my MAVO diploma in 4 years. During the COVID
                                     period I spent a lot of time behind my computer doing online classes. That’s also when I found out I really
                                     enjoyed working with computers — I started taking them apart and putting them back together. That curiosity was
@@ -492,11 +491,11 @@ async function submitContact(e: Event) {
                             <div
                                 class="rounded-lg border border-primary/10 p-4 shadow-md backdrop-blur-sm transition duration-300 hover:scale-[1.02] hover:border-primary hover:bg-primary/20"
                             >
-                                <h3 class="mb-1 text-base font-semibold text-white">
+                                <h3 class="mb-1 text-base font-semibold text-black dark:text-white">
                                     MBO Software Developer Study Enschede
                                     <span class="text-xs font-medium text-zinc-400"> • 2years</span>
                                 </h3>
-                                <p class="text-sm text-zinc-400">
+                                <p class="text-sm text-zinc-700 dark:text-zinc-300">
                                     This is really where it all began for me. For the intake I had to make a small console app in C#. Back then I had
                                     no clue what I was doing — I had to use things I’d never even heard of before. Still, I managed to build it and I
                                     was proud of myself. The study was more focused on game development, but after my first internship at C-o-d-e-s in
@@ -515,11 +514,11 @@ async function submitContact(e: Event) {
                             <div
                                 class="rounded-lg border border-primary/10 p-4 shadow-md backdrop-blur-sm transition duration-300 hover:scale-[1.02] hover:border-primary hover:bg-primary/20"
                             >
-                                <h3 class="mb-1 text-base font-semibold text-white">
+                                <h3 class="mb-1 text-base font-semibold text-black dark:text-white">
                                     MBO Software Developer Study Hengelo
                                     <span class="text-xs font-medium text-zinc-400"> • 2years</span>
                                 </h3>
-                                <p class="text-sm text-zinc-400">
+                                <p class="text-sm text-zinc-700 dark:text-zinc-300">
                                     After 2 years in Enschede I decided to switch from game development to web development. Together with 4 friends I
                                     moved to the Hengelo location. At first it wasn’t that easy, since we jumped straight into the third year and
                                     missed a lot of things the others already learned. But with some hard work we caught up quickly. Right now I’m in
@@ -536,8 +535,8 @@ async function submitContact(e: Event) {
         <!--skills-->
         <section id="skills" class="px-8 py-24">
             <div class="mx-auto max-w-6xl">
-                <div class="flex flex-col items-center justify-center pb-12">
-                    <h1 class="text-4xl font-bold">Skills &amp; Expertise<span class="text-primary">.</span></h1>
+                <div class="flex flex-col lg:items-center pb-12">
+                    <h1 class="text-4xl text-black dark:text-white font-bold">Skills &amp; Expertise<span class="text-primary">.</span></h1>
                     <p class="pt-2 text-zinc-300">Technologies I Work With</p>
                 </div>
 
@@ -556,7 +555,7 @@ async function submitContact(e: Event) {
                                 >
                                     <!-- Icon gebruikt jouw css class -->
                                     <div :class="item.class" v-html="item.icon.svg"></div>
-                                    <p class="text-lg font-bold">{{ item.label }}</p>
+                                    <p class="text-lg text-black dark:text-white font-bold">{{ item.label }}</p>
                                 </div>
                             </div>
                         </div>
@@ -568,39 +567,50 @@ async function submitContact(e: Event) {
         <!--projects-->
         <section class="px-8 py-24" id="projects">
             <div class="mx-auto max-w-6xl">
-                <h1 class="mb-8 text-4xl font-bold">Projects<span class="text-primary">.</span></h1>
+                <h1 class="mb-8 text-4xl font-bold text-stone-900 dark:text-white transition-colors duration-500">
+                    Projects<span class="text-primary">.</span>
+                </h1>
 
                 <!-- Grid -->
                 <div class="grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
                     <div v-for="project in projectcards" :key="project.title" class="group/card relative">
-                        <!-- CARD (keeps its own .group hover effects) -->
+                        <!-- CARD -->
                         <div
-                            class="group relative overflow-hidden rounded-2xl ring-1 ring-white/10 transition duration-300 "
+                            class="group relative overflow-hidden rounded-2xl ring-1 ring-stone-200/70 dark:ring-white/10 bg-white/80 dark:bg-white/5 shadow-sm backdrop-blur-sm transition duration-300 hover:shadow-[0_0_25px_rgba(168,85,247,0.3)]"
                         >
-                            <a :href="project.link" :target="project.link === '#hero' ? undefined : '_blank'" class="relative block">
+                            <a
+                                :href="project.link"
+                                :target="project.link === '#hero' ? undefined : '_blank'"
+                                class="relative block"
+                            >
                                 <div class="relative aspect-[16/10] overflow-hidden">
-                                    <img :src="project.image" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                                    <img
+                                        :src="project.image"
+                                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                                    />
                                     <div
-                                        class="absolute inset-0 bg-gradient-to-t  to-transparent opacity-0 transition duration-500 group-hover:opacity-100"
+                                        class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-0 transition duration-500 group-hover:opacity-100"
                                     ></div>
                                 </div>
 
                                 <div class="p-5">
-                                    <h3 class="mt-2 text-xl font-bold text-white">
+                                    <h3
+                                        class="mt-2 text-xl font-bold text-stone-900 dark:text-white transition group-hover:text-primary"
+                                    >
                                         {{ project.title }}
                                     </h3>
-                                    <p class="mt-2 line-clamp-3 text-zinc-200 transition">
+                                    <p class="mt-2 line-clamp-3 text-stone-600 dark:text-zinc-300 transition">
                                         {{ project.description }}
                                     </p>
                                 </div>
                             </a>
                         </div>
 
-                        <!-- INFO BUTTON (sibling, layered on top) -->
+                        <!-- INFO BUTTON -->
                         <button
                             type="button"
                             @click.prevent="openModal(project)"
-                            class="cursor-pointer absolute top-3 right-3 z-20 rounded-full bg-black/40 px-2 py-2 text-sm text-white opacity-100 backdrop-blur-sm transition hover:bg-black/60"
+                            class="cursor-pointer absolute top-3 right-3 z-20 rounded-full bg-stone-900/40 dark:bg-black/40 px-2 py-2 text-sm text-white opacity-100 backdrop-blur-sm transition hover:bg-stone-900/60 dark:hover:bg-black/60"
                             title="More info"
                         >
                             <svg
@@ -624,7 +634,7 @@ async function submitContact(e: Event) {
                 <!-- MODAL -->
                 <TransitionRoot appear :show="isOpen" as="template">
                     <Dialog as="div" @close="closeModal" class="relative z-50">
-                        <!-- backdrop -->
+                        <!-- Backdrop -->
                         <TransitionChild
                             as="template"
                             enter="duration-300 ease-out"
@@ -637,7 +647,7 @@ async function submitContact(e: Event) {
                             <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" />
                         </TransitionChild>
 
-                        <!-- modal panel -->
+                        <!-- Modal panel -->
                         <div class="fixed inset-0 flex items-center justify-center p-4 text-center">
                             <TransitionChild
                                 as="template"
@@ -649,19 +659,22 @@ async function submitContact(e: Event) {
                                 leave-to="opacity-0 scale-95"
                             >
                                 <DialogPanel
-                                    class="w-full max-w-lg transform overflow-hidden rounded-2xl bg-zinc-900 p-6 text-left shadow-xl ring-1 ring-white/10 transition-all"
+                                    class="w-full max-w-lg transform overflow-hidden rounded-2xl bg-white dark:bg-zinc-900 p-6 text-left shadow-xl ring-1 ring-stone-200/70 dark:ring-white/10 transition-all"
                                 >
-                                    <DialogTitle as="h3" class="text-xl font-semibold text-primary">
+                                    <DialogTitle
+                                        as="h3"
+                                        class="text-xl font-semibold text-primary dark:text-primary"
+                                    >
                                         {{ selectedProject?.title }}
                                     </DialogTitle>
-                                    <div class="mt-3 text-zinc-300">
+                                    <div class="mt-3 text-stone-700 dark:text-zinc-300">
                                         <p>{{ selectedProject?.details }}</p>
                                     </div>
 
                                     <div class="mt-5 flex justify-end">
                                         <button
                                             type="button"
-                                            class="inline-flex justify-center rounded-md border border-white/10 bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-primary/30 cursor-pointer transition duration-300"
+                                            class="inline-flex justify-center rounded-md border border-stone-300/70 dark:border-white/10 bg-stone-100 dark:bg-white/10 px-4 py-2 text-sm font-medium text-stone-800 dark:text-white hover:bg-primary/20 dark:hover:bg-primary/30 transition duration-300 cursor-pointer"
                                             @click="closeModal"
                                         >
                                             Close

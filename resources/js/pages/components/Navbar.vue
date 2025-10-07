@@ -119,7 +119,7 @@ onUnmounted(() => {
                 </ul>
 
                 <!-- Right side -->
-                <div class="hidden items-center gap-3 md:flex">
+                <div class="items-center gap-3">
                     <button
                         @click="toggleDark()"
                         type="button"
