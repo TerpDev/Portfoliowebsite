@@ -1,0 +1,106 @@
+@import 'tailwindcss';
+@import 'primeicons/primeicons.css';
+@import "tailwindcss-primeui";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme inline {
+    --font-sans: Instrument Sans, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+.primary{
+    color: #6d28d9;
+}
+@theme {
+    --color-primary: #6d28d9;
+}
+html{
+    scroll-behavior: smooth;
+}
+.animate-delay-1{
+    animation-delay: 0.090s !important;
+}
+.animate-delay-2{
+    animation-delay: 0.130s !important;
+}
+.iconhtml { color: #E34F26; }          /* zet currentColor */
+.iconhtml svg { width: 2rem; height: 2rem; display: inline-block; }
+.iconhtml svg path { fill: currentColor; }  /* forceer fill op path */
+
+.icontail { color: #06B6D4; }
+.icontail svg { width: 2rem; height: 2rem; display: inline-block; }
+.icontail svg path { fill: currentColor; }
+
+.iconlara { color: #FF2D20; }
+.iconlara svg { width: 2rem; height: 2rem; display: inline-block; }
+.iconlara svg path { fill: currentColor; }
+
+.iconcss { color: #663399; }
+.iconcss svg { width: 2rem; height: 2rem; display: inline-block; }
+.iconcss svg path { fill: currentColor; }
+
+.iconvue { color: #4FC08D; }
+.iconvue svg { width: 2rem; height: 2rem; display: inline-block; }
+.iconvue svg path { fill: currentColor; }
+
+.iconjava { color: #F7DF1E; }
+.iconjava svg { width: 2rem; height: 2rem; display: inline-block; }
+.iconjava svg path { fill: currentColor; }
+
+.iconhead { color: #66E3FF; }
+.iconhead svg { width: 2rem; height: 2rem; display: inline-block; }
+.iconhead svg path { fill: currentColor; }
+
+.iconprime { color: #41B883; }
+.iconprime svg { width: 2rem; height: 2rem; display: inline-block; }
+.iconprime svg path { fill: currentColor; }
+
+.iconalp { color: #8BC0D0; }
+.iconalp svg { width: 2rem; height: 2rem; display: inline-block; }
+.iconalp svg path { fill: currentColor; }
+
+.iconfila { color: #FDAE4B; }
+.iconfila svg { width: 2rem; height: 2rem; display: inline-block; }
+.iconfila svg path { fill: currentColor; }
+
+.iconmysql { color: #4479A1; }
+.iconmysql svg { width: 2rem; height: 2rem; display: inline-block; }
+.iconmysql svg path { fill: currentColor; }
+
+.iconlite { color: #003B57; }
+.iconlite svg { width: 2rem; height: 2rem; display: inline-block; }
+.iconlite svg path { fill: currentColor; }
+
+.iconsharp { color: #9179E4; }
+.iconsharp svg { width: 2rem; height: 2rem; display: inline-block; }
+.iconsharp svg path { fill: currentColor; }
+
+.iconfigma { color: #F24E1E; }
+.iconfigma svg { width: 2rem; height: 2rem; display: inline-block; }
+.iconfigma svg path { fill: currentColor; }
+
+.iconduck { color: #DE5833; }
+.iconduck svg { width: 2rem; height: 2rem; display: inline-block; }
+.iconduck svg path { fill: currentColor; }
+
+@custom-variant dark (&:where(.dark, .dark *));
+@keyframes bounce-right {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(3px); }
+}
+.animate-bounce-right {
+    animation: bounce-right 1s infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes bounce-down {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(3px); }
+}
+.animate-bounce-down {
+    animation: bounce-down 1s infinite;
+    animation-timing-function: ease-in-out;
+}
+
+
+
