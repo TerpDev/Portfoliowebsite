@@ -230,7 +230,7 @@ async function submitContact(e: Event) {
 
                     <a
                         href="#contact"
-                        class="inline-flex items-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-black dark:text-white backdrop-blur transition duration-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
+                        class="inline-flex items-center rounded-xl border border-black dark:border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-black dark:text-white backdrop-blur transition duration-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
                     >
                         Contact Me
                     </a>
@@ -238,7 +238,7 @@ async function submitContact(e: Event) {
 
                 <!-- Scroll hint -->
                 <div
-                    class="absolute inset-x-0 bottom-6 flex justify-center text-xs text-zinc-500 will-change-transform"
+                    class="absolute inset-x-0 bottom-6 flex justify-center text-xs text-zinc-800 dark:text-zinc-500 will-change-transform"
                     v-animateonscroll="{
         enterClass: 'animate-enter fade-in-10 slide-in-from-b-6 animate-duration-600',
         delay: 460
@@ -262,7 +262,7 @@ async function submitContact(e: Event) {
         </section>
         <section id="about" class="px-8 py-24">
             <div class="mx-auto max-w-6xl">
-                <div class="flex items-center justify-center pb-8">
+                <div class="flex items-center lg:justify-center pb-8">
                     <h1 class="text-4xl text-black dark:text-white font-bold">About me<span class="text-primary">.</span></h1>
                 </div>
                 <div class="grid grid-cols-1 gap-32 md:grid-cols-2">
@@ -537,7 +537,7 @@ async function submitContact(e: Event) {
             <div class="mx-auto max-w-6xl">
                 <div class="flex flex-col lg:items-center pb-12">
                     <h1 class="text-4xl text-black dark:text-white font-bold">Skills &amp; Expertise<span class="text-primary">.</span></h1>
-                    <p class="pt-2 text-zinc-300">Technologies I Work With</p>
+                    <p class="pt-2 text-zinc-800 dark:text-zinc-300">Technologies I Work With</p>
                 </div>
 
                 <div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
@@ -567,7 +567,7 @@ async function submitContact(e: Event) {
         <!--projects-->
         <section class="px-8 py-24" id="projects">
             <div class="mx-auto max-w-6xl">
-                <h1 class="mb-8 text-4xl font-bold text-stone-900 dark:text-white transition-colors duration-500">
+                <h1 class="mb-8 text-4xl font-bold text-stone-900 dark:text-white flex lg:justify-center">
                     Projects<span class="text-primary">.</span>
                 </h1>
 
@@ -688,25 +688,40 @@ async function submitContact(e: Event) {
             </div>
         </section>
 
-        <section id="contact" class="relative overflow-hidden px-8 py-24">
+        <section id="contact" class="relative overflow-hidden px-8 py-24"
+        >
+            <!-- background glow -->
             <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
                 <div
-                    class="absolute top-1/2 left-1/2 h-[40vw] max-h-[22rem] w-[90vw] max-w-[60rem] -translate-x-1/2 -translate-y-1/2 rounded-[9999px] bg-violet-600/20 blur-3xl"
+                    class="absolute top-1/2 left-1/2 h-[40vw] max-h-[22rem] w-[90vw] max-w-[60rem]
+             -translate-x-1/2 -translate-y-1/2 rounded-[9999px]
+             bg-violet-600/20 blur-3xl dark:bg-violet-600/25"
                 ></div>
-                <div class="absolute inset-0 bg-[radial-gradient(70%_50%_at_50%_40%,rgba(124,58,237,0.12),transparent_60%)]"></div>
+                <div
+                    class="absolute inset-0 bg-[radial-gradient(70%_50%_at_50%_40%,rgba(124,58,237,0.08),transparent_60%)]
+             dark:bg-[radial-gradient(70%_50%_at_50%_40%,rgba(124,58,237,0.12),transparent_60%)]"
+                ></div>
             </div>
 
             <div class="mx-auto max-w-6xl">
-                <div class="flex flex-col items-center justify-center pb-12">
-                    <h2 class="text-4xl font-bold">Contact<span class="text-primary">.</span></h2>
-                    <p class="pt-2 text-zinc-300">Let’s make something amazing together!</p>
+                <!-- Header -->
+                <div class="flex flex-col items-center justify-center pb-12 text-center">
+                    <h2 class="text-4xl font-bold text-stone-900 dark:text-white transition-colors duration-500">
+                        Contact<span class="text-primary">.</span>
+                    </h2>
+                    <p class="pt-2 text-stone-600 dark:text-zinc-300 transition-colors duration-500">
+                        Let’s make something amazing together!
+                    </p>
                 </div>
 
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <!-- Info cards -->
                     <div class="space-y-4">
+                        <!-- Email -->
                         <div
-                            class="rounded-xl border border-zinc-900 bg-zinc-950/40 p-5 backdrop-blur-sm transition hover:border-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.5)]"
+                            class="rounded-xl border border-stone-200 dark:border-zinc-800
+                 bg-white/80 dark:bg-zinc-950/40 p-5 backdrop-blur-sm
+                 transition hover:border-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]"
                         >
                             <div class="flex items-center gap-4">
                                 <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/15">
@@ -716,16 +731,22 @@ async function submitContact(e: Event) {
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="text-sm text-zinc-400">Email</p>
-                                    <a href="mailto:danielterpstra006@gmail.com" class="font-semibold text-zinc-200 transition hover:text-white"
-                                        >danielterpstra006@gmail.com</a
+                                    <p class="text-sm text-stone-500 dark:text-zinc-400">Email</p>
+                                    <a
+                                        href="mailto:danielterpstra006@gmail.com"
+                                        class="font-semibold text-stone-800 dark:text-zinc-200 transition hover:text-primary"
                                     >
+                                        danielterpstra006@gmail.com
+                                    </a>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Location -->
                         <div
-                            class="rounded-xl border border-zinc-900 bg-zinc-950/40 p-5 backdrop-blur-sm transition hover:border-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.5)]"
+                            class="rounded-xl border border-stone-200 dark:border-zinc-800
+                 bg-white/80 dark:bg-zinc-950/40 p-5 backdrop-blur-sm
+                 transition hover:border-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]"
                         >
                             <div class="flex items-center gap-4">
                                 <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/15">
@@ -736,92 +757,88 @@ async function submitContact(e: Event) {
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="text-sm text-zinc-400">Location</p>
-                                    <p class="font-semibold text-zinc-200">Enschede, NL</p>
+                                    <p class="text-sm text-stone-500 dark:text-zinc-400">Location</p>
+                                    <p class="font-semibold text-stone-800 dark:text-zinc-200">Enschede, NL</p>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Availability -->
                         <div
-                            class="rounded-xl border border-zinc-900 bg-zinc-950/40 p-5 backdrop-blur-sm transition hover:border-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.5)]"
+                            class="rounded-xl border border-stone-200 dark:border-zinc-800
+                 bg-white/80 dark:bg-zinc-950/40 p-5 backdrop-blur-sm
+                 transition hover:border-primary hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]"
                         >
                             <div class="flex items-center gap-4">
                                 <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-400/15">
                                     <span class="inline-block h-2 w-2 rounded-full bg-emerald-400"></span>
                                 </div>
                                 <div>
-                                    <p class="text-sm text-zinc-400">Availability</p>
-                                    <p class="font-semibold text-zinc-200">Open for freelance & work</p>
+                                    <p class="text-sm text-stone-500 dark:text-zinc-400">Availability</p>
+                                    <p class="font-semibold text-stone-800 dark:text-zinc-200">Open for freelance & work</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Socials row -->
+                        <!-- Socials -->
                         <div class="flex items-center gap-4 pt-2">
-                            <a
-                                href="https://github.com/TerpDev"
-                                target="_blank"
-                                class="text-zinc-400 transition hover:text-white"
-                                aria-label="GitHub"
-                            >
+                            <a href="https://github.com/TerpDev" target="_blank" class="text-stone-500 dark:text-zinc-400 hover:text-primary transition" aria-label="GitHub">
                                 <i class="pi pi-github text-xl"></i>
                             </a>
-                            <a
-                                href="https://www.linkedin.com/in/danielterp/"
-                                target="_blank"
-                                class="text-zinc-400 transition hover:text-white"
-                                aria-label="LinkedIn"
-                            >
+                            <a href="https://www.linkedin.com/in/danielterp/" target="_blank" class="text-stone-500 dark:text-zinc-400 hover:text-primary transition" aria-label="LinkedIn">
                                 <i class="pi pi-linkedin text-xl"></i>
                             </a>
-                            <a href="#" class="text-zinc-400 transition hover:text-white" aria-label="Instagram">
+                            <a href="#" class="text-stone-500 dark:text-zinc-400 hover:text-primary transition" aria-label="Instagram">
                                 <i class="pi pi-instagram text-xl"></i>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Form -->
-                    <form @submit="submitContact" class="rounded-xl border border-zinc-900 bg-zinc-950/40 p-6 backdrop-blur-sm">
+                    <!-- Contact form -->
+                    <form
+                        @submit="submitContact"
+                        class="rounded-xl border border-stone-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/40 p-6 backdrop-blur-sm transition-colors duration-500"
+                    >
                         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                             <div>
-                                <label class="mb-1 block text-sm text-zinc-400">Name</label>
+                                <label class="mb-1 block text-sm text-stone-600 dark:text-zinc-400">Name</label>
                                 <input
                                     v-model="form.name"
                                     type="text"
                                     required
-                                    class="w-full rounded-lg border border-zinc-800 bg-zinc-900/40 px-3 py-2 text-sm text-white placeholder-zinc-500 transition outline-none focus:border-primary"
+                                    class="w-full rounded-lg border border-stone-300 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/40 px-3 py-2 text-sm text-stone-900 dark:text-white placeholder-stone-400 dark:placeholder-zinc-500 outline-none focus:border-primary transition"
                                     placeholder="Your name"
                                 />
                             </div>
                             <div>
-                                <label class="mb-1 block text-sm text-zinc-400">Email</label>
+                                <label class="mb-1 block text-sm text-stone-600 dark:text-zinc-400">Email</label>
                                 <input
                                     v-model="form.email"
                                     type="email"
                                     required
-                                    class="w-full rounded-lg border border-zinc-800 bg-zinc-900/40 px-3 py-2 text-sm text-white placeholder-zinc-500 transition outline-none focus:border-primary"
+                                    class="w-full rounded-lg border border-stone-300 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/40 px-3 py-2 text-sm text-stone-900 dark:text-white placeholder-stone-400 dark:placeholder-zinc-500 outline-none focus:border-primary transition"
                                     placeholder="you@example.com"
                                 />
                             </div>
                         </div>
 
                         <div class="mt-4">
-                            <label class="mb-1 block text-sm text-zinc-400">Subject</label>
+                            <label class="mb-1 block text-sm text-stone-600 dark:text-zinc-400">Subject</label>
                             <input
                                 v-model="form.subject"
                                 type="text"
-                                class="w-full rounded-lg border border-zinc-800 bg-zinc-900/40 px-3 py-2 text-sm text-white placeholder-zinc-500 transition outline-none focus:border-primary"
+                                class="w-full rounded-lg border border-stone-300 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/40 px-3 py-2 text-sm text-stone-900 dark:text-white placeholder-stone-400 dark:placeholder-zinc-500 outline-none focus:border-primary transition"
                                 placeholder="What’s this about?"
                             />
                         </div>
 
                         <div class="mt-4">
-                            <label class="mb-1 block text-sm text-zinc-400">Message</label>
+                            <label class="mb-1 block text-sm text-stone-600 dark:text-zinc-400">Message</label>
                             <textarea
                                 v-model="form.message"
                                 rows="5"
                                 required
-                                class="w-full rounded-lg border border-zinc-800 bg-zinc-900/40 px-3 py-2 text-sm text-white placeholder-zinc-500 transition outline-none focus:border-primary"
+                                class="w-full rounded-lg border border-stone-300 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/40 px-3 py-2 text-sm text-stone-900 dark:text-white placeholder-stone-400 dark:placeholder-zinc-500 outline-none focus:border-primary transition"
                                 placeholder="Tell me a bit about your project…"
                             />
                         </div>
@@ -830,19 +847,19 @@ async function submitContact(e: Event) {
                             <button
                                 type="submit"
                                 :disabled="sending"
-                                class="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-600/30 transition duration-300 hover:bg-primary/80 disabled:opacity-60"
+                                class="inline-flex items-center gap-2 rounded-xl cursor-pointer bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-600/30 transition duration-300 hover:bg-primary/80 disabled:opacity-60"
                             >
                                 <span v-if="!sending">Send Message</span>
                                 <span v-else class="inline-flex items-center gap-2">
-                                    <svg class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
-                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
-                                    </svg>
-                                    Sending…
-                                </span>
+              <svg class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+              </svg>
+              Sending…
+            </span>
                             </button>
 
-                            <span v-if="sent" class="text-sm text-emerald-400"> Thanks! I’ll get back to you soon. </span>
+                            <span v-if="sent" class="text-sm text-emerald-500 dark:text-emerald-400">Thanks! I’ll get back to you soon.</span>
                         </div>
                     </form>
                 </div>
