@@ -53,6 +53,7 @@ return [
             'transport' => 'ses',
         ],
 
+
         'postmark' => [
             'transport' => 'postmark',
             // 'message_stream_id' => env('POSTMARK_MESSAGE_STREAM_ID'),
@@ -113,4 +114,13 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    /*
+|--------------------------------------------------------------------------
+| Contact form recipient
+|--------------------------------------------------------------------------
+|
+| This is the email address that will receive messages from your contact form.
+|
+*/
+    'contact_to' => env('MAIL_CONTACT_TO', null),
 ];
