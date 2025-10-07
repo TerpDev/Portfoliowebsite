@@ -10,6 +10,3 @@ use App\Http\Controllers\ContactController;
 Route::get('/', function () {
     return Inertia::render('Home');
 })->name('home');
-Route::post('/contact', [ContactController::class, 'send'])
-    ->middleware('throttle:contact')
-    ->name('contact.send');
