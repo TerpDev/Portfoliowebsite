@@ -12,7 +12,7 @@ import Welcome from './pages/Welcome.vue'
 export const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '#hero', component: Home, name: 'home' },
+        { path: '/', component: Home, name: 'home' },
         { path: '#about', component: About, name: 'about' },
         { path: '#projects', component: Projects, name: 'projects' },
         { path: '#contact', component: Contact, name: 'contact' },
