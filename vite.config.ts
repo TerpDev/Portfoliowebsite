@@ -4,6 +4,8 @@ import vue from '@vitejs/plugin-vue';
 import laravel from 'laravel-vite-plugin';
 import { defineConfig } from 'vite';
 
+const isCI = process.env.CI === 'true' || process.env.VERCEL === '1';
+
 export default defineConfig({
     plugins: [
         laravel({
@@ -13,15 +15,9 @@ export default defineConfig({
         }),
         tailwindcss(),
         vue({
-            template: {
-                transformAssetUrls: {
-                    base: null,
-                    includeAbsolute: false,
-                },
-            },
+            template: { transformAssetUrls: { base: null, includeAbsolute: false } },
         }),
-        wayfinder({
-            formVariants: true,
-        }),
-    ],
+        // Wayfinder alleen lokaal (PHP aanwezig), niet in CI/Vercel
+        !isCI && wayfinder({ formVariants: true }),
+    ].filter(Boolean),
 });
