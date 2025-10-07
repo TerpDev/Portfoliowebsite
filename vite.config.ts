@@ -13,4 +13,11 @@ export default defineConfig({
         vue(),
         tailwindcss(),
     ],
+    build:{
+        outDir: 'public/build',
+        rollupOptions:{
+            input: 'public/build/index.html'
+        },
+    },
+    publicDir:'public'
 })
