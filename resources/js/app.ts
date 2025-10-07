@@ -36,7 +36,7 @@ import { createApp } from 'vue'
 import { router } from './router'
 
 import PrimeVue from 'primevue/config'
-import Aura from '@primevue/themes/aura'   // ✅ correct import
+// import Aura from '@primevue/themes/aura'   // ✅ correct import
 import 'primeicons/primeicons.css'
 import AnimateOnScroll from 'primevue/animateonscroll'
 
@@ -44,7 +44,7 @@ import AppLayout from './layouts/AppLayout.vue'
 
 const app = createApp(AppLayout)
 
-app.use(PrimeVue, { theme: { preset: Aura } }) // ✅ do NOT pass {}
+app.use(PrimeVue) // ✅ do NOT pass {}
 app.directive('animateonscroll', AnimateOnScroll)
 
 app.use(router)
