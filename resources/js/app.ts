@@ -33,18 +33,18 @@
 // });
 import '../css/app.css'
 import { createApp } from 'vue'
-import { router } from './router'
+import { router } from './router.js'
 
 import PrimeVue from 'primevue/config'
 // import Aura from '@primevue/themes/aura'   // ✅ correct import
-import AnimateOnScroll from 'primevue/animateonscroll'
+// import AnimateOnScroll from 'primevue/animateonscroll'
 
 import AppLayout from './layouts/AppLayout.vue'
 
 const app = createApp(AppLayout)
 
 app.use(PrimeVue) // ✅ do NOT pass {}
-app.directive('animateonscroll', AnimateOnScroll)
+// app.directive('animateonscroll', AnimateOnScroll)
 
 app.use(router)
 app.mount('#app')
