@@ -30,7 +30,6 @@
         "@fortawesome/vue-fontawesome": "^3.1.2",
         "@headlessui/vue": "^1.7.23",
         "@inertiajs/vue3": "^2.0.0",
-        "@primevue/themes": "^4.4.0",
         "@tailwindcss/vite": "^4.1.14",
         "@vitejs/plugin-vue": "^6.0.1",
         "@vueuse/core": "^12.8.2",
