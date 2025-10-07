@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div>
-                    <img class="w-full rounded-lg shadow-lg" src="images/placeholder.svg" alt="" />
+<!--                    <img class="w-full rounded-lg shadow-lg" src="images/placeholder.svg" alt="" />-->
                 </div>
             </div>
             <div class="relative pt-18">
