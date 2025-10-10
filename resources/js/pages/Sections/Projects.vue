@@ -7,7 +7,7 @@ const projectcards = ref([
     {
         title: 'Portfolio Website',
         description: 'A personal portfolio website to showcase my projects en skills. Built with InertiaJS, VueJS and TailwindCSS.',
-        image: '/images/heroport.png',
+        // image: '/images/heroport.png',
         link: '#hero',
         tools: ['VueJS', 'TailwindCSS', 'InertiaJS', 'Laravel', 'HeadlessUI', 'AlpineJS'],
         code: [{ text: 'View Code', link: 'https://github.com/TerpDev/Portfoliowebsite' }],
@@ -16,7 +16,7 @@ const projectcards = ref([
         title: 'MTF Automobielen',
         description:
             'Ive worked on this project while I was an intern at C-o-d-e-s Software Development in Almelo I mostly worked on the frontend on this project',
-        image: '/images/img.png',
+        // image: '/images/img.png',
         link: 'https://mtfautomobielen.nl/',
         tools: ['VueJS', 'TailwindCSS', 'InertiaJS', 'Laravel', 'PrimeVue', 'HeadlessUI', 'AlpineJS'],
         demo: [{ text: 'Live Demo', link: 'https://mtfautomobielen.nl/' }],
@@ -40,7 +40,7 @@ const projectcards = ref([
                     >
                         <a :href="project.link" :target="project.link === '#hero' ? undefined : '_blank'" class="relative block">
                             <div class="relative aspect-[16/10] overflow-hidden">
-                                <img :src="project.image" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+<!--                                <img :src="project.image" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />-->
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-0 transition duration-500"
                                 ></div>
