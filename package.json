@@ -7,7 +7,9 @@
         "build:ssr": "vite build && vite build --ssr",
         "format": "prettier --write resources/",
         "format:check": "prettier --check resources/",
-        "lint": "eslint . --fix"
+        "lint": "eslint . --fix",
+        "deploy": "npm run build && php artisan export && git add . && git commit -m 'update' && git push"
+
     },
     "devDependencies": {
         "@eslint/js": "^9.19.0",
