@@ -159,6 +159,7 @@ async function onSubmit() {
     }
 }
 const placeholder = '/images/placeholder.svg';
+import ProfileAbout from '../pages/components/ProfileAbout.vue';
 </script>
 
 <template>
@@ -175,14 +176,14 @@ const placeholder = '/images/placeholder.svg';
             <!-- Background glows -->
             <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
                 <div
-                    class="absolute top-1/2 left-1/2 h-[20vw] max-h-[22rem] w-[90vw] max-w-[60rem] -translate-x-1/2 -translate-y-1/2 rounded-[9999px] bg-violet-600/25 blur-3xl"
-                    v-animateonscroll="{ enterClass: 'animate-enter fade-in-10', delay: 0, threshold: 0 }"
+                    class="absolute top-1/2 left-1/2 h-[5vw] max-h-[22rem] w-[90vw] max-w-[60rem] -translate-x-1/2 -translate-y-1/2
+                     rounded-[9999px] bg-violet-600/25 blur-3xl"
 
                 ></div>
 
                 <div
-                    class="absolute top-1/2 left-1/2 h-[32vw] max-h-[20rem] w-[70vw] max-w-[46rem] -translate-x-1/2 -translate-y-1/2 rounded-[9999px] bg-fuchsia-500/20 blur-3xl"
-                    v-animateonscroll="{ enterClass: 'animate-enter fade-in-10', delay: 80, threshold: 0 }"
+                    class="absolute top-1/2 left-1/2 h-[5vw] max-h-[20rem] w-[70vw] max-w-[46rem] -translate-x-1/2
+                     -translate-y-1/2 rounded-[9999px] bg-fuchsia-500/20 blur-3xl"
                 ></div>
 
                 <div class="absolute inset-0 bg-[radial-gradient(70%_50%_at_50%_40%,rgba(124,58,237,0.15),transparent_60%)]"></div>
@@ -192,13 +193,9 @@ const placeholder = '/images/placeholder.svg';
                 <!-- Intro line -->
                 <h1
                     class="text-4xl font-extrabold tracking-tight text-black will-change-transform sm:text-5xl dark:text-white"
-                    v-animateonscroll="{
-                        enterClass: 'animate-enter fade-in-10 slide-in-from-t-12 animate-duration-700',
-                        delay: 40,
-                    }"
                 >
                     Hi, I'm
-                    <span class="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text font-extrabold text-transparent">
+                    <span class="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text font-bold text-transparent">
                         Daniel Terpstra
                     </span>
                 </h1>
@@ -206,10 +203,6 @@ const placeholder = '/images/placeholder.svg';
                 <!-- Badge -->
                 <div
                     class="mt-6 will-change-transform"
-                    v-animateonscroll="{
-                        enterClass: 'animate-enter fade-in-10 slide-in-from-t-8 animate-duration-600',
-                        delay: 140,
-                    }"
                 >
                     <span
                         class="inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-white/5 px-4 py-1.5 text-xs text-zinc-700 backdrop-blur dark:border-white/10 dark:text-zinc-300"
@@ -222,10 +215,6 @@ const placeholder = '/images/placeholder.svg';
                 <!-- Big headline -->
                 <h2
                     class="mt-8 text-4xl leading-[1.05] font-extrabold text-black will-change-transform sm:text-5xl md:text-6xl lg:text-7xl dark:text-white"
-                    v-animateonscroll="{
-                        enterClass: 'animate-enter fade-in-10 slide-in-from-b-12 animate-duration-800',
-                        delay: 220,
-                    }"
                 >
                     Crafting <span class="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Digital</span
                     ><br class="hidden md:block" />
@@ -235,10 +224,6 @@ const placeholder = '/images/placeholder.svg';
                 <!-- Typed line -->
                 <p
                     class="mt-6 text-black will-change-transform dark:text-zinc-300"
-                    v-animateonscroll="{
-                        enterClass: 'animate-enter fade-in-10 font-bold slide-in-from-b-6 animate-duration-600',
-                        delay: 300,
-                    }"
                 >
                     I’m a <span class="typing font-bold text-violet-400/90"></span>
                 </p>
@@ -246,10 +231,6 @@ const placeholder = '/images/placeholder.svg';
                 <!-- CTAs -->
                 <div
                     class="mt-10 flex items-center gap-4 will-change-transform"
-                    v-animateonscroll="{
-                        enterClass: 'animate-enter fade-in-10 slide-in-from-b-6 animate-duration-600',
-                        delay: 380,
-                    }"
                 >
                     <a
                         href="#projects"
@@ -277,10 +258,6 @@ const placeholder = '/images/placeholder.svg';
                 <!-- Scroll hint -->
                 <div
                     class="absolute inset-x-0 bottom-6 flex justify-center text-xs text-zinc-800 will-change-transform dark:text-zinc-500"
-                    v-animateonscroll="{
-                        enterClass: 'animate-enter fade-in-10 slide-in-from-b-6 animate-duration-600',
-                        delay: 460,
-                    }"
                 >
                     <div class="flex w-full items-center justify-center gap-2">
                         <a href="#about" class="">
@@ -303,7 +280,7 @@ const placeholder = '/images/placeholder.svg';
                 <div class="flex items-center pb-8 lg:justify-center">
                     <h1 class="text-4xl font-bold text-black dark:text-white">About me<span class="text-primary">.</span></h1>
                 </div>
-                <div class="grid grid-cols-1 gap-32 md:grid-cols-2">
+                <div class="grid grid-cols-1 gap-32 md:grid-cols-2 items-center">
                     <div class="flex flex-col gap-3 text-black dark:text-white">
                         <h2 class="text-2xl font-bold">Passionate Software Developer Student</h2>
                         <p>
@@ -353,15 +330,19 @@ const placeholder = '/images/placeholder.svg';
                             >
                         </div>
                     </div>
-                    <div>
-                        <img :src="placeholder" class="w-full rounded-lg shadow-lg" alt="" />
+                    <div class="flex justify-center py-12">
+                        <ProfileAbout
+                            class="relative z-30"
+                            :src="placeholder"
+                            :size="330"
+                            :radius-offset="40"
+                            :labels="['Tech Enthusiast','Frontend','UI/UX','Backend']"
+                        />
                     </div>
                 </div>
                 <div class="relative pt-18">
-                    <!-- background glow -->
                     <div class="absolute inset-0 -z-10 mt-16 rounded-2xl bg-primary/30 blur-3xl lg:blur-2xl"></div>
 
-                    <!-- your stats grid -->
                     <div class="grid grid-cols-1 items-center gap-3 text-black md:grid-cols-2 lg:grid-cols-4 dark:text-zinc-200">
                         <div class="flex flex-col items-center gap-2">
                             <h1 class="text-3xl font-bold text-primary">3+ Years</h1>
