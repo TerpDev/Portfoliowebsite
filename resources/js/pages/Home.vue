@@ -162,7 +162,14 @@ const placeholder = '/images/placeholder.svg';
 </script>
 
 <template>
-    <Head title="Daniel Terpstra | Software Developer"> </Head>
+    <Head title="Daniel Terpstra | Software Developer">
+        <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+
+    </Head>
     <AppLayout>
         <section id="hero" class="relative overflow-hidden">
             <!-- Background glows -->
@@ -170,6 +177,7 @@ const placeholder = '/images/placeholder.svg';
                 <div
                     class="absolute top-1/2 left-1/2 h-[20vw] max-h-[22rem] w-[90vw] max-w-[60rem] -translate-x-1/2 -translate-y-1/2 rounded-[9999px] bg-violet-600/25 blur-3xl"
                     v-animateonscroll="{ enterClass: 'animate-enter fade-in-10', delay: 0, threshold: 0 }"
+
                 ></div>
 
                 <div
