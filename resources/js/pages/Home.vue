@@ -283,7 +283,7 @@ const placeholder = '/images/placeholder.svg';
                     }"
                 >
                     <div class="flex w-full items-center justify-center gap-2">
-                        <a href="#about" class="cursor-pointer">
+                        <a href="#about" class="">
                             <span>Scroll Down</span>
                             <div class="animate-bounce-down flex justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -310,37 +310,37 @@ const placeholder = '/images/placeholder.svg';
                             Hey There! I'm Daniel Terpstra, 19 years old and a passionate student software developer based in the Netherlands. I
                             specialize in crafting beautiful and functional web applications that provide seamless user experiences, with a strong
                             foundation in both frontend and backend. Right now I'm focused on learning
-                            <a target="_blank" href="https://laravel.com/" class="cursor-pointer font-bold transition hover:text-[#FF2D20]"
+                            <a target="_blank" href="https://laravel.com/" class=" font-bold transition hover:text-[#FF2D20]"
                                 >Laravel</a
                             >
                             and
-                            <a target="_blank" href="https://filamentphp.com/" class="cursor-pointer font-bold transition hover:text-[#FDAE4B]"
+                            <a target="_blank" href="https://filamentphp.com/" class=" font-bold transition hover:text-[#FDAE4B]"
                                 >Filament</a
                             >
                             for backend development. On the frontend I’m focused on the
-                            <a target="_blank" href="https://tallstack.dev/" class="cursor-pointer font-bold transition hover:text-[#38bdf8]"
+                            <a target="_blank" href="https://tallstack.dev/" class=" font-bold transition hover:text-[#38bdf8]"
                                 >TALL stack</a
                             >, which combines
-                            <a target="_blank" href="https://tailwindcss.com/" class="cursor-pointer font-bold transition hover:text-[#06B6D4]"
+                            <a target="_blank" href="https://tailwindcss.com/" class=" font-bold transition hover:text-[#06B6D4]"
                                 >TailwindCSS</a
                             >,
-                            <a target="_blank" href="https://alpinejs.dev/" class="cursor-pointer font-bold transition hover:text-[#8BC0D0]"
+                            <a target="_blank" href="https://alpinejs.dev/" class=" font-bold transition hover:text-[#8BC0D0]"
                                 >AlpineJS</a
                             >,
-                            <a target="_blank" href="https://laravel.com/" class="cursor-pointer font-bold transition hover:text-[#FF2D20]"
+                            <a target="_blank" href="https://laravel.com/" class=" font-bold transition hover:text-[#FF2D20]"
                                 >Laravel</a
                             >
                             and
-                            <a target="_blank" href="https://laravel-livewire.com/" class="cursor-pointer font-bold transition hover:text-[#4E56A6]"
+                            <a target="_blank" href="https://laravel-livewire.com/" class=" font-bold transition hover:text-[#4E56A6]"
                                 >Livewire</a
                             >. I’m also experienced with
-                            <a target="_blank" href="https://vuejs.org/" class="cursor-pointer font-bold transition hover:text-[#4FC08D]">Vue.js</a>,
+                            <a target="_blank" href="https://vuejs.org/" class=" font-bold transition hover:text-[#4FC08D]">Vue.js</a>,
                             using
-                            <a target="_blank" href="https://primevue.org/" class="cursor-pointer font-bold transition hover:text-[#41B883]"
+                            <a target="_blank" href="https://primevue.org/" class=" font-bold transition hover:text-[#41B883]"
                                 >PrimeVue</a
                             >
                             and
-                            <a target="_blank" href="https://headlessui.dev/" class="cursor-pointer font-bold transition hover:text-[#66E3FF]"
+                            <a target="_blank" href="https://headlessui.dev/" class=" font-bold transition hover:text-[#66E3FF]"
                                 >HeadlessUI</a
                             >
                             for building dynamic user interfaces.
@@ -401,7 +401,7 @@ const placeholder = '/images/placeholder.svg';
                     <div class="relative mb-12 flex items-center justify-between">
                         <div class="group w-5/12 text-right">
                             <div
-                                class="cursor-default rounded-lg border border-primary/10 p-6 shadow-lg backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-primary hover:bg-primary/20"
+                                class=" rounded-lg border border-primary/10 p-6 shadow-lg backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-primary hover:bg-primary/20"
                             >
                                 <h3 class="mb-2 font-bold text-black dark:text-white">
                                     Bonhoeffer College locatie Van der Waalslaan -
@@ -436,7 +436,7 @@ const placeholder = '/images/placeholder.svg';
 
                         <div class="group w-5/12">
                             <div
-                                class="cursor-default rounded-lg border border-primary/10 p-6 shadow-lg backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-primary hover:bg-primary/20"
+                                class=" rounded-lg border border-primary/10 p-6 shadow-lg backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-primary hover:bg-primary/20"
                             >
                                 <h3 class="mb-2 font-bold text-black dark:text-white">
                                     MBO Software Developer Study Enschede -
@@ -456,7 +456,7 @@ const placeholder = '/images/placeholder.svg';
                     <div class="relative mb-12 flex items-center justify-between">
                         <div class="group w-5/12 text-right">
                             <div
-                                class="cursor-default rounded-lg border border-primary/10 p-6 shadow-lg backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-primary hover:bg-primary/20"
+                                class=" rounded-lg border border-primary/10 p-6 shadow-lg backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-primary hover:bg-primary/20"
                             >
                                 <h3 class="mb-2 font-bold text-black dark:text-white">
                                     MBO Software Developer Study Hengelo -
@@ -586,7 +586,7 @@ const placeholder = '/images/placeholder.svg';
                                 <div
                                     v-for="item in section.items"
                                     :key="`${section.title}-${item.label}`"
-                                    class="flex cursor-default flex-row items-center gap-4 rounded-xl border border-zinc-800 p-4"
+                                    class="flex  flex-row items-center gap-4 rounded-xl border border-zinc-800 p-4"
                                 >
                                     <!-- Icon gebruikt jouw css class -->
                                     <div :class="item.class" v-html="item.icon.svg"></div>
@@ -896,7 +896,7 @@ const placeholder = '/images/placeholder.svg';
                             <button
                                 type="submit"
                                 :disabled="sending"
-                                class="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-600/30 transition duration-300 hover:bg-primary/80 disabled:opacity-60"
+                                class="inline-flex  items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-600/30 transition duration-300 hover:bg-primary/80 disabled:opacity-60"
                             >
                                 <span v-if="!sending">Send Message</span>
                                 <span v-else class="inline-flex items-center gap-2">

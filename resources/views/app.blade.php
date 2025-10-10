@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
-    @vite(['resources/js/app.ts', 'resources/css/app.css'])
+    @vite(['resources/js/app.ts', 'resources/css/app.css', 'resources/js/cursor.ts'])
     @inertiaHead
 </head>
 <body class="font-sans antialiased scroll-smooth">

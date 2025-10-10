@@ -8,7 +8,7 @@ export default defineConfig({
     base: '/build/',                // ✅ correct
     plugins: [
         laravel({
-            input: ['resources/js/app.ts', 'resources/css/app.css'],
+            input: ['resources/js/app.ts', 'resources/css/app.css', 'resources/js/cursor.ts'],
             refresh: true,
             buildDirectory: 'build',    // (explicit, matches Laravel default)
         }),

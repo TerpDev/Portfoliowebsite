@@ -9,6 +9,7 @@ import PrimeVue from 'primevue/config';
 import type { DefineComponent } from 'vue';
 import { createApp, h } from 'vue';
 import i18n from './i18n';
+import './cursor';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
