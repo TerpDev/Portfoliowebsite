@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 // Wayfinder alleen als je 'm gebruikt:
 
 export default defineConfig({
+    base: '/', // Ensure all asset URLs are root-relative
     plugins: [
         laravel({
             input: ['resources/js/app.ts', 'resources/css/app.css'],
@@ -19,6 +20,5 @@ export default defineConfig({
     build: {
         assetsInlineLimit: 0,
     },
-    base: '/', // Ensure all asset URLs are root-relative
 
 })

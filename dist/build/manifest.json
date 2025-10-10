@@ -1,41 +1,41 @@
 {
-  "_Contact.vue_vue_type_script_setup_true_lang-CqFpzBTo.js": {
-    "file": "assets/Contact.vue_vue_type_script_setup_true_lang-CqFpzBTo.js",
+  "_Contact.vue_vue_type_script_setup_true_lang-CcZlo5_m.js": {
+    "file": "assets/Contact.vue_vue_type_script_setup_true_lang-CcZlo5_m.js",
     "name": "Contact.vue_vue_type_script_setup_true_lang",
     "imports": [
       "resources/js/app.ts"
     ]
   },
-  "_Footer.vue_vue_type_script_setup_true_lang-VVVuVVF1.js": {
-    "file": "assets/Footer.vue_vue_type_script_setup_true_lang-VVVuVVF1.js",
+  "_Footer.vue_vue_type_script_setup_true_lang-CEEiBCbU.js": {
+    "file": "assets/Footer.vue_vue_type_script_setup_true_lang-CEEiBCbU.js",
     "name": "Footer.vue_vue_type_script_setup_true_lang",
     "imports": [
       "resources/js/app.ts"
     ]
   },
-  "_Hero.vue_vue_type_script_setup_true_lang-fOe9rMSW.js": {
-    "file": "assets/Hero.vue_vue_type_script_setup_true_lang-fOe9rMSW.js",
+  "_Hero.vue_vue_type_script_setup_true_lang-CXQdgkMw.js": {
+    "file": "assets/Hero.vue_vue_type_script_setup_true_lang-CXQdgkMw.js",
     "name": "Hero.vue_vue_type_script_setup_true_lang",
     "imports": [
       "resources/js/app.ts"
     ]
   },
-  "_Navbar.vue_vue_type_script_setup_true_lang-CLssAsTR.js": {
-    "file": "assets/Navbar.vue_vue_type_script_setup_true_lang-CLssAsTR.js",
+  "_Navbar.vue_vue_type_script_setup_true_lang-DmN8c_9j.js": {
+    "file": "assets/Navbar.vue_vue_type_script_setup_true_lang-DmN8c_9j.js",
     "name": "Navbar.vue_vue_type_script_setup_true_lang",
     "imports": [
       "resources/js/app.ts"
     ]
   },
-  "_Projects.vue_vue_type_script_setup_true_lang-CwOU8Aeu.js": {
-    "file": "assets/Projects.vue_vue_type_script_setup_true_lang-CwOU8Aeu.js",
+  "_Projects.vue_vue_type_script_setup_true_lang-CyY7uiki.js": {
+    "file": "assets/Projects.vue_vue_type_script_setup_true_lang-CyY7uiki.js",
     "name": "Projects.vue_vue_type_script_setup_true_lang",
     "imports": [
       "resources/js/app.ts"
     ]
   },
-  "_Skills.vue_vue_type_script_setup_true_lang-BJUfPYbU.js": {
-    "file": "assets/Skills.vue_vue_type_script_setup_true_lang-BJUfPYbU.js",
+  "_Skills.vue_vue_type_script_setup_true_lang-D1enZkzC.js": {
+    "file": "assets/Skills.vue_vue_type_script_setup_true_lang-D1enZkzC.js",
     "name": "Skills.vue_vue_type_script_setup_true_lang",
     "imports": [
       "resources/js/app.ts"
@@ -46,7 +46,7 @@
     "name": "_plugin-vue_export-helper"
   },
   "resources/css/app.css": {
-    "file": "assets/app-B__QMV30.css",
+    "file": "assets/app-Cdv4iw9e.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "names": [
@@ -54,7 +54,7 @@
     ]
   },
   "resources/js/app.ts": {
-    "file": "assets/app-Dkw30nky.js",
+    "file": "assets/app-DQkWni44.js",
     "name": "app",
     "src": "resources/js/app.ts",
     "isEntry": true,
@@ -71,32 +71,32 @@
       "resources/js/pages/components/Navbar.vue"
     ],
     "css": [
-      "assets/app-B__QMV30.css"
+      "assets/app-Cdv4iw9e.css"
     ]
   },
   "resources/js/pages/Home.vue": {
-    "file": "assets/Home-CWv3uAvN.js",
+    "file": "assets/Home-BygfTN3K.js",
     "name": "Home",
     "src": "resources/js/pages/Home.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.ts",
-      "_Navbar.vue_vue_type_script_setup_true_lang-CLssAsTR.js",
-      "_Footer.vue_vue_type_script_setup_true_lang-VVVuVVF1.js",
-      "_Hero.vue_vue_type_script_setup_true_lang-fOe9rMSW.js",
+      "_Navbar.vue_vue_type_script_setup_true_lang-DmN8c_9j.js",
+      "_Footer.vue_vue_type_script_setup_true_lang-CEEiBCbU.js",
+      "_Hero.vue_vue_type_script_setup_true_lang-CXQdgkMw.js",
       "resources/js/pages/Sections/About.vue",
       "resources/js/pages/Sections/Timeline.vue",
-      "_Skills.vue_vue_type_script_setup_true_lang-BJUfPYbU.js",
-      "_Projects.vue_vue_type_script_setup_true_lang-CwOU8Aeu.js",
-      "_Contact.vue_vue_type_script_setup_true_lang-CqFpzBTo.js",
+      "_Skills.vue_vue_type_script_setup_true_lang-D1enZkzC.js",
+      "_Projects.vue_vue_type_script_setup_true_lang-CyY7uiki.js",
+      "_Contact.vue_vue_type_script_setup_true_lang-CcZlo5_m.js",
       "__plugin-vue_export-helper-DlAUqK2U.js"
     ],
     "css": [
-      "assets/app-B__QMV30.css"
+      "assets/app-Cdv4iw9e.css"
     ]
   },
   "resources/js/pages/Sections/About.vue": {
-    "file": "assets/About-4-VGv4Fv.js",
+    "file": "assets/About-BMEj1NZD.js",
     "name": "About",
     "src": "resources/js/pages/Sections/About.vue",
     "isDynamicEntry": true,
@@ -105,63 +105,63 @@
       "resources/js/app.ts"
     ],
     "css": [
-      "assets/app-B__QMV30.css"
+      "assets/app-Cdv4iw9e.css"
     ]
   },
   "resources/js/pages/Sections/Contact.vue": {
-    "file": "assets/Contact-B5MBtCte.js",
+    "file": "assets/Contact-x3nWJ6fy.js",
     "name": "Contact",
     "src": "resources/js/pages/Sections/Contact.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_Contact.vue_vue_type_script_setup_true_lang-CqFpzBTo.js",
+      "_Contact.vue_vue_type_script_setup_true_lang-CcZlo5_m.js",
       "resources/js/app.ts"
     ],
     "css": [
-      "assets/app-B__QMV30.css"
+      "assets/app-Cdv4iw9e.css"
     ]
   },
   "resources/js/pages/Sections/Hero.vue": {
-    "file": "assets/Hero-BHaFKsqY.js",
+    "file": "assets/Hero-yeCAxoF7.js",
     "name": "Hero",
     "src": "resources/js/pages/Sections/Hero.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_Hero.vue_vue_type_script_setup_true_lang-fOe9rMSW.js",
+      "_Hero.vue_vue_type_script_setup_true_lang-CXQdgkMw.js",
       "resources/js/app.ts"
     ],
     "css": [
-      "assets/app-B__QMV30.css"
+      "assets/app-Cdv4iw9e.css"
     ]
   },
   "resources/js/pages/Sections/Projects.vue": {
-    "file": "assets/Projects-SisFeEDN.js",
+    "file": "assets/Projects-FP7UNqaB.js",
     "name": "Projects",
     "src": "resources/js/pages/Sections/Projects.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_Projects.vue_vue_type_script_setup_true_lang-CwOU8Aeu.js",
+      "_Projects.vue_vue_type_script_setup_true_lang-CyY7uiki.js",
       "resources/js/app.ts"
     ],
     "css": [
-      "assets/app-B__QMV30.css"
+      "assets/app-Cdv4iw9e.css"
     ]
   },
   "resources/js/pages/Sections/Skills.vue": {
-    "file": "assets/Skills-Bw8FEnZj.js",
+    "file": "assets/Skills-BM3vpRMS.js",
     "name": "Skills",
     "src": "resources/js/pages/Sections/Skills.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_Skills.vue_vue_type_script_setup_true_lang-BJUfPYbU.js",
+      "_Skills.vue_vue_type_script_setup_true_lang-D1enZkzC.js",
       "resources/js/app.ts"
     ],
     "css": [
-      "assets/app-B__QMV30.css"
+      "assets/app-Cdv4iw9e.css"
     ]
   },
   "resources/js/pages/Sections/Timeline.vue": {
-    "file": "assets/Timeline-DeZ4JcYc.js",
+    "file": "assets/Timeline-Doe5026w.js",
     "name": "Timeline",
     "src": "resources/js/pages/Sections/Timeline.vue",
     "isDynamicEntry": true,
@@ -170,11 +170,11 @@
       "resources/js/app.ts"
     ],
     "css": [
-      "assets/app-B__QMV30.css"
+      "assets/app-Cdv4iw9e.css"
     ]
   },
   "resources/js/pages/Welcome.vue": {
-    "file": "assets/Welcome-kWct7fUE.js",
+    "file": "assets/Welcome-DcgQw6GZ.js",
     "name": "Welcome",
     "src": "resources/js/pages/Welcome.vue",
     "isDynamicEntry": true,
@@ -182,33 +182,33 @@
       "resources/js/app.ts"
     ],
     "css": [
-      "assets/app-B__QMV30.css"
+      "assets/app-Cdv4iw9e.css"
     ]
   },
   "resources/js/pages/components/Footer.vue": {
-    "file": "assets/Footer-CYxioPul.js",
+    "file": "assets/Footer-BfRC1KWz.js",
     "name": "Footer",
     "src": "resources/js/pages/components/Footer.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_Footer.vue_vue_type_script_setup_true_lang-VVVuVVF1.js",
+      "_Footer.vue_vue_type_script_setup_true_lang-CEEiBCbU.js",
       "resources/js/app.ts"
     ],
     "css": [
-      "assets/app-B__QMV30.css"
+      "assets/app-Cdv4iw9e.css"
     ]
   },
   "resources/js/pages/components/Navbar.vue": {
-    "file": "assets/Navbar-BOLEOL5c.js",
+    "file": "assets/Navbar-DN1Av2Lx.js",
     "name": "Navbar",
     "src": "resources/js/pages/components/Navbar.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_Navbar.vue_vue_type_script_setup_true_lang-CLssAsTR.js",
+      "_Navbar.vue_vue_type_script_setup_true_lang-DmN8c_9j.js",
       "resources/js/app.ts"
     ],
     "css": [
-      "assets/app-B__QMV30.css"
+      "assets/app-Cdv4iw9e.css"
     ]
   }
 }
