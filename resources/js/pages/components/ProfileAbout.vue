@@ -61,7 +61,7 @@ const points = computed(() => {
                 :style="{ left: pt.x + 'px', top: pt.y + 'px', transform: 'translate(-50%, -50%)' }"
             >
         <span
-            class="inline-flex items-center rounded-2xl bg-black/70 px-3 py-1 text-xs font-semibold text-white
+            class="md:inline-flex hidden items-center rounded-2xl bg-black/70 px-3 py-1 text-xs font-semibold text-white
                  shadow-[0_4px_20px_rgba(0,0,0,.35)] backdrop-blur-sm
                  ring-1 ring-white/10 transition-transform duration-200
                  hover:scale-105"

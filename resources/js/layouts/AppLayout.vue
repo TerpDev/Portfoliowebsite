@@ -10,7 +10,7 @@ import Footer from '../pages/components/Footer.vue';
             aria-hidden="true"
             class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(120%_60%_at_50%_0%,rgba(124,58,237,0.10),rgba(0,0,0,0)_60%)]"
         ></div>
-        <div class="md:flex hidden" id="cursor-dot" aria-hidden="true"></div>
+        <div class="hidden" id="cursor-dot" aria-hidden="true"></div>
 
         <Navbar />
         <main >

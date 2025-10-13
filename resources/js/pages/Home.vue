@@ -160,6 +160,23 @@ async function onSubmit() {
 }
 const placeholder = '/images/placeholder.svg';
 import ProfileAbout from '../pages/components/ProfileAbout.vue';
+const originalTitle = 'Daniel Terpstra | Software Developer';
+
+function handleVisibilityChange() {
+    if (document.hidden) {
+        document.title = 'Come back soon! 👀';
+    } else {
+        document.title = originalTitle;
+    }
+}
+
+onMounted(() => {
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+});
+
+onBeforeUnmount(() => {
+    document.removeEventListener('visibilitychange', handleVisibilityChange);
+});
 </script>
 
 <template>
