@@ -20,6 +20,7 @@ import {
 } from 'simple-icons';
 import Typed from 'typed.js';
 import { onBeforeUnmount, onMounted, ref } from 'vue';
+import ProfileAbout from '../pages/components/ProfileAbout.vue';
 let typed: Typed | null = null;
 onMounted(() => {
     typed = new Typed('.typing', {
@@ -159,7 +160,6 @@ async function onSubmit() {
     }
 }
 const placeholder = '/images/placeholder.svg';
-import ProfileAbout from '../pages/components/ProfileAbout.vue';
 const originalTitle = 'Daniel Terpstra | Software Developer';
 
 function handleVisibilityChange() {
@@ -170,13 +170,32 @@ function handleVisibilityChange() {
     }
 }
 
+// Scroll progress bar
+const scrollProgress = ref(0);
+
+function updateScrollProgress() {
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollTop = window.scrollY;
+    const scrollableHeight = documentHeight - windowHeight;
+
+    if (scrollableHeight > 0) {
+        scrollProgress.value = (scrollTop / scrollableHeight) * 100;
+    }
+}
+
 onMounted(() => {
     document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('scroll', updateScrollProgress);
+    updateScrollProgress(); // Initial calculation
 });
 
 onBeforeUnmount(() => {
     document.removeEventListener('visibilitychange', handleVisibilityChange);
+    window.removeEventListener('scroll', updateScrollProgress);
 });
+import RotatingText from "./vuebits/RotatingText/RotatingText.vue";
+
 </script>
 
 <template>
@@ -186,21 +205,26 @@ onBeforeUnmount(() => {
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-
     </Head>
+
+    <!-- Scroll Progress Bar -->
+    <div class="fixed top-0 left-0 z-50 h-1 w-full bg-zinc-200/50 dark:bg-zinc-800/50">
+        <div
+            class="h-full bg-primary transition-all duration-150 ease-out"
+            :style="{ width: `${scrollProgress}%` }"
+        />
+    </div>
+
     <AppLayout>
         <section id="hero" class="relative overflow-hidden">
             <!-- Background glows -->
             <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
                 <div
-                    class="absolute top-1/2 left-1/2 h-[5vw] max-h-[22rem] w-[90vw] max-w-[60rem] -translate-x-1/2 -translate-y-1/2
-                     rounded-[9999px] bg-violet-600/25 blur-3xl"
-
+                    class="absolute top-1/2 left-1/2 h-[5vw] max-h-[22rem] w-[90vw] max-w-[60rem] -translate-x-1/2 -translate-y-1/2 rounded-[9999px] bg-violet-600/25 blur-3xl"
                 ></div>
 
                 <div
-                    class="absolute top-1/2 left-1/2 h-[5vw] max-h-[20rem] w-[70vw] max-w-[46rem] -translate-x-1/2
-                     -translate-y-1/2 rounded-[9999px] bg-fuchsia-500/20 blur-3xl"
+                    class="absolute top-1/2 left-1/2 h-[5vw] max-h-[20rem] w-[70vw] max-w-[46rem] -translate-x-1/2 -translate-y-1/2 rounded-[9999px] bg-fuchsia-500/20 blur-3xl"
                 ></div>
 
                 <div class="absolute inset-0 bg-[radial-gradient(70%_50%_at_50%_40%,rgba(124,58,237,0.15),transparent_60%)]"></div>
@@ -208,19 +232,12 @@ onBeforeUnmount(() => {
 
             <div class="mx-auto flex h-[92vh] max-w-6xl flex-col items-center justify-center px-4 text-center">
                 <!-- Intro line -->
-                <h1
-                    class="text-4xl font-extrabold tracking-tight text-black will-change-transform sm:text-5xl dark:text-white"
-                >
+                <h1 class="text-4xl font-extrabold tracking-tight text-black will-change-transform sm:text-5xl dark:text-white">
                     Hi, I'm
-                    <span class="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text font-bold text-transparent">
-                        Daniel Terpstra
-                    </span>
+                    <span class="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text font-bold text-transparent"> Daniel Terpstra </span>
                 </h1>
-
                 <!-- Badge -->
-                <div
-                    class="mt-6 will-change-transform"
-                >
+                <div class="mt-6 will-change-transform">
                     <span
                         class="inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-white/5 px-4 py-1.5 text-xs text-zinc-700 backdrop-blur dark:border-white/10 dark:text-zinc-300"
                     >
@@ -239,16 +256,28 @@ onBeforeUnmount(() => {
                 </h2>
 
                 <!-- Typed line -->
-                <p
-                    class="mt-6 text-black will-change-transform dark:text-zinc-300"
-                >
+                <p class="mt-6 text-black will-change-transform dark:text-zinc-300">
                     I’m a <span class="typing font-bold text-violet-400/90"></span>
                 </p>
+<!--                <div class="flex items-center gap-4">-->
+<!--                    <p>I'm a </p>-->
+<!--                    <RotatingText-->
+<!--                        :texts="['Student Software developer', 'Backend Developer', 'Frontend Developer']"-->
+<!--                        mainClassName="px-2 sm:px-2 md:px-3 bg-primary font-bold text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"-->
+<!--                        :staggerFrom="0"-->
+<!--                        :initial="{ y: '100%' }"-->
+<!--                        :animate="{ y: 0 }"-->
+<!--                        :exit="{ y: '-120%' }"-->
+<!--                        :staggerDuration="0.025"-->
+<!--                        splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"-->
+<!--                        :transition="{ type: 'spring', damping: 30, stiffness: 400 }"-->
+<!--                        :rotationInterval="2000"-->
+<!--                    />-->
+<!--                </div>-->
+
 
                 <!-- CTAs -->
-                <div
-                    class="mt-10 flex items-center gap-4 will-change-transform"
-                >
+                <div class="mt-10 flex items-center gap-4 will-change-transform">
                     <a
                         href="#projects"
                         class="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-600/30 transition duration-300 hover:bg-primary/80 focus:ring-2 focus:ring-white/30 focus:outline-none"
@@ -273,9 +302,7 @@ onBeforeUnmount(() => {
                 </div>
 
                 <!-- Scroll hint -->
-                <div
-                    class="absolute inset-x-0 bottom-6 flex justify-center text-xs text-zinc-800 will-change-transform dark:text-zinc-500"
-                >
+                <div class="absolute inset-x-0 bottom-6 flex justify-center text-xs text-zinc-800 will-change-transform dark:text-zinc-500">
                     <div class="flex w-full items-center justify-center gap-2">
                         <a href="#about" class="">
                             <span>Scroll Down</span>
@@ -297,46 +324,30 @@ onBeforeUnmount(() => {
                 <div class="flex items-center pb-8 lg:justify-center">
                     <h1 class="text-4xl font-bold text-black dark:text-white">About me<span class="text-primary">.</span></h1>
                 </div>
-                <div class="grid grid-cols-1 gap-32 md:grid-cols-2 items-center">
+
+                <div class="grid grid-cols-1 items-center gap-32 md:grid-cols-2">
                     <div class="flex flex-col gap-3 text-black dark:text-white">
                         <h2 class="text-2xl font-bold">Passionate Software Developer Student</h2>
                         <p>
                             Hey There! I'm Daniel Terpstra, 19 years old and a passionate student software developer based in the Netherlands. I
                             specialize in crafting beautiful and functional web applications that provide seamless user experiences, with a strong
                             foundation in both frontend and backend. Right now I'm focused on learning
-                            <a target="_blank" href="https://laravel.com/" class=" font-bold transition hover:text-[#FF2D20]"
-                                >Laravel</a
-                            >
+                            <a target="_blank" href="https://laravel.com/" class="font-bold transition hover:text-[#FF2D20]">Laravel</a>
                             and
-                            <a target="_blank" href="https://filamentphp.com/" class=" font-bold transition hover:text-[#FDAE4B]"
-                                >Filament</a
-                            >
+                            <a target="_blank" href="https://filamentphp.com/" class="font-bold transition hover:text-[#FDAE4B]">Filament</a>
                             for backend development. On the frontend I’m focused on the
-                            <a target="_blank" href="https://tallstack.dev/" class=" font-bold transition hover:text-[#38bdf8]"
-                                >TALL stack</a
-                            >, which combines
-                            <a target="_blank" href="https://tailwindcss.com/" class=" font-bold transition hover:text-[#06B6D4]"
-                                >TailwindCSS</a
-                            >,
-                            <a target="_blank" href="https://alpinejs.dev/" class=" font-bold transition hover:text-[#8BC0D0]"
-                                >AlpineJS</a
-                            >,
-                            <a target="_blank" href="https://laravel.com/" class=" font-bold transition hover:text-[#FF2D20]"
-                                >Laravel</a
-                            >
+                            <a target="_blank" href="https://tallstack.dev/" class="font-bold transition hover:text-[#38bdf8]">TALL stack</a>, which
+                            combines
+                            <a target="_blank" href="https://tailwindcss.com/" class="font-bold transition hover:text-[#06B6D4]">TailwindCSS</a>,
+                            <a target="_blank" href="https://alpinejs.dev/" class="font-bold transition hover:text-[#8BC0D0]">AlpineJS</a>,
+                            <a target="_blank" href="https://laravel.com/" class="font-bold transition hover:text-[#FF2D20]">Laravel</a>
                             and
-                            <a target="_blank" href="https://laravel-livewire.com/" class=" font-bold transition hover:text-[#4E56A6]"
-                                >Livewire</a
-                            >. I’m also experienced with
-                            <a target="_blank" href="https://vuejs.org/" class=" font-bold transition hover:text-[#4FC08D]">Vue.js</a>,
-                            using
-                            <a target="_blank" href="https://primevue.org/" class=" font-bold transition hover:text-[#41B883]"
-                                >PrimeVue</a
-                            >
+                            <a target="_blank" href="https://laravel-livewire.com/" class="font-bold transition hover:text-[#4E56A6]">Livewire</a>.
+                            I’m also experienced with
+                            <a target="_blank" href="https://vuejs.org/" class="font-bold transition hover:text-[#4FC08D]">Vue.js</a>, using
+                            <a target="_blank" href="https://primevue.org/" class="font-bold transition hover:text-[#41B883]">PrimeVue</a>
                             and
-                            <a target="_blank" href="https://headlessui.dev/" class=" font-bold transition hover:text-[#66E3FF]"
-                                >HeadlessUI</a
-                            >
+                            <a target="_blank" href="https://headlessui.dev/" class="font-bold transition hover:text-[#66E3FF]">HeadlessUI</a>
                             for building dynamic user interfaces.
                         </p>
                         <div class="flex flex-row gap-3">
@@ -353,7 +364,7 @@ onBeforeUnmount(() => {
                             :src="placeholder"
                             :size="330"
                             :radius-offset="40"
-                            :labels="['Tech Enthusiast','Frontend','UI/UX','Backend']"
+                            :labels="['Tech Enthusiast', 'Frontend', 'UI/UX', 'Backend']"
                         />
                     </div>
                 </div>
@@ -399,7 +410,7 @@ onBeforeUnmount(() => {
                     <div class="relative mb-12 flex items-center justify-between">
                         <div class="group w-5/12 text-right">
                             <div
-                                class=" rounded-lg border border-primary/10 p-6 shadow-lg backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-primary hover:bg-primary/20"
+                                class="rounded-lg border border-primary/10 p-6 shadow-lg backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-primary hover:bg-primary/20"
                             >
                                 <h3 class="mb-2 font-bold text-black dark:text-white">
                                     Bonhoeffer College locatie Van der Waalslaan -
@@ -434,7 +445,7 @@ onBeforeUnmount(() => {
 
                         <div class="group w-5/12">
                             <div
-                                class=" rounded-lg border border-primary/10 p-6 shadow-lg backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-primary hover:bg-primary/20"
+                                class="rounded-lg border border-primary/10 p-6 shadow-lg backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-primary hover:bg-primary/20"
                             >
                                 <h3 class="mb-2 font-bold text-black dark:text-white">
                                     MBO Software Developer Study Enschede -
@@ -454,7 +465,7 @@ onBeforeUnmount(() => {
                     <div class="relative mb-12 flex items-center justify-between">
                         <div class="group w-5/12 text-right">
                             <div
-                                class=" rounded-lg border border-primary/10 p-6 shadow-lg backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-primary hover:bg-primary/20"
+                                class="rounded-lg border border-primary/10 p-6 shadow-lg backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-primary hover:bg-primary/20"
                             >
                                 <h3 class="mb-2 font-bold text-black dark:text-white">
                                     MBO Software Developer Study Hengelo -
@@ -584,7 +595,7 @@ onBeforeUnmount(() => {
                                 <div
                                     v-for="item in section.items"
                                     :key="`${section.title}-${item.label}`"
-                                    class="flex  flex-row items-center gap-4 rounded-xl border border-zinc-800 p-4"
+                                    class="flex flex-row items-center gap-4 rounded-xl border border-zinc-800 p-4"
                                 >
                                     <!-- Icon gebruikt jouw css class -->
                                     <div :class="item.class" v-html="item.icon.svg"></div>
@@ -894,7 +905,7 @@ onBeforeUnmount(() => {
                             <button
                                 type="submit"
                                 :disabled="sending"
-                                class="inline-flex  items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-600/30 transition duration-300 hover:bg-primary/80 disabled:opacity-60"
+                                class="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-600/30 transition duration-300 hover:bg-primary/80 disabled:opacity-60"
                             >
                                 <span v-if="!sending">Send Message</span>
                                 <span v-else class="inline-flex items-center gap-2">

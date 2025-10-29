@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Navbar from '../pages/components/Navbar.vue';
 import Footer from '../pages/components/Footer.vue';
+import GradualBlur from '../pages/vuebits/GradualBlur/GradualBlur.vue';
 </script>
 
 <template>
@@ -13,10 +14,23 @@ import Footer from '../pages/components/Footer.vue';
         <div class="hidden" id="cursor-dot" aria-hidden="true"></div>
 
         <Navbar />
-        <main >
+        <main>
             <slot />
         </main>
         <Footer/>
+
+        <!-- Global bottom blur overlay -->
+        <GradualBlur
+            class="pointer-events-none fixed bottom-0 inset-x-0 z-50"
+            target="page"
+            position="bottom"
+            height="6rem"
+            :strength="2"
+            :divCount="5"
+            curve="bezier"
+            :exponential="true"
+            :opacity="1"
+        />
+
     </div>
 </template>
-
