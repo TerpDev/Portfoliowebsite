@@ -312,8 +312,8 @@ const getIcon = (icon: string) => {
 
 <template>
     <nav
-        class="sticky md:relative top-0 left-0 right-0 z-50 transition-all duration-500"
-        :class="scrolled ? 'py-2 md:py-4' : 'pt-4'"
+        class="sticky md:relative top-0 left-0 right-0 z-50 transition-all duration-500 pt-2 md:pt-0"
+        :class="scrolled ? 'py-2 md:py-4' : 'py-4'"
     >
         <!-- Progress bar -->
         <div class="absolute top-0 left-0 h-0.5 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-violet-600 transition-all duration-300"
@@ -321,7 +321,7 @@ const getIcon = (icon: string) => {
             <div class="absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-transparent to-white/20 blur-sm"></div>
         </div>
 
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-2 md:mt-0">
             <div
                 class="relative flex items-center justify-between rounded-2xl border backdrop-blur-xl transition-all duration-500"
                 :class="scrolled
