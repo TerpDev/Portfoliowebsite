@@ -8,6 +8,7 @@ const toggleDark = useToggle(isDark);
 
 const scrolled = ref(false);
 const menuOpen = ref(false);
+
 const onScroll = () => {
     scrolled.value = (window.scrollY || 0) > 40;
 };
@@ -38,7 +39,9 @@ let io: IntersectionObserver | null = null;
 
 onMounted(() => {
     const ids = links.map((l) => l.href.replace('#', ''));
-    const sections = ids.map((id) => document.getElementById(id)).filter((n): n is HTMLElement => !!n);
+    const sections = ids
+        .map((id) => document.getElementById(id))
+        .filter((n): n is HTMLElement => !!n);
 
     io = new IntersectionObserver(
         (entries) => {
@@ -51,9 +54,8 @@ onMounted(() => {
             });
         },
         {
-            // bias to "center focus"; also helps avoid accidental re-triggers
             root: null,
-            rootMargin: '-40% 0px -55% 0px',
+            rootMargin: '-45% 0px -45% 0px',
             threshold: 0,
         },
     );
@@ -68,156 +70,277 @@ onUnmounted(() => {
 </script>
 
 <template>
+    <!-- floating glass nav, gecentreerd -->
     <nav
-        class="sticky top-6 z-50 transition-transform duration-700 ease-out will-change-transform"
-        :class="scrolled ? '-translate-y-2' : 'translate-y-0'"
+        class="fixed inset-x-0 top-4 z-40 flex justify-center px-4 transition-transform duration-500 ease-out will-change-transform"
+        :class="scrolled ? '-translate-y-1' : 'translate-y-0'"
         v-animateonscroll="{
-            enterClass: 'animate-enter fade-in-10 slide-in-from-t-8 animate-duration-600',
+            enterClass: 'animate-enter fade-in-10 slide-in-from-t-6 animate-duration-500',
             once: true,
             intersectionOptions: { threshold: 0, rootMargin: '0px 0px -10% 0px' },
         }"
         style="animation-delay: 40ms"
     >
-        <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="mx-auto flex w-full max-w-6xl items-center justify-between gap-3">
+            <!-- Glass shell -->
             <div
-                class="flex items-center justify-between gap-4 rounded-full border px-4 py-3 backdrop-blur-md transition-all duration-500 sm:px-6"
-                :class="scrolled ? 'border-zinc-800 bg-zinc-900/70 shadow-lg ring-1 ring-black/5' : 'border-zinc-800/50 bg-zinc-900/40'"
+                class="flex w-full items-center justify-between gap-4 rounded-2xl border px-4 py-2.5 shadow-lg backdrop-blur-2xl transition-all duration-500 sm:px-5"
+                :class="scrolled
+                    ? 'border-white/50 bg-white/85 shadow-violet-500/15 dark:border-zinc-800 dark:bg-zinc-950/90'
+                    : 'border-white/40 bg-white/70 shadow-violet-500/10 dark:border-zinc-800/80 dark:bg-zinc-950/80'"
             >
                 <!-- Brand -->
                 <a
                     href="#hero"
-                    class="flex items-center gap-1 transition will-change-transform hover:text-primary"
-                    v-animateonscroll="{
-                        enterClass: 'animate-enter fade-in-10 slide-in-from-l-8 animate-duration-500',
-                        once: true,
-                        intersectionOptions: { threshold: 0, rootMargin: '0px 0px -10% 0px' },
-                    }"
-                    style="animation-delay: 120ms"
+                    @click.prevent="(e) => onNavClick(e as any, '#hero', 'Home')"
+                    class="flex items-center gap-2"
                 >
-                    <p class="rounded-full bg-primary/30 p-1.5 text-sm font-bold text-primary">DT</p>
-                    <span class="font-bold transition"><span class="text-primary">.</span>dev</span>
+                    <div class="relative">
+                        <div
+                            class="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 opacity-70 blur-md"
+                        ></div>
+                        <div
+                            class="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-xs font-bold text-white shadow-md shadow-violet-500/40"
+                        >
+                            DT
+                        </div>
+                    </div>
+                    <div class="hidden flex-col leading-tight sm:flex">
+                        <span class="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                            Daniel
+                            <span class="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+                                Terpstra
+                            </span>
+                        </span>
+                        <span class="text-[11px] text-zinc-500 dark:text-zinc-400">
+                            Software Developer
+                        </span>
+                    </div>
                 </a>
 
-                <!-- Desktop links -->
-                <ul class="hidden items-center gap-6 md:flex">
-                    <li v-for="(link, i) in links" :key="link.label" class="cursor-pointer">
+                <!-- Desktop nav -->
+                <ul class="hidden items-center justify-center gap-1 md:flex">
+                    <li
+                        v-for="(link, i) in links"
+                        :key="link.label"
+                        class="cursor-pointer"
+                    >
                         <a
                             :href="link.href"
-                            @click="(e) => onNavClick(e, link.href, link.label)"
-                            class="relative text-zinc-300 transition will-change-transform after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:text-white"
-                            :class="{
-                                'text-white after:w-full': active === link.label,
-                                'after:w-0 hover:after:w-full': active !== link.label,
-                            }"
-                            v-animateonscroll="{
-                                enterClass: 'animate-enter fade-in-10 slide-in-from-t-6 animate-duration-500',
-                                once: true,
-                                intersectionOptions: { threshold: 0, rootMargin: '0px 0px -10% 0px' },
-                            }"
-                            :style="{ animationDelay: `${160 + i * 60}ms` }"
+                            @click="(e) => onNavClick(e as MouseEvent, link.href, link.label)"
+                            class="group relative inline-flex items-center rounded-full px-3 py-1.5 text-sm font-medium transition-all duration-200"
+                            :class="active === link.label
+    ? 'text-violet-300 dark:text-violet-200 after:scale-x-100 after:opacity-100'
+    : 'text-zinc-600 hover:text-white dark:text-zinc-400 dark:hover:text-white'"
+                            :style="{ animationDelay: `${120 + i * 50}ms` }"
                         >
-                            {{ link.label }}
+                            <span class="relative z-10">
+                                {{ link.label }}
+                            </span>
+                            <!-- slim gradient lijntje onder active/hover -->
+                            <span
+                                class="pointer-events-none absolute inset-x-2 -bottom-1 h-[2px] origin-center rounded-full bg-gradient-to-r from-violet-400 via-fuchsia-400 to-violet-500 transition-all duration-300"
+                                :class="active === link.label
+        ? 'scale-x-100 opacity-100'
+        : 'scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'"
+                            ></span>
+
                         </a>
                     </li>
                 </ul>
 
-                <!-- Right side -->
-                <div class="items-center gap-3">
+                <!-- Desktop right side -->
+                <div class="hidden items-center gap-2 md:flex">
+                    <!-- Theme toggle -->
                     <button
                         @click="toggleDark()"
                         type="button"
-                        class="flex cursor-pointer items-center gap-2 rounded-full border border-zinc-800/80 px-2 py-2 text-xs text-zinc-300
-                        transition hover:border-zinc-700 hover:text-white"
+                        class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-zinc-200/80 bg-white/80 text-zinc-700 shadow-sm transition hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
                         title="Toggle theme"
-                        v-animateonscroll="{
-                            enterClass: 'animate-enter fade-in-10 slide-in-from-r-8 animate-duration-500',
-                            once: true,
-                            intersectionOptions: { threshold: 0, rootMargin: '0px 0px -10% 0px' },
-                        }"
-                        style="animation-delay: 160ms"
                     >
-                        <span v-if="isDark">
-                            <!-- Sun icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="currentColor" />
+                        <transition
+                            mode="out-in"
+                            enter-active-class="transition duration-150 ease-out"
+                            enter-from-class="opacity-0 rotate-90"
+                            enter-to-class="opacity-100 rotate-0"
+                            leave-active-class="transition duration-100 ease-in"
+                            leave-from-class="opacity-100 rotate-0"
+                            leave-to-class="opacity-0 -rotate-90"
+                        >
+                            <svg
+                                v-if="isDark"
+                                key="sun"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <circle cx="12" cy="12" r="5" />
                                 <path
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+                                    d="M12 1v2M12 21v2M4.22 4.22 5.64 5.64M18.36 18.36 19.78 19.78M1 12h2M21 12h2M4.22 19.78 5.64 18.36M18.36 5.64 19.78 4.22"
                                 />
                             </svg>
-                        </span>
-                        <span v-else>
-                            <!-- Moon icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke="currentColor" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+                            <svg
+                                v-else
+                                key="moon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                                />
                             </svg>
-                        </span>
+                        </transition>
                     </button>
+
+                    <!-- Kleine CTA rechts -->
+                    <a
+                        href="#projects"
+                        @click.prevent="(e) => onNavClick(e as any, '#projects', 'Projects')"
+                        class="relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-zinc-900 px-3 py-1.5 text-xs font-semibold text-white shadow-sm shadow-zinc-900/40 transition hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+                    >
+                        <span class="relative z-10">View work</span>
+                        <span
+                            class="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-white/25 to-transparent opacity-80 transition-transform duration-300 group-hover:translate-x-0"
+                        ></span>
+                    </a>
                 </div>
 
-                <!-- Mobile burger -->
-                <div class="flex gap-2 md:hidden">
+                <!-- Mobile right side -->
+                <div class="flex items-center gap-2 md:hidden">
+                    <!-- Theme toggle -->
                     <button
-                        class="inline-flex cursor-pointer items-center justify-center rounded-full p-2 text-zinc-300 transition will-change-transform hover:bg-white/5 hover:text-white md:hidden"
+                        @click="toggleDark()"
+                        type="button"
+                        class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-zinc-200/80 bg-white/85 text-zinc-700 shadow-sm transition hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
+                        title="Toggle theme"
+                    >
+                        <svg
+                            v-if="isDark"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4 w-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <circle cx="12" cy="12" r="5" />
+                            <path
+                                d="M12 1v2M12 21v2M4.22 4.22 5.64 5.64M18.36 18.36 19.78 19.78M1 12h2M21 12h2M4.22 19.78 5.64 18.36M18.36 5.64 19.78 4.22"
+                            />
+                        </svg>
+                        <svg
+                            v-else
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4 w-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path
+                                d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                            />
+                        </svg>
+                    </button>
+
+                    <!-- Burger -->
+                    <button
+                        class="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-zinc-200/80 bg-white/85 text-zinc-800 shadow-sm transition hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
                         @click="menuOpen = !menuOpen"
                         aria-label="Toggle menu"
-                        v-animateonscroll="{
-                            enterClass: 'animate-enter fade-in-10 slide-in-from-r-8 animate-duration-500',
-                            once: true,
-                            intersectionOptions: { threshold: 0, rootMargin: '0px 0px -10% 0px' },
-                        }"
-                        style="animation-delay: 160ms"
                     >
                         <svg
                             v-if="!menuOpen"
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-6 w-6"
-                            fill="none"
+                            class="h-5 w-5"
                             viewBox="0 0 24 24"
+                            fill="none"
                             stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
                         >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.5"
-                                d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"
-                            />
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
                         </svg>
-                        <svg v-else xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+                        <svg
+                            v-else
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
                         </svg>
                     </button>
                 </div>
             </div>
 
+            <!-- Mobile dropdown -->
             <transition
-                enter-active-class="transition duration-200 ease-out"
+                enter-active-class="transition duration-180 ease-out"
                 enter-from-class="opacity-0 -translate-y-2"
                 enter-to-class="opacity-100 translate-y-0"
                 leave-active-class="transition duration-150 ease-in"
                 leave-from-class="opacity-100 translate-y-0"
                 leave-to-class="opacity-0 -translate-y-2"
             >
-                <div v-if="menuOpen" class="absolute top-full right-0 left-0 z-50 mt-2 md:hidden">
-                    <div class="mx-3 rounded-2xl border border-zinc-800 bg-zinc-900/90 shadow-lg backdrop-blur-md">
-                        <ul class="px-2 py-2">
-                            <li v-for="(link, i) in links" :key="`m-${link.label}`" class="px-3 py-2">
+                <div
+                    v-if="menuOpen"
+                    class="absolute left-4 right-4 top-[3.4rem] md:hidden"
+                >
+                    <div
+                        class="mx-auto max-w-6xl rounded-2xl border border-white/70 bg-white/95 p-3 shadow-xl shadow-violet-500/20 backdrop-blur-2xl dark:border-zinc-800 dark:bg-zinc-950/95"
+                    >
+                        <ul class="flex flex-col gap-1">
+                            <li
+                                v-for="(link, i) in links"
+                                :key="`m-${link.label}`"
+                            >
                                 <a
                                     :href="link.href"
-                                    @click="(e) => onNavClick(e, link.href, link.label)"
-                                    class="relative block py-1 text-zinc-300 transition after:absolute after:bottom-0
-                                    after:left-0 w-fit after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:text-white"
-                                    :class="{
-                                        'text-white after:w-full': active === link.label,
-                                        'after:w-0 hover:after:w-full': active !== link.label,
-                                    }"
-                                    :style="{ transitionDelay: `${i * 40}ms` }"
+                                    @click="(e) => onNavClick(e as MouseEvent, link.href, link.label)"
+                                    class="block rounded-xl px-3 py-2 text-sm font-medium transition-all duration-150"
+                                    :class="active === link.label
+                                        ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900'
+                                        : 'text-zinc-700 hover:bg-zinc-100/90 dark:text-zinc-200 dark:hover:bg-zinc-900/80'"
+                                    :style="{ transitionDelay: `${i * 30}ms` }"
                                 >
                                     {{ link.label }}
                                 </a>
                             </li>
                         </ul>
+
+                        <div class="mt-3">
+                            <a
+                                href="#contact"
+                                @click.prevent="(e) => onNavClick(e as any, '#contact', 'Contact')"
+                                class="flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-violet-500/40"
+                            >
+                                Let’s talk
+                            </a>
+                        </div>
                     </div>
                 </div>
             </transition>
@@ -225,6 +348,9 @@ onUnmounted(() => {
     </nav>
 </template>
 
+
+
+<!--Sidebar nav !!!!!!!!!!!!!-->
 <!--<script setup lang="ts">-->
 <!--import { onMounted, onUnmounted, ref } from 'vue';-->
 <!--import { useDark, useToggle } from '@vueuse/core';-->
@@ -616,4 +742,3 @@ onUnmounted(() => {
 <!--            </div>-->
 <!--    </div>-->
 <!--</template>-->
-

@@ -19,7 +19,7 @@ import {
     siVuedotjs,
 } from 'simple-icons';
 import Typed from 'typed.js';
-import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref, computed } from 'vue';
 import ProfileAbout from '../pages/components/ProfileAbout.vue';
 let typed: Typed | null = null;
 onMounted(() => {
@@ -76,6 +76,7 @@ const sections: {
     },
 ];
 const projectcards = ref([
+
     {
         title: 'Portfolio Website',
         description: 'A personal portfolio website to showcase my projects en skills. Built with InertiaJS, VueJS and TailwindCSS.',
@@ -94,6 +95,70 @@ const projectcards = ref([
         demo: [{ text: 'Live Demo', link: 'https://mtfautomobielen.nl/' }],
     },
 ]);
+type EducationItem = {
+    id: 'bonhoeffer' | 'enschede' | 'enschede-mbo' | 'hengelo-mbo';
+    label: string;
+    subtitle: string;
+    period: string;
+    badge: string;
+    location: string;
+    highlights: string[];
+    description: string;
+};
+
+const educationItems: EducationItem[] = [
+    {
+        id: 'bonhoeffer',
+        label: 'Bonhoeffer College',
+        subtitle: 'Van der Waalslaan – MAVO',
+        period: '2016 – 2020 (approx.)',
+        badge: 'Secondary Education',
+        location: 'Enschede, NL',
+        highlights: [
+            'Finished MAVO in 4 years',
+            'COVID-era online learning',
+            'First steps into tech & computers',
+        ],
+        description:
+            'I completed my secondary education at Bonhoeffer College, where I earned my MAVO diploma. During the COVID period I spent a lot of time behind my computer in online classes, which is when I realised how much I enjoy working with computers — taking them apart, fixing things and experimenting. That curiosity became the starting point of my software development journey.',
+    },
+    {
+        id: 'enschede-mbo',
+        label: 'MBO – Enschede',
+        subtitle: 'Software Developer – Game Focus',
+        period: '2 years',
+        badge: 'MBO – Game Dev',
+        location: 'Enschede, NL',
+        highlights: [
+            'C# intake console app',
+            'Game development focus',
+            'First internship at C-o-d-e-s',
+        ],
+        description:
+            'For the intake I had to build a small C# console application. I had no idea what I was doing at first, but still managed to make it work — and I was genuinely proud. The study was mainly focused on game development, but during my first internship at C-o-d-e-s in Almelo I discovered Laravel and Vue.js, and realised web development suited me much better.',
+    },
+    {
+        id: 'hengelo-mbo',
+        label: 'MBO – Hengelo',
+        subtitle: 'Software Developer – Web Development',
+        period: '2 years • 3rd & 4th year',
+        badge: 'MBO – Web Dev',
+        location: 'Hengelo, NL',
+        highlights: [
+            'Switched from game to web',
+            'Internship at Cube in Oldenzaal',
+        ],
+        description:
+            'After two years I switched tracks from game development to full web development and moved to the Hengelo location with four friends. We jumped straight into the third year, so we had a lot of catching up to do, but with some effort it went fast. Right now I’m in my fourth year doing my internship at Cube in Oldenzaal, learning a lot every day and preparing for my final exams.',
+    },
+];
+
+const activeEducationId = ref<EducationItem['id']>('bonhoeffer');
+
+const activeEducation = computed(() =>
+    educationItems.find((item) => item.id === activeEducationId.value)!,
+);
+
 const sending = ref(false);
 const sent = ref(false);
 const error = ref<string>(''); // error message (empty = no error)
@@ -194,7 +259,59 @@ onBeforeUnmount(() => {
     document.removeEventListener('visibilitychange', handleVisibilityChange);
     window.removeEventListener('scroll', updateScrollProgress);
 });
-import RotatingText from "./vuebits/RotatingText/RotatingText.vue";
+import type { Directive } from 'vue';
+// Simple, herbruikbare on-scroll animatie directive
+const vAnimateOnScroll: Directive<
+    HTMLElement,
+    { delay?: number; once?: boolean }
+> = {
+    mounted(el, binding) {
+        const delay = binding.value?.delay ?? 0;
+        const once = binding.value?.once ?? true;
+
+        // start state
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(18px)';
+        el.style.transition =
+            'opacity 600ms ease-out, transform 600ms ease-out';
+        el.style.transitionDelay = `${delay}ms`;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // in beeld → laat zien
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+
+                        if (once) {
+                            observer.unobserve(el);
+                        }
+                    } else if (!once) {
+                        // opnieuw verstoppen als je weer naar boven scrollt
+                        el.style.opacity = '0';
+                        el.style.transform = 'translateY(18px)';
+                    }
+                });
+            },
+            {
+                threshold: 0.12,
+                rootMargin: '0px 0px -10% 0px',
+            },
+        );
+
+        observer.observe(el);
+        // opslaan op element zodat we hem kunnen opruimen
+        (el as any)._animateOnScrollObserver = observer;
+    },
+
+    unmounted(el) {
+        const observer = (el as any)._animateOnScrollObserver as
+            | IntersectionObserver
+            | undefined;
+        if (observer) observer.disconnect();
+    },
+};
 
 </script>
 
@@ -216,7 +333,7 @@ import RotatingText from "./vuebits/RotatingText/RotatingText.vue";
     </div>
 
     <AppLayout>
-        <section id="hero" class="relative overflow-hidden">
+        <section id="hero" class="relative overflow-hidden" v-animate-on-scroll="{delay: 80}">
             <!-- Background glows -->
             <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
                 <div
@@ -319,7 +436,7 @@ import RotatingText from "./vuebits/RotatingText/RotatingText.vue";
                 </div>
             </div>
         </section>
-        <section id="about" class="px-8 py-24">
+        <section id="about" class="px-8 py-24" v-animate-on-scroll="{delay: 60}">
             <div class="mx-auto max-w-6xl">
                 <div class="flex items-center pb-8 lg:justify-center">
                     <h1 class="text-4xl font-bold text-black dark:text-white">About me<span class="text-primary">.</span></h1>
@@ -395,189 +512,135 @@ import RotatingText from "./vuebits/RotatingText/RotatingText.vue";
                 </div>
             </div>
         </section>
-        <!-- DESKTOP timeiline-->
-        <section id="timeline" class="hidden px-8 py-24 md:block">
+        <!-- EDUCATION TIMELINE (desktop + mobile in één) -->
+        <!-- EDUCATION SECTION MET TABS -->
+        <section
+            id="timeline"
+            class="px-8 py-24"
+            v-animate-on-scroll="{ delay: 80 }"
+        >
             <div class="mx-auto max-w-6xl">
-                <div class="flex justify-center pb-12">
-                    <h1 class="text-4xl font-bold text-black dark:text-white">Education<span class="text-purple-500">.</span></h1>
+                <!-- Header -->
+                <div class="flex flex-col gap-3 pb-10 md:items-center">
+            <span class="text-xs font-semibold uppercase tracking-[0.25em] text-primary/80">
+                Journey
+            </span>
+                    <h2 class="text-3xl font-bold text-black md:text-4xl dark:text-white">
+                        Education<span class="text-primary">.</span>
+                    </h2>
+                    <p class="max-w-2xl text-sm text-zinc-700 md:text-center dark:text-zinc-300">
+                        From secondary school to specialised software development — a focused path into web development.
+                    </p>
                 </div>
 
-                <div class="relative">
-                    <!-- Vertical line -->
-                    <div class="absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-purple-700/40"></div>
+                <div class="grid gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)] items-start">
+                    <!-- Tabs / Left side -->
+                    <div
+                        class="relative rounded-2xl border border-white/30 bg-white/70 p-4 shadow-sm shadow-black/5 backdrop-blur-xl dark:border-zinc-800 dark:bg-zinc-950/80"
+                    >
+                        <!-- Accent line -->
+                        <div
+                            class="pointer-events-none absolute inset-y-4 left-2 w-px bg-gradient-to-b from-violet-500/70 via-fuchsia-500/40 to-violet-500/70"
+                            aria-hidden="true"
+                        ></div>
 
-                    <!-- ITEM 1 -->
-                    <div class="relative mb-12 flex items-center justify-between">
-                        <div class="group w-5/12 text-right">
-                            <div
-                                class="rounded-lg border border-primary/10 p-6 shadow-lg backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-primary hover:bg-primary/20"
+                        <div class="space-y-2">
+                            <button
+                                v-for="item in educationItems"
+                                :key="item.id"
+                                type="button"
+                                @click="activeEducationId = item.id"
+                                class="group relative flex w-full items-start gap-3 rounded-xl px-4 py-3 text-left transition-colors duration-200"
+                                :class="activeEducationId === item.id
+                            ? 'bg-primary/10 text-black dark:text-white'
+                            : 'text-zinc-600 hover:bg-zinc-100/80 dark:text-zinc-300 dark:hover:bg-zinc-900/70'"
                             >
-                                <h3 class="mb-2 font-bold text-black dark:text-white">
-                                    Bonhoeffer College locatie Van der Waalslaan -
-                                    <span class="text-sm font-medium text-zinc-400">4years</span>
-                                </h3>
-                                <p class="text-sm text-zinc-700 dark:text-zinc-300">
-                                    I completed my secondary education at Bonhoeffer College, where I got my MAVO diploma in 4 years. During the COVID
-                                    period I spent a lot of time behind my computer doing online classes. That’s also when I found out I really
-                                    enjoyed working with computers — I started taking them apart and putting them back together. That curiosity was
-                                    the start of my journey into software development.
-                                </p>
-                            </div>
-                        </div>
+                                <!-- Dot -->
+                                <div class="mt-1 flex h-4 w-4 items-center justify-center">
+                            <span
+                                class="h-2 w-2 rounded-full transition-all duration-200"
+                                :class="activeEducationId === item.id
+                                    ? 'bg-gradient-to-br from-violet-500 to-fuchsia-500 ring-2 ring-violet-400/80'
+                                    : 'bg-zinc-400/70 group-hover:bg-violet-400/80'"
+                            ></span>
+                                </div>
 
-                        <!-- Dot -->
-                        <div class="relative flex items-center justify-center">
-                            <div class="absolute -z-10 h-16 w-16 rounded-full bg-purple-600/40 blur-xl"></div>
-                            <div class="h-6 w-6 rounded-full bg-purple-600 shadow-md"></div>
-                        </div>
-                        <div class="w-5/12"></div>
-                    </div>
-
-                    <!-- ITEM 2 -->
-                    <div class="relative mb-12 flex items-center justify-between">
-                        <div class="w-5/12"></div>
-
-                        <!-- Dot -->
-                        <div class="relative flex items-center justify-center">
-                            <div class="absolute -z-10 h-16 w-16 rounded-full bg-purple-600/40 blur-xl"></div>
-                            <div class="h-6 w-6 rounded-full bg-purple-600 shadow-md"></div>
-                        </div>
-
-                        <div class="group w-5/12">
-                            <div
-                                class="rounded-lg border border-primary/10 p-6 shadow-lg backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-primary hover:bg-primary/20"
-                            >
-                                <h3 class="mb-2 font-bold text-black dark:text-white">
-                                    MBO Software Developer Study Enschede -
-                                    <span class="text-sm font-medium text-zinc-400">2years</span>
-                                </h3>
-                                <p class="text-sm text-zinc-700 dark:text-zinc-300">
-                                    This is really where it all began for me. For the intake I had to make a small console app in C#. Back then I had
-                                    no clue what I was doing — I had to use things I’d never even heard of before. Still, I managed to build it and I
-                                    was proud of myself. The study was more focused on game development, but after my first internship at C-o-d-e-s in
-                                    Almelo, where I learned Laravel and Vue.js, I knew web development was the path I wanted to take.
-                                </p>
-                            </div>
+                                <div class="flex-1 space-y-1">
+                                    <p
+                                        class="text-sm font-semibold"
+                                        :class="activeEducationId === item.id
+                                    ? 'text-black dark:text-white'
+                                    : 'text-zinc-700 dark:text-zinc-100'"
+                                    >
+                                        {{ item.label }}
+                                    </p>
+                                    <p class="text-xs text-zinc-500 dark:text-zinc-400">
+                                        {{ item.subtitle }}
+                                    </p>
+                                    <p class="text-[11px] text-zinc-500 dark:text-zinc-500">
+                                        {{ item.period }}
+                                    </p>
+                                </div>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- ITEM 3 -->
-                    <div class="relative mb-12 flex items-center justify-between">
-                        <div class="group w-5/12 text-right">
-                            <div
-                                class="rounded-lg border border-primary/10 p-6 shadow-lg backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-primary hover:bg-primary/20"
+                    <!-- Content / Right side -->
+                    <div class="relative">
+                        <!-- Glow background -->
+                        <div
+                            class="pointer-events-none absolute -inset-6 -z-10 rounded-3xl bg-gradient-to-br from-violet-500/15 via-fuchsia-500/10 to-transparent blur-3xl"
+                        ></div>
+
+                        <Transition name="fade-slide">
+                            <article
+                                :key="activeEducationId"
+                                class="rounded-3xl border border-white/40 bg-white/80 p-6 shadow-md shadow-black/5 backdrop-blur-2xl dark:border-zinc-800 dark:bg-zinc-950/90"
                             >
-                                <h3 class="mb-2 font-bold text-black dark:text-white">
-                                    MBO Software Developer Study Hengelo -
-                                    <span class="text-sm font-medium text-zinc-400">2years</span>
-                                </h3>
-                                <p class="text-sm text-zinc-700 dark:text-zinc-300">
-                                    After 2 years in Enschede I decided to switch from game development to web development. Together with 4 friends I
-                                    moved to the Hengelo location. At first it wasn’t that easy, since we jumped straight into the third year and
-                                    missed a lot of things the others already learned. But with some hard work we caught up quickly. Right now I’m in
-                                    my fourth year doing my internship at Cube in Oldenzaal, where I’m learning a lot every day. After this, it’s time
-                                    for my final exams.
-                                </p>
-                            </div>
-                        </div>
+                                <div class="flex flex-wrap items-start justify-between gap-3">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-black dark:text-white">
+                                            {{ activeEducation.label }}
+                                        </h3>
+                                        <p class="text-sm text-zinc-600 dark:text-zinc-300">
+                                            {{ activeEducation.subtitle }}
+                                        </p>
+                                    </div>
 
-                        <!-- Dot -->
-                        <div class="relative flex items-center justify-center">
-                            <div class="absolute -z-10 h-16 w-16 rounded-full bg-purple-600/40 blur-xl"></div>
-                            <div class="h-6 w-6 rounded-full bg-purple-600 shadow-md"></div>
-                        </div>
+                                    <div class="flex flex-col items-end gap-2 text-right">
+                                <span
+                                    class="inline-flex items-center rounded-full border border-violet-500/40 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-700 dark:border-violet-400/50 dark:bg-violet-500/15 dark:text-violet-200"
+                                >
+                                    {{ activeEducation.badge }}
+                                </span>
+                                        <p class="text-xs text-zinc-500 dark:text-zinc-400">
+                                            {{ activeEducation.period }} • {{ activeEducation.location }}
+                                        </p>
+                                    </div>
+                                </div>
 
-                        <div class="w-5/12"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- MOBILE timeline-->
-        <section id="timeline" class="px-8 py-16 md:hidden">
-            <div class="mx-auto max-w-xl">
-                <div class="flex pb-8">
-                    <h1 class="text-4xl font-bold text-black dark:text-white">Education<span class="text-purple-500">.</span></h1>
-                </div>
-
-                <div class="relative">
-                    <!-- Linker lijn -->
-                    <div class="absolute top-0 bottom-0 left-2 w-px bg-purple-700/40"></div>
-                    <div class="space-y-10">
-                        <!-- ITEM 1 -->
-                        <div class="relative pl-12">
-                            <!-- Dot + glow -->
-                            <div class="absolute top-2 left-4 -translate-x-1/2">
-                                <div class="absolute -z-10 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600/35 blur-lg"></div>
-                                <div class="h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600 shadow"></div>
-                            </div>
-
-                            <div
-                                class="rounded-lg border border-primary/10 p-4 shadow-md backdrop-blur-sm transition duration-300 hover:scale-[1.02] hover:border-primary hover:bg-primary/20"
+                                <!-- Highlights -->
+                                <div class="mt-4 flex flex-wrap gap-2">
+                            <span
+                                v-for="highlight in activeEducation.highlights"
+                                :key="highlight"
+                                class="inline-flex items-center rounded-full border border-zinc-200 bg-white/70 px-3 py-1 text-[11px] font-medium text-zinc-700 shadow-sm shadow-black/5 dark:border-zinc-700 dark:bg-zinc-900/80 dark:text-zinc-200"
                             >
-                                <h3 class="mb-1 text-base font-semibold text-black dark:text-white">
-                                    Bonhoeffer College locatie Van der Waalslaan
-                                    <span class="text-xs font-medium text-zinc-400"> • 4years</span>
-                                </h3>
-                                <p class="text-sm text-zinc-700 dark:text-zinc-300">
-                                    I completed my secondary education at Bonhoeffer College, where I got my MAVO diploma in 4 years. During the COVID
-                                    period I spent a lot of time behind my computer doing online classes. That’s also when I found out I really
-                                    enjoyed working with computers — I started taking them apart and putting them back together. That curiosity was
-                                    the start of my journey into software development.
+                                {{ highlight }}
+                            </span>
+                                </div>
+
+                                <!-- Description -->
+                                <p class="mt-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                                    {{ activeEducation.description }}
                                 </p>
-                            </div>
-                        </div>
-
-                        <!-- ITEM 2 -->
-                        <div class="relative pl-12">
-                            <div class="absolute top-2 left-4 -translate-x-1/2">
-                                <div class="absolute -z-10 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600/35 blur-lg"></div>
-                                <div class="h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600 shadow"></div>
-                            </div>
-
-                            <div
-                                class="rounded-lg border border-primary/10 p-4 shadow-md backdrop-blur-sm transition duration-300 hover:scale-[1.02] hover:border-primary hover:bg-primary/20"
-                            >
-                                <h3 class="mb-1 text-base font-semibold text-black dark:text-white">
-                                    MBO Software Developer Study Enschede
-                                    <span class="text-xs font-medium text-zinc-400"> • 2years</span>
-                                </h3>
-                                <p class="text-sm text-zinc-700 dark:text-zinc-300">
-                                    This is really where it all began for me. For the intake I had to make a small console app in C#. Back then I had
-                                    no clue what I was doing — I had to use things I’d never even heard of before. Still, I managed to build it and I
-                                    was proud of myself. The study was more focused on game development, but after my first internship at C-o-d-e-s in
-                                    Almelo, where I learned Laravel and Vue.js, I knew web development was the path I wanted to take.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- ITEM 3 -->
-                        <div class="relative pl-12">
-                            <div class="absolute top-2 left-4 -translate-x-1/2">
-                                <div class="absolute -z-10 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600/35 blur-lg"></div>
-                                <div class="h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600 shadow"></div>
-                            </div>
-
-                            <div
-                                class="rounded-lg border border-primary/10 p-4 shadow-md backdrop-blur-sm transition duration-300 hover:scale-[1.02] hover:border-primary hover:bg-primary/20"
-                            >
-                                <h3 class="mb-1 text-base font-semibold text-black dark:text-white">
-                                    MBO Software Developer Study Hengelo
-                                    <span class="text-xs font-medium text-zinc-400"> • 2years</span>
-                                </h3>
-                                <p class="text-sm text-zinc-700 dark:text-zinc-300">
-                                    After 2 years in Enschede I decided to switch from game development to web development. Together with 4 friends I
-                                    moved to the Hengelo location. At first it wasn’t that easy, since we jumped straight into the third year and
-                                    missed a lot of things the others already learned. But with some hard work we caught up quickly. Right now I’m in
-                                    my fourth year doing my internship at Cube in Oldenzaal, where I’m learning a lot every day. After this, it’s time
-                                    for my final exams.
-                                </p>
-                            </div>
-                        </div>
+                            </article>
+                        </Transition>
                     </div>
                 </div>
             </div>
         </section>
-        <section id="skills" class="px-8 py-24">
+        <section id="skills" class="px-8 py-24" v-animate-on-scroll="{delay: 60}">
             <div class="mx-auto max-w-6xl">
                 <div class="flex flex-col pb-12 lg:items-center">
                     <h1 class="text-4xl font-bold text-black dark:text-white">Skills &amp; Expertise<span class="text-primary">.</span></h1>
@@ -607,7 +670,7 @@ import RotatingText from "./vuebits/RotatingText/RotatingText.vue";
                 </div>
             </div>
         </section>
-        <section class="px-8 py-24" id="projects">
+        <section class="px-8 py-24" id="projects" v-animate-on-scroll="{delay: 60}">
             <div class="mx-auto max-w-6xl">
                 <h1 class="mb-8 flex text-4xl font-bold text-stone-900 lg:justify-center dark:text-white">
                     Projects<span class="text-primary">.</span>
@@ -711,7 +774,7 @@ import RotatingText from "./vuebits/RotatingText/RotatingText.vue";
                 </div>
             </div>
         </section>
-        <section id="contact" class="relative overflow-hidden px-8 py-24">
+        <section id="contact" class="relative overflow-hidden px-8 py-24" v-animate-on-scroll="{delay: 60}">
             <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
                 <div
                     class="absolute top-1/2 left-1/2 h-[40vw] max-h-[22rem] w-[90vw] max-w-[60rem] -translate-x-1/2 -translate-y-1/2 rounded-[9999px] bg-violet-600/20 blur-3xl dark:bg-violet-600/25"
