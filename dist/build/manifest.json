@@ -1,35 +1,35 @@
 {
-  "_Footer.vue_vue_type_script_setup_true_lang-ViQXjtBo.js": {
-    "file": "assets/Footer.vue_vue_type_script_setup_true_lang-ViQXjtBo.js",
+  "_Footer.vue_vue_type_script_setup_true_lang-CHstrhyR.js": {
+    "file": "assets/Footer.vue_vue_type_script_setup_true_lang-CHstrhyR.js",
     "name": "Footer.vue_vue_type_script_setup_true_lang",
     "imports": [
       "resources/js/app.ts"
     ]
   },
-  "_Navbar.vue_vue_type_script_setup_true_lang-zeEXLUwM.js": {
-    "file": "assets/Navbar.vue_vue_type_script_setup_true_lang-zeEXLUwM.js",
+  "_Navbar.vue_vue_type_script_setup_true_lang-Byw-SPag.js": {
+    "file": "assets/Navbar.vue_vue_type_script_setup_true_lang-Byw-SPag.js",
     "name": "Navbar.vue_vue_type_script_setup_true_lang",
     "imports": [
       "resources/js/app.ts",
-      "_index-C3_lHhJ0.js"
+      "_index-XhsLfVx1.js"
     ]
   },
-  "_ProfileAbout.vue_vue_type_script_setup_true_lang-BQLfuXGK.js": {
-    "file": "assets/ProfileAbout.vue_vue_type_script_setup_true_lang-BQLfuXGK.js",
+  "_ProfileAbout.vue_vue_type_script_setup_true_lang-Bhy6dzPb.js": {
+    "file": "assets/ProfileAbout.vue_vue_type_script_setup_true_lang-Bhy6dzPb.js",
     "name": "ProfileAbout.vue_vue_type_script_setup_true_lang",
     "imports": [
       "resources/js/app.ts"
     ]
   },
-  "_index-C3_lHhJ0.js": {
-    "file": "assets/index-C3_lHhJ0.js",
+  "_index-XhsLfVx1.js": {
+    "file": "assets/index-XhsLfVx1.js",
     "name": "index",
     "imports": [
       "resources/js/app.ts"
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-As9phk-W.css",
+    "file": "assets/app-De_j_yva.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "names": [
@@ -37,7 +37,7 @@
     ]
   },
   "resources/js/app.ts": {
-    "file": "assets/app-CqCPhuLv.js",
+    "file": "assets/app-gbrlunyw.js",
     "name": "app",
     "src": "resources/js/app.ts",
     "isEntry": true,
@@ -54,7 +54,7 @@
       "resources/js/pages/vuebits/RotatingText/RotatingText.vue"
     ],
     "css": [
-      "assets/app-As9phk-W.css"
+      "assets/app-De_j_yva.css"
     ]
   },
   "resources/js/cursor.ts": {
@@ -64,67 +64,67 @@
     "isEntry": true
   },
   "resources/js/pages/Home.vue": {
-    "file": "assets/Home-wQC_caCl.js",
+    "file": "assets/Home-DZ77DYGX.js",
     "name": "Home",
     "src": "resources/js/pages/Home.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.ts",
-      "_Footer.vue_vue_type_script_setup_true_lang-ViQXjtBo.js",
-      "_Navbar.vue_vue_type_script_setup_true_lang-zeEXLUwM.js",
-      "_ProfileAbout.vue_vue_type_script_setup_true_lang-BQLfuXGK.js",
+      "_Footer.vue_vue_type_script_setup_true_lang-CHstrhyR.js",
+      "_Navbar.vue_vue_type_script_setup_true_lang-Byw-SPag.js",
+      "_ProfileAbout.vue_vue_type_script_setup_true_lang-Bhy6dzPb.js",
       "resources/js/cursor.ts",
-      "_index-C3_lHhJ0.js"
+      "_index-XhsLfVx1.js"
     ],
     "css": [
-      "assets/app-As9phk-W.css"
+      "assets/app-De_j_yva.css"
     ]
   },
   "resources/js/pages/components/Footer.vue": {
-    "file": "assets/Footer-BmrcbsUH.js",
+    "file": "assets/Footer-DNoGVa2c.js",
     "name": "Footer",
     "src": "resources/js/pages/components/Footer.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_Footer.vue_vue_type_script_setup_true_lang-ViQXjtBo.js",
+      "_Footer.vue_vue_type_script_setup_true_lang-CHstrhyR.js",
       "resources/js/app.ts",
       "resources/js/cursor.ts"
     ],
     "css": [
-      "assets/app-As9phk-W.css"
+      "assets/app-De_j_yva.css"
     ]
   },
   "resources/js/pages/components/Navbar.vue": {
-    "file": "assets/Navbar-DKJsMeS1.js",
+    "file": "assets/Navbar-2_regnQR.js",
     "name": "Navbar",
     "src": "resources/js/pages/components/Navbar.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_Navbar.vue_vue_type_script_setup_true_lang-zeEXLUwM.js",
+      "_Navbar.vue_vue_type_script_setup_true_lang-Byw-SPag.js",
       "resources/js/app.ts",
       "resources/js/cursor.ts",
-      "_index-C3_lHhJ0.js"
+      "_index-XhsLfVx1.js"
     ],
     "css": [
-      "assets/app-As9phk-W.css"
+      "assets/app-De_j_yva.css"
     ]
   },
   "resources/js/pages/components/ProfileAbout.vue": {
-    "file": "assets/ProfileAbout-CWfITcqD.js",
+    "file": "assets/ProfileAbout-h0zLj_wg.js",
     "name": "ProfileAbout",
     "src": "resources/js/pages/components/ProfileAbout.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_ProfileAbout.vue_vue_type_script_setup_true_lang-BQLfuXGK.js",
+      "_ProfileAbout.vue_vue_type_script_setup_true_lang-Bhy6dzPb.js",
       "resources/js/app.ts",
       "resources/js/cursor.ts"
     ],
     "css": [
-      "assets/app-As9phk-W.css"
+      "assets/app-De_j_yva.css"
     ]
   },
   "resources/js/pages/vuebits/ClickSpark/ClickSpark.vue": {
-    "file": "assets/ClickSpark-Cd1Jrvup.js",
+    "file": "assets/ClickSpark-DamIJHBm.js",
     "name": "ClickSpark",
     "src": "resources/js/pages/vuebits/ClickSpark/ClickSpark.vue",
     "isDynamicEntry": true,
@@ -133,11 +133,11 @@
       "resources/js/cursor.ts"
     ],
     "css": [
-      "assets/app-As9phk-W.css"
+      "assets/app-De_j_yva.css"
     ]
   },
   "resources/js/pages/vuebits/GradualBlur/GradualBlur.vue": {
-    "file": "assets/GradualBlur-6WavpV5L.js",
+    "file": "assets/GradualBlur-eMytQhxl.js",
     "name": "GradualBlur",
     "src": "resources/js/pages/vuebits/GradualBlur/GradualBlur.vue",
     "isDynamicEntry": true,
@@ -146,21 +146,21 @@
       "resources/js/cursor.ts"
     ],
     "css": [
-      "assets/app-As9phk-W.css"
+      "assets/app-De_j_yva.css"
     ]
   },
   "resources/js/pages/vuebits/RotatingText/RotatingText.vue": {
-    "file": "assets/RotatingText-CMETtHE0.js",
+    "file": "assets/RotatingText-DU-3uKXP.js",
     "name": "RotatingText",
     "src": "resources/js/pages/vuebits/RotatingText/RotatingText.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.ts",
-      "_index-C3_lHhJ0.js",
+      "_index-XhsLfVx1.js",
       "resources/js/cursor.ts"
     ],
     "css": [
-      "assets/app-As9phk-W.css"
+      "assets/app-De_j_yva.css"
     ]
   }
 }
