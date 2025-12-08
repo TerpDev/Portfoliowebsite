@@ -4,12 +4,14 @@ import '../css/app.css';
 // Alpine.start();
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import AnimateOnScroll from 'primevue/animateonscroll';
 import PrimeVue from 'primevue/config';
 import type { DefineComponent } from 'vue';
 import { createApp, h } from 'vue';
 import i18n from './i18n';
 import './cursor';
+import scrollReveal from './directives/scrollReveal'
+import { MotionPlugin } from "@vueuse/motion";
+
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -23,7 +25,8 @@ createInertiaApp({
             .use(PrimeVue, {
                 theme: {},
             })
-            .directive('animateonscroll', AnimateOnScroll)
+            .use(MotionPlugin)
+            .directive('scroll-reveal', scrollReveal)
 
             .mount(el);
     },

@@ -333,6 +333,7 @@ const vAnimateOnScroll: Directive<
     </div>
 
     <AppLayout>
+<!--        <Test/>-->
         <section id="hero" class="relative overflow-hidden" v-animate-on-scroll="{delay: 80}">
             <!-- Background glows -->
             <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
@@ -640,6 +641,7 @@ const vAnimateOnScroll: Directive<
                 </div>
             </div>
         </section>
+
         <section id="skills" class="px-8 py-24" v-animate-on-scroll="{delay: 60}">
             <div class="mx-auto max-w-6xl">
                 <div class="flex flex-col pb-12 lg:items-center">
