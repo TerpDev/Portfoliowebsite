@@ -259,6 +259,9 @@ const profileImage = "/images/placeholder.svg";
                             >Clean code</span
                             >
                         </div>
+                        <div class="text-sm pt-2">
+                            <p>Right I have a lot of knowledge with frontend, I can build clean and fully responsive websites.</p>
+                        </div>
                     </div>
                 </div>
             </div>

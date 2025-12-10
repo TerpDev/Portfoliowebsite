@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
+import { Clock } from 'lucide-vue-next';
 
 const timelineRef = ref<HTMLElement | null>(null);
 const scrollProgress = ref(0);
@@ -102,7 +103,7 @@ const isItemActive = (index: number) => {
                 <div
                     class="inline-flex items-center gap-2 rounded-full border border-zinc-700/60 bg-zinc-900/80 px-3 py-1 text-xs font-medium text-zinc-400 backdrop-blur"
                 >
-                    <span class="h-1.5 w-1.5 rounded-full bg-white/70" />
+                    <Clock class="h-3 w-3 text-indigo-400" />
                     <span>Timeline</span>
                 </div>
 

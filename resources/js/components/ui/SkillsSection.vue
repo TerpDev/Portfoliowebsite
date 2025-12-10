@@ -15,8 +15,13 @@ import {
     siSqlite,
     siTailwindcss,
     siVuedotjs,
+    siPhpstorm,
+    siPhp,
+    siDotnet,
+    siLivewire,
+    siDiagramsdotnet,
 } from "simple-icons";
-
+import { Code } from 'lucide-vue-next';
 type SimpleIcon = {
     title: string;
     hex: string;
@@ -44,7 +49,7 @@ const sections: Section[] = [
             { label: "PrimeVue", icon: siPrimevue },
             { label: "HeadlessUI", icon: siHeadlessui },
             { label: "AlpineJS", icon: siAlpinedotjs },
-            { label: "JavaScript", icon: siJavascript },
+            { label: "Livewire", icon: siLivewire },
         ],
     },
     {
@@ -54,15 +59,23 @@ const sections: Section[] = [
             { label: "Filament", icon: siFilament },
             { label: "MySQL", icon: siMysql },
             { label: "SQLite", icon: siSqlite },
+            { label: ".NET", icon: siDotnet },
         ],
     },
     {
         title: "Programming Languages",
-        items: [{ label: "C#", icon: siSharp }],
+        items: [
+            { label: "C#", icon: siSharp },
+            { label: "PHP", icon: siPhp },
+            { label: "JavaScript", icon: siJavascript },
+        ],
+
     },
     {
         title: "Design & Development tools",
         items: [
+            { label: "PHPStorm", icon: siPhpstorm },
+            { label: "Diagrams.net", icon: siDiagramsdotnet },
             { label: "Figma", icon: siFigma },
             { label: "Responsive design", icon: siDuckduckgo },
         ],
@@ -101,13 +114,13 @@ const getIconSvg = (icon: SimpleIcon) =>
     visibleOnce: { opacity: 1, y: 0, filter: 'blur(0px)' },
     transition: { duration: 0.7, ease: 'easeOut' },
   }"
-                class="mb-12 text-center space-y-4"
+                class="mb-12 space-y-4"
             >
                 <!-- pill -->
                 <div
                     class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-white/60 backdrop-blur"
                 >
-                    <span class="h-1.5 w-1.5 rounded-full bg-indigo-400"></span>
+                    <Code class="h-3 w-3 text-indigo-400"/>
                     <span>Skills</span>
                 </div>
 
@@ -119,7 +132,7 @@ const getIconSvg = (icon: SimpleIcon) =>
                 </h2>
 
                 <!-- subtitle -->
-                <p class="text-sm sm:text-base text-white/50 max-w-xl mx-auto">
+                <p class="text-sm sm:text-base text-white/50 max-w-xl">
                     A overview of the frontend, backend and tooling I use to build
                     clean and user-friendly applications.
                 </p>
@@ -153,9 +166,11 @@ const getIconSvg = (icon: SimpleIcon) =>
                         >
                             <!-- icon -->
                             <div
-                                class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.05] text-white shadow-[0_10px_30px_rgba(0,0,0,0.7)]"
+                                class="flex h-10 w-10 items-center justify-center rounded-xl text-white shadow-[0_10px_30px_rgba(0,0,0,0.7)]"
+                                :class="item.label === 'PHPStorm' ? 'bg-white' : ''"
                                 v-html="getIconSvg(item.icon)"
                             />
+
                             <!-- label -->
                             <p
                                 class="text-sm font-medium tracking-wide text-white/85 group-hover:text-white"
