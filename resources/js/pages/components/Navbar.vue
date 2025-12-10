@@ -24,10 +24,11 @@ onMounted(() => {
 
 // optioneel: simpele anchors naar sections
 const sections = [
-    { id: "hero", label: "Home" },
+    { id: "home", label: "Home" },
     { id: "about", label: "About" },
+    { id: "timeline", label: "Timeline" },
     { id: "projects", label: "Projects" },
-    { id: "contact", label: "Contact" },
+    { id: "skills", label: "Skills" },
 ];
 
 const goTo = (id: string) => {

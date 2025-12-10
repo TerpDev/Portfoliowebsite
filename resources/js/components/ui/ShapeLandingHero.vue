@@ -20,6 +20,7 @@ const props = withDefaults(
 
 <template>
     <div
+        id="home"
         class="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#030303]"
     >
         <!-- soft background glow -->
@@ -133,9 +134,8 @@ const props = withDefaults(
                     <p
                         class="text-base sm:text-lg md:text-xl text-white/40 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4"
                     >
-                        Crafting exceptional digital experiences through innovative design
-                        and cutting-edge technology.
-                    </p>
+                        I'm a passionate developer dedicated to creating stunning, user-friendly websites that leave a lasting impression.
+                    Let's build something amazing together!</p>
                 </div>
             </div>
         </div>
