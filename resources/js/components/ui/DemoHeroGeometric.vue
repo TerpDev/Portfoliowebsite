@@ -4,8 +4,11 @@ import ShapeLandingHero from "./ShapeLandingHero.vue";
 
 <template>
     <ShapeLandingHero
-        badge="Kokonut UI"
-        title1="Elevate Your"
-        title2="Digital Vision"
+
+        title1="Hi I'm"
+        title2="Daniel Terpstra"
+        badge="Student Software Developer"
+        badge2="Frontend Developer"
+        badge3="Backend Developer"
     />
 </template>

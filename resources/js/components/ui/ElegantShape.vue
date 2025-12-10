@@ -32,7 +32,7 @@ const props = withDefaults(
       y: 0,
       rotate: props.rotate,
       transition: {
-        duration: 2000,           // 2.4 seconde, lekker rustig
+        duration: 2400,           // 2.4 seconde, lekker rustig
         delay: props.delay ?? 0,  // ook in ms
         ease: 'easeOut',
       },
@@ -46,7 +46,7 @@ const props = withDefaults(
             :enter="{
         y: [0, 15, 0],
         transition: {
-          duration: 8000,       // 12 seconden voor 0 -> 15 -> 0
+          duration: 12000,       // 12 seconden voor 0 -> 15 -> 0
           repeat: Infinity,
           ease: 'easeInOut',
           type: 'keyframes',

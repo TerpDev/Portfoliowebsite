@@ -325,12 +325,12 @@ const vAnimateOnScroll: Directive<
     </Head>
 
     <!-- Scroll Progress Bar -->
-    <div class="fixed top-0 left-0 z-50 h-1 w-full bg-zinc-200/50 dark:bg-zinc-800/50">
-        <div
-            class="h-full bg-primary transition-all duration-150 ease-out"
-            :style="{ width: `${scrollProgress}%` }"
-        />
-    </div>
+<!--    <div class="fixed top-0 left-0 z-50 h-1 w-full bg-zinc-200/50 dark:bg-zinc-800/50">-->
+<!--        <div-->
+<!--            class="h-full bg-primary transition-all duration-150 ease-out"-->
+<!--            :style="{ width: `${scrollProgress}%` }"-->
+<!--        />-->
+<!--    </div>-->
 
     <AppLayout>
 <!--        <Test/>-->
