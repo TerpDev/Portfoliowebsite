@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 
 const menuOpen = ref(false);
 const currentTime = ref("");
+import { Clock } from 'lucide-vue-next';
 
 // heel simpele tijd
 const updateTime = () => {
@@ -43,11 +44,11 @@ const goTo = (id: string) => {
     <!-- Tijd linksboven -->
     <div class="fixed top-4 left-4 z-40">
         <div
-            class="rounded-full border border-zinc-800 bg-zinc-900/80 px-4 py-1.5 text-xs font-medium text-zinc-400 backdrop-blur-md"
+            class="rounded-full border border-zinc-800 bg-zinc-900/80 px-4 py-1.5 text-xs font-medium text-zinc-400 backdrop-blur-md flex items-center gap-2"
         >
-            <span class="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-white/80" />
-            <span class="uppercase tracking-[0.16em]">Local time</span>
-            <span class="ml-3 text-white">{{ currentTime }}</span>
+            <Clock class="h-3 w-3 text-indigo-300"/>
+            <span class="uppercase">Local time</span>
+            <span class="text-white">{{ currentTime }}</span>
         </div>
     </div>
 

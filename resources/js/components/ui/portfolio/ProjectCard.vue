@@ -82,17 +82,18 @@ const props = withDefaults(defineProps<ProjectCardProps>(), {
 
             <!-- CTA -->
             <a
-                :href="props.link"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group/button mt-4 inline-flex items-center gap-2 text-sm font-medium text-indigo-300 hover:text-indigo-100 transition-all duration-300"
-                @click.stop
-            >
-                {{ props.linkText }}
-                <ArrowRight
-                    class="h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1"
-                />
-            </a>
+            :href="props.link"
+            :target="props.link !== '#' ? '_blank' : null"
+            rel="noopener noreferrer"
+            class="group/button mt-4 inline-flex items-center gap-2 text-sm font-medium text-indigo-300 hover:text-indigo-100 transition-all duration-300"
+            @click.stop
+        >
+            {{ props.linkText }}
+            <ArrowRight
+                class="h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1"
+            />
+        </a>
+
         </div>
 
         <!-- subtiele onderste glow lijn -->

@@ -220,4 +220,62 @@ html{
     @apply bg-background text-foreground;
     }
 }
+.markdown-body {
+    @apply text-sm text-white/70 leading-relaxed space-y-4;
+}
 
+/* headings */
+.markdown-body h1 {
+    @apply text-2xl font-semibold text-white mt-4 mb-2;
+}
+
+.markdown-body h2 {
+    @apply text-xl font-semibold text-white mt-4 mb-2;
+}
+
+.markdown-body h3 {
+    @apply text-lg font-semibold text-white mt-3 mb-1;
+}
+
+/* paragrafen & lijsten */
+.markdown-body p {
+    @apply mb-2;
+}
+
+.markdown-body ul {
+    @apply list-disc list-inside space-y-1 mb-2;
+}
+
+.markdown-body ol {
+    @apply list-decimal list-inside space-y-1 mb-2;
+}
+
+/* code blocks */
+.markdown-body pre {
+    @apply bg-black/80 border border-white/10 rounded-xl p-4 text-xs text-white/80 overflow-auto mb-4;
+}
+
+.markdown-body code {
+    @apply font-mono text-xs;
+}
+
+.markdown-body a {
+    @apply text-indigo-300 underline underline-offset-2 hover:text-indigo-200;
+}
+
+.markdown-body img {
+    @apply rounded-xl border border-white/10 mt-2 mb-4;
+}
+
+.markdown-body table {
+    @apply w-full text-xs border-collapse my-4;
+}
+
+.markdown-body th,
+.markdown-body td {
+    @apply border border-white/20 px-3 py-2;
+}
+
+.markdown-body th {
+    @apply bg-white/10 text-white;
+}

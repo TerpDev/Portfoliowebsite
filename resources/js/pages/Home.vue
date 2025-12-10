@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import AppLayout from "@/layouts/AppLayout.vue";
 import { Head } from "@inertiajs/vue3";
-import DemoHeroGeometric from "@/components/ui/DemoHeroGeometric.vue";
-import AboutMeSection from "@/components/ui/AboutMeSection.vue";
-import Timeline02 from "@/components/ui/TimeLine02.vue";
-import ProjectsSection from "@/components/ui/ProjectSection.vue";
-import SkillsSection from "@/components/ui/SkillsSection.vue";
+import DemoHeroGeometric from "@/components/ui/portfolio/DemoHeroGeometric.vue";
+import AboutMeSection from "@/components/ui/portfolio/AboutMeSection.vue";
+import Timeline02 from "@/components/ui/portfolio/TimeLine02.vue";
+import ProjectsSection from "@/components/ui/portfolio/ProjectSection.vue";
+import SkillsSection from "@/components/ui/portfolio/SkillsSection.vue";
+import Navbar from '../pages/components/Navbar.vue';
 
 </script>
 
 <template>
+    <Navbar/>
     <Head title="Daniel Terpstra | Software Developer">
         <link
             rel="icon"

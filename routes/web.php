@@ -9,5 +9,8 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Home');
 })->name('home');
+Route::get('/stage', function () {
+    return Inertia::render('Stage');
+})->name('stage');
 
 

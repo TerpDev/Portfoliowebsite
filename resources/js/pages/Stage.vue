@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import AppLayout from "@/layouts/AppLayout.vue";
 import { Head } from "@inertiajs/vue3";
-import DemoHeroGeometric from "@/components/ui/DemoHeroGeometric.vue";
-import AboutMeSection from "@/components/ui/AboutMeSection.vue";
-import Timeline02 from "@/components/ui/TimeLine02.vue";
-import ProjectsSection from "@/components/ui/ProjectSection.vue";
-import SkillsSection from "@/components/ui/SkillsSection.vue";
+import DemoHeroGeometric from "@/components/ui/stage/DemoHeroGeometric.vue";
+import AboutStageSection from "@/components/ui/stage/AboutStageSection.vue";
+import AboutCubeSection from "@/components/ui/stage/CubeSection.vue";
+import OpdrachtSection from "@/components/ui/stage/OpdrachtSection.vue";
+import StarrtSection from '@/components/ui/stage/StarrtSection.vue';
 
+import Navbar from '../pages/components/NavbarStage.vue';
 </script>
 
 <template>
+    <Navbar/>
     <Head title="Daniel Terpstra | Software Developer">
         <link
             rel="icon"
@@ -24,11 +25,13 @@ import SkillsSection from "@/components/ui/SkillsSection.vue";
         <link rel="manifest" href="/site.webmanifest" />
     </Head>
     <AppLayout>
-        <DemoHeroGeometric />
-        <AboutMeSection />
-        <Timeline02 />
-        <ProjectsSection />
-        <SkillsSection />
+        <div class="md:pl-60">
+            <DemoHeroGeometric />
+            <AboutCubeSection/>
+            <AboutStageSection/>
+            <OpdrachtSection/>
+            <StarrtSection />
 
+        </div>
     </AppLayout>
 </template>
