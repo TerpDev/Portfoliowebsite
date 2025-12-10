@@ -27,7 +27,6 @@ return [
      */
     'include_files' => [
         'public' => '',
-        '.htaccess.static' => '.htaccess',
     ],
 
     /*
