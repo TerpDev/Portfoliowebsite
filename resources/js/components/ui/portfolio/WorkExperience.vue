@@ -9,6 +9,7 @@ import {
     DraftingCompass,
     GraduationCap,
 } from "lucide-vue-next";
+
 import { cn } from "@/lib/utils";
 
 /* ---------- Types ---------- */
@@ -79,8 +80,6 @@ const togglePosition = (id: string, fallback = false) => {
 const parseDescriptionLines = (desc: string) =>
     desc.split("\n").filter((line) => line.trim().length > 0);
 
-/* ---------- Example Data (for demo purposes) ---------- */
-
 const exampleExperiences: ExperienceItem[] = [
     {
         id: 'cube',
@@ -90,17 +89,17 @@ const exampleExperiences: ExperienceItem[] = [
         positions: [
             {
                 id: 'cube-intern',
-                title: 'Backend Developer Intern',
-                employmentPeriod: 'September 2024 - January 2025',
+                title: 'Fullstack Developer Intern',
+                employmentPeriod: 'September 2025 - January 2026',
                 employmentType: 'Internship',
                 icon: 'code',
                 description: `- Building admin panels with Laravel & Filament
-- Working with database migrations and Eloquent ORM
-- Implementing RESTful APIs for frontend integration
+- Working with database migrations and Eloquent models
+- Implementing APIs for frontend integration
 - Learning best practices for backend architecture
 - Collaborating with senior developers on real projects`,
-                skills: ['Laravel', 'Filament', 'PHP', 'MySQL', 'Git'],
-                isExpanded: true
+                skills: ['Laravel', 'Filament', 'PHP', 'MySQL', 'Git', 'TailwindCSS'],
+                isExpanded: false
             }
         ]
     },
@@ -133,7 +132,7 @@ const exampleExperiences: ExperienceItem[] = [
         positions: [
             {
                 id: 'codes-intern',
-                title: 'Fullstack Developer Intern',
+                title: 'Software Developer Intern',
                 employmentPeriod: 'February 2024 - June 2024',
                 employmentType: 'Internship',
                 icon: 'code',
@@ -142,7 +141,7 @@ const exampleExperiences: ExperienceItem[] = [
 - Fixing bugs and optimizing performance
 - Quality assurance for reliable software delivery
 - Learning professional development workflows`,
-                skills: ['Web Development', 'Testing', 'Debugging', 'Quality Assurance'],
+                skills: ['Web Development', 'Testing', 'Debugging', 'Vuejs', 'TailwindCSS', 'Laravel'],
                 isExpanded: false
             }
         ]
@@ -180,11 +179,10 @@ const exampleExperiences: ExperienceItem[] = [
                 employmentType: 'Part-time',
                 icon: 'business',
                 description: `- My very first job at age 15
-- Stock management and shelf organization
-- Customer service and store operations
-- Learning work ethic and responsibility
-- Building foundational workplace skills`,
-                skills: ['Customer Service', 'Teamwork', 'Time Management', 'Responsibility'],
+- Filling the shelves and organizing products
+- Customer service and assistance
+- Learning work ethic and responsibility`,
+                skills: ['Customer Service', 'Teamwork', 'Responsibility'],
                 isExpanded: false
             }
         ]
@@ -201,10 +199,9 @@ const exampleExperiences: ExperienceItem[] = [
                 employmentType: 'Vacation Job',
                 icon: 'business',
                 description: `- Operating rides and attractions
-- Ensuring guest safety at all times
-- Providing excellent customer service
-- Working in a fun, dynamic environment
-- Handling various ride operations`,
+- Providing good customer service
+- Working in a fun work environment
+- Handling a few ride operations because I was 15 years old`,
                 skills: ['Safety', 'Customer Service', 'Responsibility', 'Attention to Detail'],
                 isExpanded: false
             }
@@ -230,7 +227,7 @@ const exampleExperiences: ExperienceItem[] = [
         />
 
         <div
-            class="relative z-10 container mx-auto max-w-4xl px-4 md:px-6 py-16 md:py-24 lg:py-28"
+            class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 lg:py-28"
         >
             <!-- Header in dezelfde stijl als je andere sections -->
             <div
@@ -239,12 +236,12 @@ const exampleExperiences: ExperienceItem[] = [
           visibleOnce: { opacity: 1, y: 0, filter: 'blur(0px)' },
           transition: { duration: 0.7, delay: 0.1, ease: 'easeOut' },
         }"
-                class="mb-12 text-center space-y-4"
+                class="mb-12 space-y-4"
             >
                 <div
                     class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70 backdrop-blur"
                 >
-                    <span class="h-1.5 w-1.5 rounded-full bg-indigo-400" />
+                    <briefcase-business class="h-3 w-3 text-indigo-300"/>
                     <span>Experience</span>
                 </div>
 
@@ -255,7 +252,7 @@ const exampleExperiences: ExperienceItem[] = [
                         Where I’ve been working and learning
                     </h2>
                     <p
-                        class="text-sm sm:text-base text-white/60 max-w-xl mx-auto leading-relaxed"
+                        class="text-sm sm:text-base text-white/60 max-w-xl leading-relaxed"
                     >
                         A timeline of companies, roles and stacks that helped me grow as a
                         developer – from school projects to real-world client work.
@@ -264,7 +261,7 @@ const exampleExperiences: ExperienceItem[] = [
             </div>
 
             <!-- Experience list -->
-            <div class="space-y-8">
+            <div class="grid lg:grid-cols-2 grid-cols-1 gap-6 items-start">
                 <div
                     v-for="(experience, companyIndex) in displayExperiences"
                     :key="experience.id"
@@ -281,12 +278,12 @@ const exampleExperiences: ExperienceItem[] = [
               ease: 'easeOut',
             },
           }"
-                    class="rounded-3xl border border-white/10 bg-white/[0.02] px-4 py-5 sm:px-6 sm:py-6 backdrop-blur-xl shadow-[0_18px_45px_rgba(0,0,0,0.65)]"
+                    class="self-start rounded-3xl border border-white/10 bg-white/[0.02] px-4 py-5 sm:px-6 sm:py-6 backdrop-blur shadow-[0_18px_45px_rgba(0,0,0,0.65)]"
                 >
                     <!-- Company header -->
                     <div class="flex items-center gap-3 mb-4">
                         <div
-                            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl overflow-hidden"
+                            class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl overflow-hidden"
                             :class="experience.companyLogo?.includes('codes.png') ? 'bg-transparent' : 'bg-white p-2'"
                             aria-hidden="true"
                         >
@@ -366,11 +363,25 @@ const exampleExperiences: ExperienceItem[] = [
                                     </div>
 
                                     <div class="flex-1">
-                                        <h4
-                                            class="text-sm sm:text-base font-medium text-white group-hover:text-indigo-200 transition-colors"
-                                        >
-                                            {{ position.title }}
-                                        </h4>
+                                        <div class="flex items-center gap-2">
+                                            <h4
+                                                class="text-sm sm:text-base font-medium text-white group-hover:text-indigo-200 transition-colors"
+                                            >
+                                                {{ position.title }}
+                                            </h4>
+                                            <a
+                                                v-if="experience.id === 'cube'"
+                                                href="/stage"
+                                                class="inline-flex items-center gap-1 rounded-full border border-indigo-400/30 bg-indigo-500/10 px-2.5 py-0.5 text-[10px] font-medium text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-400/50 transition-colors cursor-pointer"
+                                                @click.stop
+                                            >
+                                                Read More
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M5 12h14"/>
+                                                    <path d="m12 5 7 7-7 7"/>
+                                                </svg>
+                                            </a>
+                                        </div>
                                         <div
                                             class="mt-0.5 flex flex-wrap items-center gap-2 text-[11px] text-white/45"
                                         >
