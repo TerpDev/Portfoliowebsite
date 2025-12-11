@@ -70,7 +70,7 @@ const workExperiences: WorkExperienceCard[] = [
 </script>
 
 <template>
-    <section class="relative w-full border-t border-white/5 bg-[#030303] text-white">
+    <section id="work" class="relative w-full border-t border-white/5 bg-[#030303] text-white">
         <!-- Soft background glow -->
         <div
             class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(120%_80%_at_0%_0%,rgba(129,140,248,0.18),rgba(0,0,0,0)_55%),radial-gradient(120%_90%_at_100%_100%,rgba(244,114,182,0.22),rgba(0,0,0,0)_60%)] opacity-70"

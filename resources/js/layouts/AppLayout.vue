@@ -3,7 +3,7 @@ import Footer from '../pages/components/Footer.vue';
 </script>
 
 <template>
-    <div class="relative min-h-screen scroll-smooth ">
+    <div class="relative min-h-screen scroll-smooth bg-black">
         <main>
             <slot />
         </main>

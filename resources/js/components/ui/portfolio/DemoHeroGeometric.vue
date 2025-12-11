@@ -4,7 +4,6 @@ import ShapeLandingHero from "./ShapeLandingHero.vue";
 
 <template>
     <ShapeLandingHero
-
         title1="Hi I'm"
         title2="Daniel Terpstra"
         badge="Student Software Developer"

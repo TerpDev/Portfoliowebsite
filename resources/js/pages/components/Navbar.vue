@@ -7,6 +7,7 @@ const menuOpen = ref(false);
 const sections = [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
+    { id: "work", label: "Work Experience" },
     { id: "timeline", label: "Timeline" },
     { id: "projects", label: "Projects" },
     { id: "skills", label: "Skills" },
