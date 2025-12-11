@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { withDefaults, defineProps, ref } from "vue";
+import { withDefaults, defineProps, ref, computed } from "vue";
 import type { Component } from "vue";
 import {
     BriefcaseBusiness,
@@ -42,13 +42,16 @@ export interface ExperienceItem {
 
 const props = withDefaults(
     defineProps<{
-        experiences: ExperienceItem[];
+        experiences?: ExperienceItem[];
         className?: string;
     }>(),
     {
         className: "",
     }
 );
+
+// Use provided experiences or fall back to example data
+const displayExperiences = computed(() => props.experiences || exampleExperiences);
 
 /* ---------- Icon map ---------- */
 
@@ -75,6 +78,139 @@ const togglePosition = (id: string, fallback = false) => {
 // simpele bullet-parser: elke regel die met "- " begint wordt een list item
 const parseDescriptionLines = (desc: string) =>
     desc.split("\n").filter((line) => line.trim().length > 0);
+
+/* ---------- Example Data (for demo purposes) ---------- */
+
+const exampleExperiences: ExperienceItem[] = [
+    {
+        id: 'cube',
+        companyName: 'Cube | Digitale Transformatie | Software Oplossingen',
+        companyLogo: '/images/cube.png',
+        isCurrentEmployer: true,
+        positions: [
+            {
+                id: 'cube-intern',
+                title: 'Backend Developer Intern',
+                employmentPeriod: 'September 2024 - January 2025',
+                employmentType: 'Internship',
+                icon: 'code',
+                description: `- Building admin panels with Laravel & Filament
+- Working with database migrations and Eloquent ORM
+- Implementing RESTful APIs for frontend integration
+- Learning best practices for backend architecture
+- Collaborating with senior developers on real projects`,
+                skills: ['Laravel', 'Filament', 'PHP', 'MySQL', 'Git'],
+                isExpanded: true
+            }
+        ]
+    },
+    {
+        id: 'lutscher',
+        companyName: 'Steakhouse Lutscher Alm B.V.',
+        companyLogo: '/images/alm.png',
+        isCurrentEmployer: true,
+        positions: [
+            {
+                id: 'lutscher-kitchen',
+                title: 'Kitchen Assistant',
+                employmentPeriod: 'June 2022 - Present',
+                employmentType: 'Part-time',
+                icon: 'business',
+                description: `- Started as dishwasher, progressed to kitchen help
+- Preparing desserts, starters & side dishes
+- Working in fast-paced restaurant environment
+- Maintaining food safety and hygiene standards
+- Collaborating with chefs and kitchen team`,
+                skills: ['Food Preparation', 'Teamwork', 'Multitasking', 'Time Management'],
+                isExpanded: false
+            }
+        ]
+    },
+    {
+        id: 'codes',
+        companyName: 'C-o-d-e-s Software Development',
+        companyLogo: '/images/codes.png',
+        positions: [
+            {
+                id: 'codes-intern',
+                title: 'Fullstack Developer Intern',
+                employmentPeriod: 'February 2024 - June 2024',
+                employmentType: 'Internship',
+                icon: 'code',
+                description: `- Developed web applications with modern frameworks
+- Thorough testing across devices and browsers
+- Fixing bugs and optimizing performance
+- Quality assurance for reliable software delivery
+- Learning professional development workflows`,
+                skills: ['Web Development', 'Testing', 'Debugging', 'Quality Assurance'],
+                isExpanded: false
+            }
+        ]
+    },
+    {
+        id: 'bleckmann',
+        companyName: 'Bleckmann B.V',
+        companyLogo: '/images/bleckmann.png',
+        positions: [
+            {
+                id: 'bleckmann-picker',
+                title: 'Order Picker',
+                employmentPeriod: 'July 2023 - September 2023',
+                employmentType: 'Vacation Job',
+                icon: 'business',
+                description: `- Assisted as order picker in warehouse operations
+- Worked with 3 friends during summer vacation
+- Fast-paced logistics environment
+- Team collaboration and efficiency
+- Physical work and attention to detail`,
+                skills: ['Logistics', 'Teamwork', 'Efficiency', 'Physical Work'],
+                isExpanded: false
+            }
+        ]
+    },
+    {
+        id: 'jumbo',
+        companyName: 'Jumbo Supermarkten',
+        companyLogo: '/images/jumbo.png',
+        positions: [
+            {
+                id: 'jumbo-shelf',
+                title: 'Shelf Stacker',
+                employmentPeriod: 'July 2021 - June 2022',
+                employmentType: 'Part-time',
+                icon: 'business',
+                description: `- My very first job at age 15
+- Stock management and shelf organization
+- Customer service and store operations
+- Learning work ethic and responsibility
+- Building foundational workplace skills`,
+                skills: ['Customer Service', 'Teamwork', 'Time Management', 'Responsibility'],
+                isExpanded: false
+            }
+        ]
+    },
+    {
+        id: 'waarbeek',
+        companyName: 'Attractiepark de Waarbeek',
+        companyLogo: '/images/waarbeek.png',
+        positions: [
+            {
+                id: 'waarbeek-operator',
+                title: 'Ride Operator',
+                employmentPeriod: 'June 2021 - September 2021',
+                employmentType: 'Vacation Job',
+                icon: 'business',
+                description: `- Operating rides and attractions
+- Ensuring guest safety at all times
+- Providing excellent customer service
+- Working in a fun, dynamic environment
+- Handling various ride operations`,
+                skills: ['Safety', 'Customer Service', 'Responsibility', 'Attention to Detail'],
+                isExpanded: false
+            }
+        ]
+    }
+];
 </script>
 
 <template>
@@ -130,7 +266,7 @@ const parseDescriptionLines = (desc: string) =>
             <!-- Experience list -->
             <div class="space-y-8">
                 <div
-                    v-for="(experience, companyIndex) in experiences"
+                    v-for="(experience, companyIndex) in displayExperiences"
                     :key="experience.id"
                     v-motion="{
             initial: { opacity: 0, y: 24, filter: 'blur(12px)' },
@@ -150,18 +286,19 @@ const parseDescriptionLines = (desc: string) =>
                     <!-- Company header -->
                     <div class="flex items-center gap-3 mb-4">
                         <div
-                            class="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 overflow-hidden"
+                            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl overflow-hidden"
+                            :class="experience.companyLogo?.includes('codes.png') ? 'bg-transparent' : 'bg-white p-2'"
                             aria-hidden="true"
                         >
                             <img
                                 v-if="experience.companyLogo"
                                 :src="experience.companyLogo"
                                 :alt="experience.companyName"
-                                class="h-full w-full object-cover"
+                                class="h-full w-full object-contain"
                             />
                             <span
                                 v-else
-                                class="h-2 w-2 rounded-full bg-white/60"
+                                class="h-3 w-3 rounded-full bg-white/60"
                             />
                         </div>
 
