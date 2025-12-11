@@ -3,20 +3,27 @@ import { withDefaults, defineProps } from "vue";
 import { Circle } from "lucide-vue-next";
 import ElegantShape from "./ElegantShape.vue";
 import { cn } from "@/lib/utils";
+import TextLoop from "@/components/ui/portfolio/TextLoop.vue";
 
 const props = withDefaults(
     defineProps<{
-        badge?: string;
         title1?: string;
         title2?: string;
     }>(),
     {
-        badge: "Design Collective",
-        title1: "Elevate Your Digital Vision",
-        title2: "Crafting Exceptional Websites",
+        title1: "Welkom bij mijn",
+        title2: "Stage verslag",
     }
 );
+
+// zinnen voor de loop onder de hero-tekst
+const loopItems = [
+    "Student Software Developer.",
+    "Backend Developer.",
+    "Frontend Developer.",
+];
 </script>
+
 
 <template>
     <div
@@ -79,20 +86,6 @@ const props = withDefaults(
         <!-- content -->
         <div class="relative z-10 container mx-auto px-4 md:px-6">
             <div class="max-w-3xl mx-auto text-center">
-                <!-- badge -->
-                <div
-                    v-motion="{
-            initial: { opacity: 0, y: 30 },
-            enter: { opacity: 1, y: 0 },
-            transition: { duration: 1, delay: 0.5 },
-          }"
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] mb-8 md:mb-12"
-                >
-                    <Circle class="h-2 w-2 fill-rose-500/80" />
-                    <span class="text-sm text-white/60 tracking-wide">
-            {{ props.badge }}
-          </span>
-                </div>
 
                 <!-- titles -->
                 <div
@@ -136,6 +129,15 @@ const props = withDefaults(
                     >
                         I'm a passionate developer dedicated to creating stunning, user-friendly websites that leave a lasting impression.
                     Let's build something amazing together!</p>
+                    <p
+                        class="text-sm sm:text-base text-white/60 max-w-xl mx-auto px-4 flex flex-wrap items-center justify-center gap-x-2"
+                    >
+                        <TextLoop
+                            :items="loopItems"
+                            :interval="2"
+                            class-name="md:text-2xl text-lg font-bold text-white/90"
+                        />
+                    </p>
                 </div>
             </div>
         </div>

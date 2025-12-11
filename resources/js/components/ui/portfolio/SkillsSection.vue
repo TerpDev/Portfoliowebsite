@@ -81,16 +81,6 @@ const sections: Section[] = [
         ],
     },
 ];
-
-// simple-icons -> inline SVG string
-const getIconSvg = (icon: SimpleIcon) =>
-    `<svg
-      role="img"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path fill="#${icon.hex}" d="${icon.path}" />
-   </svg>`;
 </script>
 
 <template>
@@ -166,10 +156,18 @@ const getIconSvg = (icon: SimpleIcon) =>
                         >
                             <!-- icon -->
                             <div
-                                class="flex h-10 w-10 items-center justify-center rounded-xl text-white shadow-[0_10px_30px_rgba(0,0,0,0.7)]"
+                                class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl text-white shadow-[0_10px_30px_rgba(0,0,0,0.7)]"
                                 :class="item.label === 'PHPStorm' ? 'bg-white' : ''"
-                                v-html="getIconSvg(item.icon)"
-                            />
+                            >
+                                <svg
+                                    role="img"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-12 w-12"
+                                >
+                                    <path :fill="`#${item.icon.hex}`" :d="item.icon.path" />
+                                </svg>
+                            </div>
 
                             <!-- label -->
                             <p

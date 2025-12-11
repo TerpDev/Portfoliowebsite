@@ -21,6 +21,18 @@ const projects = [
         imgSrc: '/images/autohorsthuis.png',
         link: 'https://autohorsthuis.terpdev.nl/',
     },
+    {
+        title: 'Cube Wiki',
+        description: 'Multitenant knowledge-management platform built with Laravel & Filament. Role-based access with Markdown-powered pages.',
+        imgSrc: '/images/cubewiki.png',
+        link: 'https://github.com/TerpDev/CubeWiki',
+    },
+    {
+        title: 'Filament Wiki',
+        description: 'Filament plugin that integrates Cube Wiki knowledge base into your panels with help actions, hints & inline documentation.',
+        imgSrc: '/images/filamentwiki.png',
+        link: 'https://github.com/TerpDev/CubeWikiPackage',
+    },
 ];
 </script>
 
@@ -30,7 +42,7 @@ const projects = [
             class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(120%_80%_at_0%_0%,rgba(129,140,248,0.16),rgba(0,0,0,0)_55%),radial-gradient(120%_90%_at_100%_100%,rgba(244,114,182,0.18),rgba(0,0,0,0)_60%)] opacity-70"
         />
 
-        <div class="relative z-10 container mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24 lg:py-28">
+        <div class="relative z-10 mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24 lg:py-28">
             <!-- header -->
             <div
                 v-motion="{

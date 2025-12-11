@@ -7,7 +7,6 @@ import Timeline02 from "@/components/ui/portfolio/TimeLine02.vue";
 import ProjectsSection from "@/components/ui/portfolio/ProjectSection.vue";
 import SkillsSection from "@/components/ui/portfolio/SkillsSection.vue";
 import WorkSection from '@/components/ui/portfolio/WorkSection.vue';
-import boeie from '@/components/ui/portfolio/WorkExperience.vue';
 import Navbar from '../pages/components/Navbar.vue';
 
 </script>
@@ -28,7 +27,6 @@ import Navbar from '../pages/components/Navbar.vue';
     </Head>
     <AppLayout>
         <DemoHeroGeometric />
-        <boeie/>
         <AboutMeSection />
         <WorkSection/>
         <Timeline02 />

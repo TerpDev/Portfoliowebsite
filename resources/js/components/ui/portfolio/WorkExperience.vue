@@ -261,7 +261,7 @@ const exampleExperiences: ExperienceItem[] = [
             </div>
 
             <!-- Experience list -->
-            <div class="grid lg:grid-cols-2 grid-cols-1 gap-6 items-start">
+            <div class="flex flex-col gap-6">
                 <div
                     v-for="(experience, companyIndex) in displayExperiences"
                     :key="experience.id"
@@ -278,7 +278,7 @@ const exampleExperiences: ExperienceItem[] = [
               ease: 'easeOut',
             },
           }"
-                    class="self-start rounded-3xl border border-white/10 bg-white/[0.02] px-4 py-5 sm:px-6 sm:py-6 backdrop-blur shadow-[0_18px_45px_rgba(0,0,0,0.65)]"
+                    class="rounded-3xl border border-white/10 bg-white/[0.02] px-4 py-5 sm:px-6 sm:py-6 backdrop-blur shadow-[0_18px_45px_rgba(0,0,0,0.65)]"
                 >
                     <!-- Company header -->
                     <div class="flex items-center gap-3 mb-4">

@@ -76,7 +76,7 @@ const workExperiences: WorkExperienceCard[] = [
             class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(120%_80%_at_0%_0%,rgba(129,140,248,0.18),rgba(0,0,0,0)_55%),radial-gradient(120%_90%_at_100%_100%,rgba(244,114,182,0.22),rgba(0,0,0,0)_60%)] opacity-70"
         />
 
-        <div class="relative z-10 container mx-auto max-w-6xl px-4 md:px-6 py-16 md:py-24 lg:py-28">
+        <div class="relative z-10 mx-auto max-w-6xl px-4 md:px-6 py-16 md:py-24 lg:py-28">
             <div class="grid gap-12 lg:gap-16 lg:grid-cols-2 items-start">
                 <!-- Left Section Header - Sticky on desktop -->
                 <div
@@ -134,47 +134,70 @@ const workExperiences: WorkExperienceCard[] = [
                         v-for="card in workExperiences"
                         :key="card.id"
                         v-motion="{
-                            initial: { opacity: 0, x: 40 },
-                            visibleOnce: { opacity: 1, x: 0 },
-                            transition: { duration: 0.7, delay: card.delay, ease: 'easeOut' },
+                            initial: { opacity: 0, y: 30, scale: 0.95 },
+                            visibleOnce: { opacity: 1, y: 0, scale: 1 },
+                            transition: { duration: 0.6, delay: card.delay, ease: [0.25, 0.46, 0.45, 0.94] },
                         }"
                         :class="[
-                            'lg:sticky lg:top-[10%] px-6 pb-4 rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm shadow-lg relative hover:bg-white/[0.05] transition-all md:rotate-0',
-                            card.rotation === 'left' ? 'lg:-rotate-2' : 'lg:rotate-2',
+                            'lg:sticky lg:top-[10%] px-6 pb-6 pt-4 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] backdrop-blur-sm shadow-lg relative transition-all duration-300 group active:scale-[0.98] active:shadow-xl',
+                            // Hover effects only on desktop (has hover capability)
+                            'md:hover:bg-white/[0.07] md:hover:border-white/20 md:hover:scale-[1.02]',
+                            // Rotation only on desktop
+                            card.rotation === 'left' ? 'lg:-rotate-2 md:hover:lg:-rotate-1' : 'lg:rotate-2 md:hover:lg:rotate-1',
                             card.id !== workExperiences.length ? 'mb-8' : ''
                         ]"
                     >
-                        <div class="flex items-center justify-between gap-4 mb-4 mt-2">
-                            <div class="flex flex-col gap-1">
-                                <h2 class="text-2xl font-semibold text-white">
-                                    {{ card.title }}
-                                </h2>
-                                <p class="text-sm text-gray-500">
+                        <!-- Subtle glow effect on hover (desktop only) -->
+                        <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/0 via-transparent to-rose-500/0 opacity-0 md:group-hover:opacity-10 transition-opacity duration-300 pointer-events-none" />
+
+                        <div class="relative flex items-center justify-between gap-4 mb-5">
+                            <div class="flex flex-col gap-1.5 flex-1">
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <h2 class="text-xl sm:text-2xl font-semibold text-white md:group-hover:text-indigo-200 transition-colors duration-300">
+                                        {{ card.title }}
+                                    </h2>
+                                    <a
+                                        v-if="card.id === 6"
+                                        href="/stage"
+                                        class="inline-flex items-center gap-1 rounded-full border border-indigo-400/30 bg-indigo-500/10 px-2.5 py-0.5 text-[10px] font-medium text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-400/50 transition-colors cursor-pointer"
+                                    >
+                                        Read More
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M5 12h14"/>
+                                            <path d="m12 5 7 7-7 7"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <p class="text-xs sm:text-sm text-white/40 font-medium">
                                     {{ card.time }}
                                 </p>
                             </div>
-
 
                             <!-- Image inline with title -->
                             <div class="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 flex items-center justify-center">
                                 <slot :name="`step${card.id}Image`">
                                     <div v-if="card.image"
                                          :class="[
-                                             'w-full h-full rounded-xl mt-2 shadow-md flex items-center justify-center',
-                                             card.image.includes('codes.png') ? 'bg-black' : 'bg-white p-2'
+                                             'w-full h-full rounded-xl shadow-md flex items-center justify-center transition-transform duration-300 group-hover:scale-110',
+                                             card.image.includes('codes.png') ? 'bg-black p-2' : 'bg-white p-2'
                                          ]">
                                         <img :src="card.image" :alt="card.title" class="w-full h-full object-contain" />
                                     </div>
-                                    <div v-else class="w-full h-full rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                                        <span class="text-2xl font-bold text-white/20">{{ String(card.id).padStart(2, '0') }}</span>
+                                    <div v-else class="w-full h-full rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 transition-colors duration-300">
+                                        <span class="text-2xl font-bold text-white/20 group-hover:text-white/30 transition-colors duration-300">{{ String(card.id).padStart(2, '0') }}</span>
                                     </div>
                                 </slot>
                             </div>
                         </div>
 
-                        <p class="text-sm text-white/45 leading-relaxed font-light">
-                            {{ card.description }}
-                        </p>
+                        <!-- Description with better styling -->
+                        <div class="mt-3">
+                            <div class="rounded-2xl border border-white/10 bg-gradient-to-br from-white/8 via-white/0 to-white/5 px-3 py-3 sm:px-4 sm:py-3 backdrop-blur-md">
+                                <p class="text-xs sm:text-sm leading-relaxed text-white/70 group-hover:text-white/75 transition-colors duration-300">
+                                    {{ card.description }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

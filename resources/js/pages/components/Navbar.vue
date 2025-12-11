@@ -1,27 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref } from "vue";
 
 const menuOpen = ref(false);
-const currentTime = ref("");
-import { Clock } from 'lucide-vue-next';
-
-// heel simpele tijd
-const updateTime = () => {
-    const now = new Date();
-    currentTime.value = now.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-    });
-};
-
-onMounted(() => {
-    updateTime();
-    const interval = window.setInterval(updateTime, 30_000);
-
-    onUnmounted(() => {
-        window.clearInterval(interval);
-    });
-});
 
 // optioneel: simpele anchors naar sections
 const sections = [
@@ -41,15 +21,17 @@ const goTo = (id: string) => {
 </script>
 
 <template>
-    <!-- Tijd linksboven -->
+    <!-- Brand linksboven -->
     <div class="fixed top-4 left-4 z-40">
-        <div
-            class="rounded-full border border-zinc-800 bg-zinc-900/80 px-4 py-1.5 text-xs font-medium text-zinc-400 backdrop-blur-md flex items-center gap-2"
+        <a
+            href="#"
+            @click.prevent="goTo('home')"
+            class="flex items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900/80 px-4 py-2.5 text-white shadow-[0_18px_45px_rgba(0,0,0,0.75)] backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 hover:border-white/70 cursor-pointer"
         >
-            <Clock class="h-3 w-3 text-indigo-300"/>
-            <span class="uppercase">Local time</span>
-            <span class="text-white">{{ currentTime }}</span>
-        </div>
+            <span class="text-sm font-bold">
+                <span class="text-indigo-400">Terp</span><span class="text-white">Dev</span><span class="text-zinc-500">.dev</span>
+            </span>
+        </a>
     </div>
 
     <!-- Burger rechtsboven + dropdown -->
