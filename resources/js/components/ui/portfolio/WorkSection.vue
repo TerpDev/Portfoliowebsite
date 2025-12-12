@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted, onUnmounted, ref } from "vue";
 import { Sparkles } from "lucide-vue-next";
 
 interface WorkExperienceCard {
@@ -73,6 +74,29 @@ const workExperiences: WorkExperienceCard[] = [
         delay: 0.5,
     },
 ];
+
+/**
+ * Only animate on mobile:
+ * - We treat mobile as: no hover OR small screens.
+ * - On desktop we render immediately (no v-motion).
+ */
+const isMobile = ref(false);
+
+const setIsMobile = () => {
+    if (typeof window === "undefined") return;
+    const noHover = window.matchMedia("(hover: none)").matches;
+    const small = window.matchMedia("(max-width: 768px)").matches;
+    isMobile.value = noHover || small;
+};
+
+onMounted(() => {
+    setIsMobile();
+    window.addEventListener("resize", setIsMobile);
+});
+
+onUnmounted(() => {
+    window.removeEventListener("resize", setIsMobile);
+});
 </script>
 
 <template>
@@ -143,6 +167,19 @@ const workExperiences: WorkExperienceCard[] = [
                     <div
                         v-for="card in workExperiences"
                         :key="card.id"
+                        v-bind="isMobile
+                            ? {
+                                  'v-motion': {
+                                      initial: { opacity: 0, y: 30, scale: 0.98 },
+                                      visibleOnce: { opacity: 1, y: 0, scale: 1 },
+                                      transition: {
+                                          duration: 0.6,
+                                          delay: card.delay,
+                                          ease: [0.25, 0.46, 0.45, 0.94],
+                                      },
+                                  },
+                              }
+                            : {}"
                         :class="[
                             'lg:sticky lg:top-[10%] px-6 pb-6 pt-4 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] backdrop-blur-sm shadow-lg relative transition-all duration-300 group active:scale-[0.98] active:shadow-xl',
                             'md:hover:bg-white/[0.07] md:hover:border-white/20 md:hover:scale-[1.02]',
