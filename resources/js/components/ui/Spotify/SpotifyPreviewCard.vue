@@ -21,6 +21,11 @@ const topTracks = ref<Track[]>([]);
 let intervalId: number | null = null;
 let hoverTimeout: number | null = null;
 
+/* ---------------- Device detection ---------------- */
+const isTouchDevice =
+    typeof window !== "undefined" &&
+    ("ontouchstart" in window || navigator.maxTouchPoints > 0);
+
 /* ---------------- Position ---------------- */
 const updatePopupPos = () => {
     if (!triggerEl.value) return;
@@ -32,12 +37,11 @@ const updatePopupPos = () => {
     };
 };
 
-/* ---------------- Spotify API (Vercel Functions) ---------------- */
+/* ---------------- Spotify API ---------------- */
 const fetchTopTracks = async () => {
     try {
         const res = await fetch("/api/spotify/top-tracks", { cache: "no-store" });
         if (!res.ok) return;
-
         const data = await res.json();
         topTracks.value = data.tracks ?? [];
     } catch (e) {
@@ -58,7 +62,6 @@ const fetchCurrentlyPlaying = async () => {
             return;
         }
 
-        // alleen updaten als track echt veranderd is
         if (currentTrack.value?.name === data.track?.name) return;
 
         playing.value = true;
@@ -68,7 +71,7 @@ const fetchCurrentlyPlaying = async () => {
     }
 };
 
-/* ---------------- Hover logic ---------------- */
+/* ---------------- Open / Close logic ---------------- */
 const openPreview = async () => {
     if (hoverTimeout) {
         clearTimeout(hoverTimeout);
@@ -82,7 +85,6 @@ const openPreview = async () => {
         window.addEventListener("scroll", updatePopupPos, true);
         window.addEventListener("resize", updatePopupPos);
 
-        // als je niet speelt, laad top tracks pas wanneer je hovert (sneller page-load)
         if (!playing.value && topTracks.value.length === 0) {
             await fetchTopTracks();
         }
@@ -94,7 +96,15 @@ const closePreview = () => {
         showPreview.value = false;
         window.removeEventListener("scroll", updatePopupPos, true);
         window.removeEventListener("resize", updatePopupPos);
-    }, 140);
+    }, 120);
+};
+
+const togglePreview = async () => {
+    if (showPreview.value) {
+        closePreview();
+    } else {
+        await openPreview();
+    }
 };
 
 /* ---------------- Lifecycle ---------------- */
@@ -112,18 +122,18 @@ onUnmounted(() => {
 
 <template>
     <div ref="triggerEl" class="relative w-full">
-        <!-- Trigger card -->
+        <!-- Trigger -->
         <div
             class="flex cursor-pointer items-center justify-between gap-3 rounded-3xl border border-white/10 bg-white/[0.04] px-4 py-3 shadow-[0_18px_45px_rgba(0,0,0,0.65)] backdrop-blur-xl"
-            @mouseenter="openPreview"
-            @mouseleave="closePreview"
+            @mouseenter="!isTouchDevice && openPreview()"
+            @mouseleave="!isTouchDevice && closePreview()"
+            @click="isTouchDevice && togglePreview()"
         >
             <div>
                 <div class="mb-1.5 flex items-center gap-2">
-                    <!-- Spotify logo -->
-                    <svg role="img" viewBox="0 0 24 24" class="h-4 w-4 fill-emerald-400">
+                    <svg viewBox="0 0 24 24" class="h-4 w-4 fill-emerald-400">
                         <path
-                            d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
+                            d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0z"
                         />
                     </svg>
 
@@ -133,23 +143,19 @@ onUnmounted(() => {
                 </div>
 
                 <p class="text-sm font-medium text-white">
-                    {{ playing ? "Currently playing" : "Top tracks" }}
+                    {{ playing ? "What do I listen to?" : "Top tracks" }}
                 </p>
 
-                <p class="text-[0.7rem] text-white/50">Hover om een preview te zien</p>
+                <p class="text-[0.7rem] text-white/50">
+                    {{ isTouchDevice ? "Tap me!" : "Hover me!" }}
+                </p>
             </div>
 
             <!-- Equalizer -->
             <div v-if="playing" class="flex h-5 items-end gap-[3px]">
-        <span
-            class="h-3 w-[3px] animate-[pulse_1.6s_ease-in-out_infinite] rounded-full bg-emerald-300/80"
-        />
-                <span
-                    class="h-4 w-[3px] animate-[pulse_1.4s_ease-in-out_infinite] rounded-full bg-emerald-400/80"
-                />
-                <span
-                    class="h-2 w-[3px] animate-[pulse_1.8s_ease-in-out_infinite] rounded-full bg-emerald-300/80"
-                />
+                <span class="h-3 w-[3px] animate-pulse rounded-full bg-emerald-300/80" />
+                <span class="h-4 w-[3px] animate-pulse rounded-full bg-emerald-400/80" />
+                <span class="h-2 w-[3px] animate-pulse rounded-full bg-emerald-300/80" />
             </div>
         </div>
 
@@ -167,8 +173,6 @@ onUnmounted(() => {
                     v-if="showPreview"
                     class="fixed z-[9999] w-80 rounded-xl border border-white/10 bg-[#050505] p-3 shadow-lg shadow-black/60"
                     :style="{ top: `${popupPos.top}px`, left: `${popupPos.left}px` }"
-                    @mouseenter="openPreview"
-                    @mouseleave="closePreview"
                 >
                     <!-- Currently playing -->
                     <div v-if="playing && currentTrack" class="flex gap-3">
@@ -207,7 +211,7 @@ onUnmounted(() => {
                     <!-- Top tracks -->
                     <div v-else class="space-y-2">
                         <p class="text-xs text-white/70">
-                            Ik speel momenteel niks af. Dit zijn nummers die ik veel luister:
+                            Currently not playing anything. Here are my top tracks:
                         </p>
 
                         <ul class="space-y-2">
@@ -249,7 +253,7 @@ onUnmounted(() => {
                             </li>
 
                             <li v-if="topTracks.length === 0" class="text-xs text-white/50">
-                                (Nog geen tracks geladen — check even of je Vercel env vars kloppen)
+                                No tracks loading unfortunately.
                             </li>
                         </ul>
                     </div>
