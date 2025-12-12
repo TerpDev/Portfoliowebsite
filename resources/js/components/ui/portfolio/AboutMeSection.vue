@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Sparkles, Code2, Rocket, Cpu } from "lucide-vue-next";
-import SpotifyPreviewCard from "@/Components/ui/spotify/SpotifyPreviewCard.vue";
+import SpotifyPreviewCard from "@/components/ui/spotify/SpotifyPreviewCard.vue";
 
 const profileImage = "/images/placeholder.svg";
 </script>
