@@ -17,6 +17,12 @@ return [
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],
+    'spotify' => [
+        'client_id' => env('SPOTIFY_CLIENT_ID'),
+        'client_secret' => env('SPOTIFY_CLIENT_SECRET'),
+        'redirect' => env('SPOTIFY_REDIRECT_URI'),
+        'refresh_token' => env('SPOTIFY_REFRESH_TOKEN'),
+    ],
 
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),

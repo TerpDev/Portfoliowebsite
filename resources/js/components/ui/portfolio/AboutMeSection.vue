@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Sparkles, Code2, Rocket, Cpu } from "lucide-vue-next";
+import SpotifyPreviewCard from "@/Components/ui/spotify/SpotifyPreviewCard.vue";
 
 const profileImage = "/images/placeholder.svg";
 </script>
@@ -9,7 +10,7 @@ const profileImage = "/images/placeholder.svg";
         id="about"
         class="relative w-full border-t border-white/5 bg-[#030303] text-white"
     >
-        <!-- zachte achtergrond glow -->
+        <!-- background glow -->
         <div
             class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(120%_80%_at_0%_0%,rgba(129,140,248,0.18),rgba(0,0,0,0)_55%),radial-gradient(120%_90%_at_100%_100%,rgba(244,114,182,0.22),rgba(0,0,0,0)_60%)] opacity-70"
         />
@@ -20,7 +21,7 @@ const profileImage = "/images/placeholder.svg";
             <div
                 class="grid gap-12 lg:gap-16 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] items-start"
             >
-                <!-- LEFT: tekst -->
+                <!-- LEFT SIDE -->
                 <div
                     v-motion="{
             initial: { opacity: 0, y: 40 },
@@ -37,7 +38,7 @@ const profileImage = "/images/placeholder.svg";
                         <span>About me</span>
                     </div>
 
-                    <!-- titel + intro, zelfde feel als hero -->
+                    <!-- heading -->
                     <div class="space-y-4">
                         <h2
                             class="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-tight"
@@ -58,14 +59,16 @@ const profileImage = "/images/placeholder.svg";
                         <p
                             class="text-base sm:text-lg text-white/45 leading-relaxed font-light tracking-wide max-w-xl"
                         >
-                            Hey, I'm Daniel — a 19 year old software developer who loves to code. I'm in my
-                            fourth year of
-                            <span class="text-white/80">Software Development at ROC van Twente</span>
+                            Hey, I'm Daniel — a 19 year old software developer who loves to
+                            code. I'm in my fourth year of
+                            <span class="text-white/80">
+                Software Development at ROC van Twente
+              </span>
                             in Hengelo. I enjoy creating modern, smooth and user friendly
-                            websites &amp; applications with
-                            <span class="text-white/80"
-                            >Laravel, TailwindCSS, Vue.js &amp; TypeScript</span
-                            >.
+                            websites & applications with
+                            <span class="text-white/80">
+                Laravel, TailwindCSS, Vue.js & TypeScript
+              </span>.
                         </p>
 
                         <p
@@ -73,15 +76,14 @@ const profileImage = "/images/placeholder.svg";
                         >
                             Right now I'm diving deeper into
                             <span class="text-white/80">Filament</span> for admin panels and
-                            <span class="text-white/80">Tallstack</span> (Laravel, Tailwind,
-                            Alpine &amp; Livewire) to build fullstack experiences. I like to
-                            focus on both the user experience and the structure behind it:
-                            clean code, good architecture and flows that feel natural.
+                            <span class="text-white/80">Tallstack</span> to build fullstack
+                            experiences. I like combining UX with clean architecture.
                         </p>
                     </div>
 
-                    <!-- kleine highlights (zelfde glassy vibe als rest) -->
+                    <!-- highlight cards -->
                     <div class="grid gap-4 sm:grid-cols-3 max-w-2xl">
+                        <!-- Years experience -->
                         <div
                             v-motion="{
                 initial: { opacity: 0, y: 30 },
@@ -97,10 +99,11 @@ const profileImage = "/images/placeholder.svg";
                                 Years experience
                             </p>
                             <p class="mt-2 text-xs text-white/60">
-                                From school projects to personal builds and freelance experiments.
+                                From school projects to personal builds and freelance work.
                             </p>
                         </div>
 
+                        <!-- Focus -->
                         <div
                             v-motion="{
                 initial: { opacity: 0, y: 30 },
@@ -116,11 +119,11 @@ const profileImage = "/images/placeholder.svg";
                                 Focus
                             </p>
                             <p class="mt-2 text-xs text-white/60">
-                                Laravel, Vue.js, TailwindCSS, Tallstack, TypeScript, Filament, PHP
-                                &amp; .NET — plus UI libraries like PrimeVue &amp; Headless UI.
+                                Laravel, Vue.js, TailwindCSS, Tallstack, TypeScript & Filament.
                             </p>
                         </div>
 
+                        <!-- Next steps -->
                         <div
                             v-motion="{
                 initial: { opacity: 0, y: 30 },
@@ -136,13 +139,12 @@ const profileImage = "/images/placeholder.svg";
                                 Next steps
                             </p>
                             <p class="mt-2 text-xs text-white/60">
-                                Building more complex apps with Laravel &amp; Filament and exploring
-                                more frontend in the future, like React and advanced motion design.
+                                Learning more advanced Laravel, Filament and motion design.
                             </p>
                         </div>
                     </div>
 
-                    <!-- bullets, iets zachter zoals hero tekst -->
+                    <!-- bullet section -->
                     <div
                         v-motion="{
               initial: { opacity: 0, y: 30 },
@@ -153,33 +155,22 @@ const profileImage = "/images/placeholder.svg";
                     >
                         <div class="flex gap-3">
                             <div class="mt-1 h-1.5 w-1.5 rounded-full bg-indigo-400"></div>
-                            <p>
-                                I like combining frontend &amp; backend to make the experience feel
-                                smooth end-to-end — from UI microinteractions to how the system is
-                                structured.
-                            </p>
+                            <p>Fullstack flows from design → code → deployment.</p>
                         </div>
                         <div class="flex gap-3">
                             <div class="mt-1 h-1.5 w-1.5 rounded-full bg-rose-400"></div>
-                            <p>
-                                I care about code quality: readable, extendable and maintainable
-                                projects that stay fun to work on in the long term.
-                            </p>
+                            <p>Clean code, architecture & long-term maintainability.</p>
                         </div>
                         <div class="flex gap-3">
                             <div class="mt-1 h-1.5 w-1.5 rounded-full bg-amber-300"></div>
-                            <p>
-                                Outside of coding I like spending time with friends &amp; family,
-                                going to the gym and working on personal development &amp; side
-                                projects.
-                            </p>
+                            <p>Balance coding with gym, friends and personal growth.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- RIGHT: foto + skills card -->
+                <!-- RIGHT SIDE -->
                 <div class="space-y-6">
-                    <!-- foto card -->
+                    <!-- photo -->
                     <div
                         v-motion="{
               initial: { opacity: 0, scale: 0.92, y: 40 },
@@ -202,7 +193,7 @@ const profileImage = "/images/placeholder.svg";
                         </div>
                     </div>
 
-                    <!-- skills pill card -->
+                    <!-- skills card -->
                     <div
                         v-motion="{
               initial: { opacity: 0, y: 30 },
@@ -213,9 +204,7 @@ const profileImage = "/images/placeholder.svg";
                     >
                         <div class="flex items-center justify-between gap-3 mb-4">
                             <div>
-                                <p
-                                    class="text-[0.7rem] uppercase tracking-[0.16em] text-white/45"
-                                >
+                                <p class="text-[0.7rem] uppercase tracking-[0.16em] text-white/45">
                                     Tech focus
                                 </p>
                                 <p class="text-sm font-medium text-white">
@@ -228,7 +217,7 @@ const profileImage = "/images/placeholder.svg";
                         <div class="flex flex-wrap gap-2 text-xs">
               <span
                   class="rounded-full border border-white/15 bg-black/40 px-3 py-1 text-white/80"
-              >Laravel &amp; Filament</span
+              >Laravel & Filament</span
               >
                             <span
                                 class="rounded-full border border-white/15 bg-black/40 px-3 py-1 text-white/80"
@@ -248,20 +237,35 @@ const profileImage = "/images/placeholder.svg";
                             >
                             <span
                                 class="rounded-full border border-white/15 bg-black/40 px-3 py-1 text-white/80"
-                            >C# &amp; .NET</span
+                            >C# & .NET</span
                             >
                             <span
                                 class="rounded-full border border-white/15 bg-black/40 px-3 py-1 text-white/80"
-                            >UI motion &amp; microinteractions</span
+                            >UI motion & microinteractions</span
                             >
                             <span
                                 class="rounded-full border border-white/15 bg-black/40 px-3 py-1 text-white/80"
                             >Clean code</span
                             >
                         </div>
+
                         <div class="text-sm pt-2">
-                            <p>Right I have a lot of knowledge with frontend, I can build clean and fully responsive websites.</p>
+                            <p>
+                                Right now I have a lot of knowledge in frontend — I can build
+                                clean and fully responsive websites.
+                            </p>
                         </div>
+                    </div>
+
+                    <!-- Spotify Preview Card -->
+                    <div
+                        v-motion="{
+              initial: { opacity: 0, y: 30 },
+              visibleOnce: { opacity: 1, y: 0 },
+              transition: { duration: 0.85, delay: 0.55, ease: 'easeOut' },
+            }"
+                    >
+                        <SpotifyPreviewCard />
                     </div>
                 </div>
             </div>
