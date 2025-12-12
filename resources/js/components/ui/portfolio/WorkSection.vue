@@ -76,9 +76,8 @@ const workExperiences: WorkExperienceCard[] = [
 ];
 
 /**
- * Only animate on mobile:
- * - We treat mobile as: no hover OR small screens.
- * - On desktop we render immediately (no v-motion).
+ * Mobile = smooth inladen
+ * Desktop = meteen zichtbaar (geen motion)
  */
 const isMobile = ref(false);
 
@@ -164,108 +163,202 @@ onUnmounted(() => {
 
                 <!-- RIGHT CARDS -->
                 <div class="flex flex-col">
-                    <div
-                        v-for="card in workExperiences"
-                        :key="card.id"
-                        v-bind="isMobile
-                            ? {
-                                  'v-motion': {
-                                      initial: { opacity: 0, y: 30, scale: 0.98 },
-                                      visibleOnce: { opacity: 1, y: 0, scale: 1 },
-                                      transition: {
-                                          duration: 0.6,
-                                          delay: card.delay,
-                                          ease: [0.25, 0.46, 0.45, 0.94],
-                                      },
-                                  },
-                              }
-                            : {}"
-                        :class="[
-                            'lg:sticky lg:top-[10%] px-6 pb-6 pt-4 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] backdrop-blur-sm shadow-lg relative transition-all duration-300 group active:scale-[0.98] active:shadow-xl',
-                            'md:hover:bg-white/[0.07] md:hover:border-white/20 md:hover:scale-[1.02]',
-                            card.rotation === 'left'
-                                ? 'lg:-rotate-2 md:hover:lg:-rotate-1'
-                                : 'lg:rotate-2 md:hover:lg:rotate-1',
-                            card.id !== workExperiences.length ? 'mb-8' : '',
-                        ]"
-                    >
+                    <!-- ✅ MOBILE: met v-motion -->
+                    <template v-if="isMobile">
                         <div
-                            class="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/0 via-transparent to-rose-500/0 opacity-0 md:group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"
-                        />
-
-                        <div
-                            class="relative flex items-center justify-between gap-4 mb-5"
+                            v-for="card in workExperiences"
+                            :key="'m-' + card.id"
+                            v-motion="{
+                                initial: { opacity: 0, y: 30, scale: 0.98 },
+                                visibleOnce: { opacity: 1, y: 0, scale: 1 },
+                                transition: {
+                                    duration: 0.6,
+                                    delay: card.delay,
+                                    ease: [0.25, 0.46, 0.45, 0.94],
+                                },
+                            }"
+                            :class="[
+                                'lg:sticky lg:top-[10%] px-6 pb-6 pt-4 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] backdrop-blur-sm shadow-lg relative transition-all duration-300 group active:scale-[0.98] active:shadow-xl',
+                                // hover effects alleen op devices met hover (mobile heeft dat meestal niet)
+                                'md:hover:bg-white/[0.07] md:hover:border-white/20 md:hover:scale-[1.02]',
+                                // rotation only on desktop
+                                card.rotation === 'left'
+                                    ? 'lg:-rotate-2 md:hover:lg:-rotate-1'
+                                    : 'lg:rotate-2 md:hover:lg:rotate-1',
+                                card.id !== workExperiences.length ? 'mb-8' : '',
+                            ]"
                         >
-                            <div class="flex flex-col gap-1.5 flex-1">
-                                <div class="flex items-center gap-2 flex-wrap">
-                                    <h2
-                                        class="text-xl sm:text-2xl font-semibold text-white md:group-hover:text-indigo-200 transition-colors duration-300"
-                                    >
-                                        {{ card.title }}
-                                    </h2>
+                            <div
+                                class="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/0 via-transparent to-rose-500/0 opacity-0 md:group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"
+                            />
 
-                                    <a
-                                        v-if="card.id === 6"
-                                        href="/stage"
-                                        class="inline-flex items-center gap-1 rounded-full border border-indigo-400/30 bg-indigo-500/10 px-2.5 py-0.5 text-[10px] font-medium text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-400/50 transition-colors"
-                                    >
-                                        Read More
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            class="h-3 w-3"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
+                            <div
+                                class="relative flex items-center justify-between gap-4 mb-5"
+                            >
+                                <div class="flex flex-col gap-1.5 flex-1">
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        <h2
+                                            class="text-xl sm:text-2xl font-semibold text-white md:group-hover:text-indigo-200 transition-colors duration-300"
                                         >
-                                            <path d="M5 12h14" />
-                                            <path d="m12 5 7 7-7 7" />
-                                        </svg>
-                                    </a>
+                                            {{ card.title }}
+                                        </h2>
+
+                                        <a
+                                            v-if="card.id === 6"
+                                            href="/stage"
+                                            class="inline-flex items-center gap-1 rounded-full border border-indigo-400/30 bg-indigo-500/10 px-2.5 py-0.5 text-[10px] font-medium text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-400/50 transition-colors"
+                                        >
+                                            Read More
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="h-3 w-3"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <path d="M5 12h14" />
+                                                <path d="m12 5 7 7-7 7" />
+                                            </svg>
+                                        </a>
+                                    </div>
+
+                                    <p
+                                        class="text-xs sm:text-sm text-white/40 font-medium"
+                                    >
+                                        {{ card.time }}
+                                    </p>
                                 </div>
 
-                                <p
-                                    class="text-xs sm:text-sm text-white/40 font-medium"
-                                >
-                                    {{ card.time }}
-                                </p>
-                            </div>
-
-                            <div
-                                class="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 flex items-center justify-center"
-                            >
                                 <div
-                                    v-if="card.image"
-                                    :class="[
-                                        'w-full h-full rounded-xl shadow-md flex items-center justify-center transition-transform duration-300 group-hover:scale-110',
-                                        card.image.includes('codes.png')
-                                            ? 'bg-black p-2'
-                                            : 'bg-white p-2',
-                                    ]"
+                                    class="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 flex items-center justify-center"
                                 >
-                                    <img
-                                        :src="card.image"
-                                        :alt="card.title"
-                                        class="w-full h-full object-contain"
-                                    />
+                                    <div
+                                        v-if="card.image"
+                                        :class="[
+                                            'w-full h-full rounded-xl shadow-md flex items-center justify-center transition-transform duration-300 group-hover:scale-110',
+                                            card.image.includes('codes.png')
+                                                ? 'bg-black p-2'
+                                                : 'bg-white p-2',
+                                        ]"
+                                    >
+                                        <img
+                                            :src="card.image"
+                                            :alt="card.title"
+                                            class="w-full h-full object-contain"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-3">
+                                <div
+                                    class="rounded-2xl border border-white/10 bg-gradient-to-br from-white/8 via-white/0 to-white/5 px-3 py-3 sm:px-4 sm:py-3 backdrop-blur-md"
+                                >
+                                    <p
+                                        class="text-xs sm:text-sm leading-relaxed text-white/70 group-hover:text-white/75 transition-colors duration-300"
+                                    >
+                                        {{ card.description }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
+                    </template>
 
-                        <div class="mt-3">
+                    <!-- ✅ DESKTOP: zonder v-motion (geen smooth inladen) -->
+                    <template v-else>
+                        <div
+                            v-for="card in workExperiences"
+                            :key="'d-' + card.id"
+                            :class="[
+                                'lg:sticky lg:top-[10%] px-6 pb-6 pt-4 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] backdrop-blur-sm shadow-lg relative transition-all duration-300 group active:scale-[0.98] active:shadow-xl',
+                                'md:hover:bg-white/[0.07] md:hover:border-white/20 md:hover:scale-[1.02]',
+                                card.rotation === 'left'
+                                    ? 'lg:-rotate-2 md:hover:lg:-rotate-1'
+                                    : 'lg:rotate-2 md:hover:lg:rotate-1',
+                                card.id !== workExperiences.length ? 'mb-8' : '',
+                            ]"
+                        >
                             <div
-                                class="rounded-2xl border border-white/10 bg-gradient-to-br from-white/8 via-white/0 to-white/5 px-3 py-3 sm:px-4 sm:py-3 backdrop-blur-md"
+                                class="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/0 via-transparent to-rose-500/0 opacity-0 md:group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"
+                            />
+
+                            <div
+                                class="relative flex items-center justify-between gap-4 mb-5"
                             >
-                                <p
-                                    class="text-xs sm:text-sm leading-relaxed text-white/70 group-hover:text-white/75 transition-colors duration-300"
+                                <div class="flex flex-col gap-1.5 flex-1">
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        <h2
+                                            class="text-xl sm:text-2xl font-semibold text-white md:group-hover:text-indigo-200 transition-colors duration-300"
+                                        >
+                                            {{ card.title }}
+                                        </h2>
+
+                                        <a
+                                            v-if="card.id === 6"
+                                            href="/stage"
+                                            class="inline-flex items-center gap-1 rounded-full border border-indigo-400/30 bg-indigo-500/10 px-2.5 py-0.5 text-[10px] font-medium text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-400/50 transition-colors"
+                                        >
+                                            Read More
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="h-3 w-3"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <path d="M5 12h14" />
+                                                <path d="m12 5 7 7-7 7" />
+                                            </svg>
+                                        </a>
+                                    </div>
+
+                                    <p
+                                        class="text-xs sm:text-sm text-white/40 font-medium"
+                                    >
+                                        {{ card.time }}
+                                    </p>
+                                </div>
+
+                                <div
+                                    class="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 flex items-center justify-center"
                                 >
-                                    {{ card.description }}
-                                </p>
+                                    <div
+                                        v-if="card.image"
+                                        :class="[
+                                            'w-full h-full rounded-xl shadow-md flex items-center justify-center transition-transform duration-300 group-hover:scale-110',
+                                            card.image.includes('codes.png')
+                                                ? 'bg-black p-2'
+                                                : 'bg-white p-2',
+                                        ]"
+                                    >
+                                        <img
+                                            :src="card.image"
+                                            :alt="card.title"
+                                            class="w-full h-full object-contain"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-3">
+                                <div
+                                    class="rounded-2xl border border-white/10 bg-gradient-to-br from-white/8 via-white/0 to-white/5 px-3 py-3 sm:px-4 sm:py-3 backdrop-blur-md"
+                                >
+                                    <p
+                                        class="text-xs sm:text-sm leading-relaxed text-white/70 group-hover:text-white/75 transition-colors duration-300"
+                                    >
+                                        {{ card.description }}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </template>
                 </div>
             </div>
         </div>

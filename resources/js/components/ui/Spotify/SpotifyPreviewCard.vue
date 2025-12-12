@@ -174,11 +174,12 @@ onUnmounted(() => {
                     class="fixed z-[9999] w-80 rounded-xl border border-white/10 bg-[#050505] p-3 shadow-lg shadow-black/60"
                     :style="{ top: `${popupPos.top}px`, left: `${popupPos.left}px` }"
                 >
-                    <p class="text-xs text-white/70">
-                        Currently I'm listening to:
-                    </p>
+
                     <!-- Currently playing -->
                     <div v-if="playing && currentTrack" class="flex gap-3">
+                        <p class="text-xs text-white/70">
+                            Currently I'm listening to:
+                        </p>
                         <div
                             v-if="currentTrack.image"
                             class="h-14 w-14 overflow-hidden rounded-lg border border-white/10"
