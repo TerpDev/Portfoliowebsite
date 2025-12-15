@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowLeft, BookOpen, Code2, Home, Info } from 'lucide-vue-next';
+import { ArrowLeft, BookOpen, Code2, Home, Info, Book, Lightbulb } from 'lucide-vue-next';
 import { onMounted, onUnmounted, ref } from 'vue';
 
 type SectionId = 'home' | 'about' | 'voorwoord' | 'opdracht';
@@ -10,6 +10,8 @@ const sections: { id: SectionId; label: string; icon: any }[] = [
     { id: 'voorwoord', label: 'Voorwoord & inleiding', icon: BookOpen },
     { id: 'opdracht', label: 'Stage opdracht', icon: Code2 },
     { id: 'starrt', label: 'STARRT', icon: BookOpen },
+    { id: 'persoonlijke-ontwikkeling', label: 'Leerdoelen', icon: Book },
+    { id: 'Conclusie', label: 'Conclusie & Eindwoord', icon: Lightbulb },
 
 ];
 

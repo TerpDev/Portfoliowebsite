@@ -123,6 +123,9 @@ onUnmounted(() => {
 <template>
     <div ref="triggerEl" class="relative w-full">
         <!-- Trigger -->
+        <div class="pb-2">
+            <p class="text-md font-semibold">What kind of music do I like?</p>
+        </div>
         <div
             class="flex cursor-pointer items-center justify-between gap-3 rounded-3xl border border-white/10 bg-white/[0.04] px-4 py-3 shadow-[0_18px_45px_rgba(0,0,0,0.65)] backdrop-blur-xl"
             @mouseenter="!isTouchDevice && openPreview()"

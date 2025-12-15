@@ -6,6 +6,8 @@ import AboutStageSection from "@/components/ui/stage/AboutStageSection.vue";
 import AboutCubeSection from "@/components/ui/stage/CubeSection.vue";
 import OpdrachtSection from "@/components/ui/stage/OpdrachtSection.vue";
 import StarrtSection from '@/components/ui/stage/StarrtSection.vue';
+import Personal from '@/components/ui/stage/Personal.vue';
+import Conclusion from '@/components/ui/stage/Conclusion.vue';
 
 import Navbar from '../pages/components/NavbarStage.vue';
 </script>
@@ -31,7 +33,8 @@ import Navbar from '../pages/components/NavbarStage.vue';
             <AboutStageSection/>
             <OpdrachtSection/>
             <StarrtSection />
-
+            <Personal/>
+            <Conclusion/>
         </div>
     </AppLayout>
 </template>

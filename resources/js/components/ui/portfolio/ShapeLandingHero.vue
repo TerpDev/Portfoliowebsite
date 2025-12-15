@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { withDefaults, defineProps } from "vue";
-import { Circle } from "lucide-vue-next";
 import ElegantShape from "./ElegantShape.vue";
 import { cn } from "@/lib/utils";
 import TextLoop from "@/components/ui/portfolio/TextLoop.vue";
@@ -15,6 +14,7 @@ const props = withDefaults(
         title2: "Stage verslag",
     }
 );
+
 
 // zinnen voor de loop onder de hero-tekst
 const loopItems = [
@@ -34,6 +34,7 @@ const loopItems = [
         <div
             class="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.05] via-transparent to-rose-500/[0.05] blur-3xl"
         />
+
 
         <!-- animated shapes -->
         <div class="absolute inset-0 overflow-hidden">
@@ -138,6 +139,32 @@ const loopItems = [
                             class-name="md:text-2xl text-lg font-bold text-white/90"
                         />
                     </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div
+            v-motion
+            :initial="{ opacity: 0, y: -20 }"
+            :enter="{ opacity: 1, y: 0, transition: { duration: 1, delay: 1.2 } }"
+            class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+        >
+            <div class="flex flex-col items-center gap-2 text-white/30 hover:text-white/50 transition-colors cursor-pointer group">
+                <div class="w-6 h-10 rounded-full border-2 border-white/20 group-hover:border-white/40 transition-colors flex items-start justify-center p-2">
+                    <div
+                        v-motion
+                        :initial="{ y: 0 }"
+                        :enter="{
+                            y: [0, 12, 0],
+                            transition: {
+                                duration: 1500,
+                                repeat: Infinity,
+                                ease: 'easeInOut'
+                            }
+                        }"
+                        class="w-1 h-2 bg-white/40 rounded-full"
+                    ></div>
                 </div>
             </div>
         </div>

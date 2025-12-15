@@ -13,6 +13,8 @@ Route::get('/', function () {
 Route::get('/stage', function () {
     return Inertia::render('Stage');
 })->name('stage');
+
+
 Route::get('/spotify/currently-playing', [SpotifyController::class, 'currentlyPlaying']);
 Route::get('/spotify/top-tracks', [SpotifyController::class, 'topTracks']);
 
@@ -48,3 +50,9 @@ Route::get('/auth/spotify/callback', function (\Illuminate\Http\Request $request
     // In je browser zie je dan de refresh token
     dd($data);
 });
+
+// 404 Fallback Route - Must be at the end
+Route::fallback(function () {
+    return Inertia::render('Error404');
+});
+

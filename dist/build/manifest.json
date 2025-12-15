@@ -1,53 +1,61 @@
 {
-  "_Footer.vue_vue_type_script_setup_true_lang-C1Xff3Mn.js": {
-    "file": "assets/Footer.vue_vue_type_script_setup_true_lang-C1Xff3Mn.js",
+  "_Footer.vue_vue_type_script_setup_true_lang-BRf6F8O2.js": {
+    "file": "assets/Footer.vue_vue_type_script_setup_true_lang-BRf6F8O2.js",
     "name": "Footer.vue_vue_type_script_setup_true_lang",
     "imports": [
       "resources/js/app.ts",
-      "_createLucideIcon-DFm3T2fo.js"
+      "_createLucideIcon-CL7-Y5S6.js"
     ]
   },
-  "_Navbar.vue_vue_type_script_setup_true_lang-DCBxwyU4.js": {
-    "file": "assets/Navbar.vue_vue_type_script_setup_true_lang-DCBxwyU4.js",
+  "_Navbar.vue_vue_type_script_setup_true_lang-UaNoQn4i.js": {
+    "file": "assets/Navbar.vue_vue_type_script_setup_true_lang-UaNoQn4i.js",
     "name": "Navbar.vue_vue_type_script_setup_true_lang",
     "imports": [
       "resources/js/app.ts"
     ]
   },
-  "_NavbarStage.vue_vue_type_script_setup_true_lang-D79hXtx2.js": {
-    "file": "assets/NavbarStage.vue_vue_type_script_setup_true_lang-D79hXtx2.js",
+  "_NavbarStage.vue_vue_type_script_setup_true_lang-BoNhCzRs.js": {
+    "file": "assets/NavbarStage.vue_vue_type_script_setup_true_lang-BoNhCzRs.js",
     "name": "NavbarStage.vue_vue_type_script_setup_true_lang",
     "imports": [
       "resources/js/app.ts",
-      "_createLucideIcon-DFm3T2fo.js",
-      "_code-xml-CkjCpTJ4.js"
+      "_createLucideIcon-CL7-Y5S6.js",
+      "_house-wjUFSqaR.js",
+      "_code-xml-BEYlqmZn.js"
     ]
   },
-  "__plugin-vue_export-helper-BNir1Ck-.js": {
-    "file": "assets/_plugin-vue_export-helper-BNir1Ck-.js",
+  "__plugin-vue_export-helper-Hb7QR2K8.js": {
+    "file": "assets/_plugin-vue_export-helper-Hb7QR2K8.js",
     "name": "_plugin-vue_export-helper",
     "imports": [
-      "_createLucideIcon-DFm3T2fo.js",
-      "_Footer.vue_vue_type_script_setup_true_lang-C1Xff3Mn.js",
+      "_createLucideIcon-CL7-Y5S6.js",
+      "_Footer.vue_vue_type_script_setup_true_lang-BRf6F8O2.js",
       "resources/js/app.ts"
     ]
   },
-  "_code-xml-CkjCpTJ4.js": {
-    "file": "assets/code-xml-CkjCpTJ4.js",
+  "_code-xml-BEYlqmZn.js": {
+    "file": "assets/code-xml-BEYlqmZn.js",
     "name": "code-xml",
     "imports": [
-      "_createLucideIcon-DFm3T2fo.js"
+      "_createLucideIcon-CL7-Y5S6.js"
     ]
   },
-  "_createLucideIcon-DFm3T2fo.js": {
-    "file": "assets/createLucideIcon-DFm3T2fo.js",
+  "_createLucideIcon-CL7-Y5S6.js": {
+    "file": "assets/createLucideIcon-CL7-Y5S6.js",
     "name": "createLucideIcon",
     "imports": [
       "resources/js/app.ts"
     ]
   },
+  "_house-wjUFSqaR.js": {
+    "file": "assets/house-wjUFSqaR.js",
+    "name": "house",
+    "imports": [
+      "_createLucideIcon-CL7-Y5S6.js"
+    ]
+  },
   "resources/css/app.css": {
-    "file": "assets/app-DZIQJA0K.css",
+    "file": "assets/app-BqTDubpC.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -56,7 +64,7 @@
     ]
   },
   "resources/js/app.ts": {
-    "file": "assets/app-aZYkoYWJ.js",
+    "file": "assets/app-D6suFJru.js",
     "name": "app",
     "src": "resources/js/app.ts",
     "isEntry": true,
@@ -64,14 +72,16 @@
       "resources/js/cursor.ts"
     ],
     "dynamicImports": [
+      "resources/js/pages/Error404.vue",
       "resources/js/pages/Home.vue",
+      "resources/js/pages/SpaceShooter.vue",
       "resources/js/pages/Stage.vue",
       "resources/js/pages/components/Footer.vue",
       "resources/js/pages/components/Navbar.vue",
       "resources/js/pages/components/NavbarStage.vue"
     ],
     "css": [
-      "assets/app-DZIQJA0K.css"
+      "assets/app-BqTDubpC.css"
     ]
   },
   "resources/js/cursor.ts": {
@@ -80,87 +90,118 @@
     "src": "resources/js/cursor.ts",
     "isEntry": true
   },
+  "resources/js/pages/Error404.vue": {
+    "file": "assets/Error404-PMh_OcHc.js",
+    "name": "Error404",
+    "src": "resources/js/pages/Error404.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.ts",
+      "_createLucideIcon-CL7-Y5S6.js",
+      "_house-wjUFSqaR.js",
+      "resources/js/cursor.ts"
+    ],
+    "css": [
+      "assets/app-BqTDubpC.css"
+    ]
+  },
   "resources/js/pages/Home.vue": {
-    "file": "assets/Home-C8hgxwEK.js",
+    "file": "assets/Home-seiJramM.js",
     "name": "Home",
     "src": "resources/js/pages/Home.vue",
     "isDynamicEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-BNir1Ck-.js",
+      "__plugin-vue_export-helper-Hb7QR2K8.js",
       "resources/js/app.ts",
-      "_createLucideIcon-DFm3T2fo.js",
-      "_code-xml-CkjCpTJ4.js",
-      "_Navbar.vue_vue_type_script_setup_true_lang-DCBxwyU4.js",
-      "_Footer.vue_vue_type_script_setup_true_lang-C1Xff3Mn.js",
+      "_createLucideIcon-CL7-Y5S6.js",
+      "_code-xml-BEYlqmZn.js",
+      "_Navbar.vue_vue_type_script_setup_true_lang-UaNoQn4i.js",
+      "_Footer.vue_vue_type_script_setup_true_lang-BRf6F8O2.js",
       "resources/js/cursor.ts"
     ],
     "css": [
       "assets/Home-18WQ_-QK.css",
-      "assets/app-DZIQJA0K.css"
+      "assets/app-BqTDubpC.css"
+    ]
+  },
+  "resources/js/pages/SpaceShooter.vue": {
+    "file": "assets/SpaceShooter-Dzqk5iEG.js",
+    "name": "SpaceShooter",
+    "src": "resources/js/pages/SpaceShooter.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.ts",
+      "_createLucideIcon-CL7-Y5S6.js",
+      "resources/js/cursor.ts"
+    ],
+    "css": [
+      "assets/app-BqTDubpC.css"
     ]
   },
   "resources/js/pages/Stage.vue": {
-    "file": "assets/Stage-DbKwqQWn.js",
+    "file": "assets/Stage-Ckr40DdN.js",
     "name": "Stage",
     "src": "resources/js/pages/Stage.vue",
     "isDynamicEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-BNir1Ck-.js",
+      "__plugin-vue_export-helper-Hb7QR2K8.js",
       "resources/js/app.ts",
-      "_createLucideIcon-DFm3T2fo.js",
-      "_NavbarStage.vue_vue_type_script_setup_true_lang-D79hXtx2.js",
-      "_Footer.vue_vue_type_script_setup_true_lang-C1Xff3Mn.js",
+      "_createLucideIcon-CL7-Y5S6.js",
+      "_NavbarStage.vue_vue_type_script_setup_true_lang-BoNhCzRs.js",
+      "_Footer.vue_vue_type_script_setup_true_lang-BRf6F8O2.js",
       "resources/js/cursor.ts",
-      "_code-xml-CkjCpTJ4.js"
+      "_house-wjUFSqaR.js",
+      "_code-xml-BEYlqmZn.js"
     ],
     "css": [
       "assets/Stage-BFek4a9w.css",
-      "assets/app-DZIQJA0K.css"
+      "assets/app-BqTDubpC.css"
     ]
   },
   "resources/js/pages/components/Footer.vue": {
-    "file": "assets/Footer-KAQV_DnH.js",
+    "file": "assets/Footer-CxHq-Hcv.js",
     "name": "Footer",
     "src": "resources/js/pages/components/Footer.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_Footer.vue_vue_type_script_setup_true_lang-C1Xff3Mn.js",
+      "_Footer.vue_vue_type_script_setup_true_lang-BRf6F8O2.js",
       "resources/js/app.ts",
       "resources/js/cursor.ts",
-      "_createLucideIcon-DFm3T2fo.js"
+      "_createLucideIcon-CL7-Y5S6.js"
     ],
     "css": [
-      "assets/app-DZIQJA0K.css"
+      "assets/app-BqTDubpC.css"
     ]
   },
   "resources/js/pages/components/Navbar.vue": {
-    "file": "assets/Navbar-BBWHdl0n.js",
+    "file": "assets/Navbar-DTb94nc-.js",
     "name": "Navbar",
     "src": "resources/js/pages/components/Navbar.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_Navbar.vue_vue_type_script_setup_true_lang-DCBxwyU4.js",
+      "_Navbar.vue_vue_type_script_setup_true_lang-UaNoQn4i.js",
       "resources/js/app.ts",
       "resources/js/cursor.ts"
     ],
     "css": [
-      "assets/app-DZIQJA0K.css"
+      "assets/app-BqTDubpC.css"
     ]
   },
   "resources/js/pages/components/NavbarStage.vue": {
-    "file": "assets/NavbarStage-CiSQz5vU.js",
+    "file": "assets/NavbarStage-CuA5czvo.js",
     "name": "NavbarStage",
     "src": "resources/js/pages/components/NavbarStage.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_NavbarStage.vue_vue_type_script_setup_true_lang-D79hXtx2.js",
+      "_NavbarStage.vue_vue_type_script_setup_true_lang-BoNhCzRs.js",
       "resources/js/app.ts",
       "resources/js/cursor.ts",
-      "_createLucideIcon-DFm3T2fo.js",
-      "_code-xml-CkjCpTJ4.js"
+      "_createLucideIcon-CL7-Y5S6.js",
+      "_house-wjUFSqaR.js",
+      "_code-xml-BEYlqmZn.js"
     ],
     "css": [
-      "assets/app-DZIQJA0K.css"
+      "assets/app-BqTDubpC.css"
     ]
   }
 }

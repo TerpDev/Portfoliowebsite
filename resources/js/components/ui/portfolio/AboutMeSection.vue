@@ -258,15 +258,15 @@ const profileImage = "/images/placeholder.svg";
                     </div>
 
                     <!-- Spotify Preview Card -->
-                    <div
-                        v-motion="{
-              initial: { opacity: 0, y: 30 },
-              visibleOnce: { opacity: 1, y: 0 },
-              transition: { duration: 0.85, delay: 0.55, ease: 'easeOut' },
-            }"
-                    >
-                        <SpotifyPreviewCard />
-                    </div>
+<!--                    <div-->
+<!--                        v-motion="{-->
+<!--              initial: { opacity: 0, y: 30 },-->
+<!--              visibleOnce: { opacity: 1, y: 0 },-->
+<!--              transition: { duration: 0.85, delay: 0.55, ease: 'easeOut' },-->
+<!--            }"-->
+<!--                    >-->
+<!--                        <SpotifyPreviewCard />-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>

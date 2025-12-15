@@ -66,6 +66,6 @@ onUnmounted(() => {
                 <WorkSection/>
                 <Timeline02 />
                 <ProjectsSection />
-            <SkillsSection />
+                <SkillsSection />
         </AppLayout>
 </template>

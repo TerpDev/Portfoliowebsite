@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Clock, Sparkles, FolderGit2 } from 'lucide-vue-next';
+import { FolderGit2 } from 'lucide-vue-next';
 import ProjectCard from '@/components/ui/portfolio/ProjectCard.vue';
 
 const projects = [
