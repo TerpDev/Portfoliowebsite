@@ -7,6 +7,7 @@ import Timeline02 from "@/components/ui/portfolio/TimeLine02.vue";
 import ProjectsSection from "@/components/ui/portfolio/ProjectSection.vue";
 import SkillsSection from "@/components/ui/portfolio/SkillsSection.vue";
 import WorkSection from '@/components/ui/portfolio/WorkSection.vue';
+import LetsWorkTogether from '@/components/ui/portfolio/LetsWorkTogether.vue';
 import Navbar from '../pages/components/Navbar.vue';
 import { onMounted, onUnmounted } from 'vue';
 import { initFavicon, updateTitleOnScroll, cleanupFavicon } from '@/utils/favicon';
@@ -67,5 +68,7 @@ onUnmounted(() => {
                 <Timeline02 />
                 <ProjectsSection />
                 <SkillsSection />
+                <LetsWorkTogether/>
         </AppLayout>
 </template>
+

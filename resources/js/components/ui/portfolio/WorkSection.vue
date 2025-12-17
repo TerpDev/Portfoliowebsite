@@ -14,44 +14,14 @@ interface WorkExperienceCard {
 
 const workExperiences: WorkExperienceCard[] = [
     {
-        id: 1,
-        title: "Attractiepark de Waarbeek",
-        time: "Juni 2021 - September 2021 - Vacation Job",
+        id: 6,
+        title: "Cube | Digitale Transformatie | Software Oplossingen",
+        time: "September 2025 - January 2026 - Internship",
         description:
-            "During this summer job, I was responsible for operating rides, ensuring guest safety, and providing excellent customer service in a fun environment.",
+            "During this internship at Cube, I worked on a project which you can read more about via the link below.",
         rotation: "left",
-        image: "/images/waarbeek.png",
+        image: "/images/cube.png",
         delay: 0.2,
-    },
-    {
-        id: 2,
-        title: "Jumbo Supermarkten",
-        time: "Juli 2021 - Juni 2022 - Parttime",
-        description:
-            "This was my very first job from the age of 15. I worked here for one year as a shelf stacker.",
-        rotation: "right",
-        image: "/images/jumbo.png",
-        delay: 0.2,
-    },
-    {
-        id: 3,
-        title: "Bleckmann B.V.",
-        time: "Juli 2023 - September 2023 - Vacation Job",
-        description:
-            "In this vacation job, I assisted as an order picker. Together with three friends, we worked here during the summer vacation.",
-        rotation: "left",
-        image: "/images/bleckmann.png",
-        delay: 0.3,
-    },
-    {
-        id: 4,
-        title: "C-o-d-e-s Software Development",
-        time: "February 2024 - Juni 2024 - Internship",
-        description:
-            "Thorough testing across devices and browsers, fixing bugs, and optimizing performance. Quality assurance is key to delivering reliable software.",
-        rotation: "right",
-        image: "/images/codes.png",
-        delay: 0.4,
     },
     {
         id: 5,
@@ -59,18 +29,48 @@ const workExperiences: WorkExperienceCard[] = [
         time: "Juni 2022 - Present - Parttime",
         description:
             "I started here as a dishwasher and later moved into the kitchen. I now work as a kitchen assistant, preparing desserts, starters and side dishes.",
-        rotation: "left",
+        rotation: "right",
         image: "/images/alm.png",
+        delay: 0.2,
+    },
+    {
+        id: 4,
+        title: "C-o-d-e-s Software Development",
+        time: "February 2024 - Juni 2024 - Internship",
+        description:
+            "Thorough testing across devices and browsers, fixing bugs, and optimizing performance. Quality assurance is key to delivering reliable software.",
+        rotation: "left",
+        image: "/images/codes.png",
+        delay: 0.3,
+    },
+    {
+        id: 3,
+        title: "Bleckmann B.V.",
+        time: "Juli 2023 - September 2023 - Vacation Job",
+        description:
+            "In this vacation job, I assisted as an order picker. Together with three friends, we worked here during the summer vacation.",
+        rotation: "right",
+        image: "/images/bleckmann.png",
+        delay: 0.4,
+    },
+    {
+        id: 2,
+        title: "Jumbo Supermarkten",
+        time: "Juli 2021 - Juni 2022 - Parttime",
+        description:
+            "This was my very first job from the age of 15. I worked here for one year as a shelf stacker.",
+        rotation: "left",
+        image: "/images/jumbo.png",
         delay: 0.5,
     },
     {
-        id: 6,
-        title: "Cube | Digitale Transformatie | Software Oplossingen",
-        time: "September 2025 - January 2026 - Internship",
+        id: 1,
+        title: "Attractiepark de Waarbeek",
+        time: "Juni 2021 - September 2021 - Vacation Job",
         description:
-            "During this internship at Cube, I worked on a project which you can read more about via the link below.",
+            "During this summer job, I was responsible for operating rides, ensuring guest safety, and providing excellent customer service in a fun environment.",
         rotation: "right",
-        image: "/images/cube.png",
+        image: "/images/waarbeek.png",
         delay: 0.5,
     },
 ];
@@ -267,7 +267,6 @@ onUnmounted(() => {
                         </div>
                     </template>
 
-                    <!-- ✅ DESKTOP: zonder v-motion (geen smooth inladen) -->
                     <template v-else>
                         <div
                             v-for="card in workExperiences"

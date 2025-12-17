@@ -3,7 +3,6 @@ import { ref } from "vue";
 
 const menuOpen = ref(false);
 
-// optioneel: simpele anchors naar sections
 const sections = [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
@@ -22,11 +21,9 @@ const goTo = (id: string) => {
 </script>
 
 <template>
-    <!-- Brand linksboven -->
     <div class="fixed top-4 left-4 z-40">
         <a
             href="#"
-            @click.prevent="goTo('home')"
             class="flex items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900/80 px-4 py-2.5 text-white shadow-[0_18px_45px_rgba(0,0,0,0.75)] backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 hover:border-white/70 cursor-pointer"
         >
             <span class="text-sm font-bold">
@@ -35,10 +32,8 @@ const goTo = (id: string) => {
         </a>
     </div>
 
-    <!-- Burger rechtsboven + dropdown -->
     <div class="fixed top-4 right-4 z-40">
         <div class="relative">
-            <!-- Burger button -->
             <button
                 @click="menuOpen = !menuOpen"
                 class="flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900/80 text-white shadow-[0_18px_45px_rgba(0,0,0,0.75)] backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 hover:border-white/70 focus:outline-none cursor-pointer"
@@ -86,7 +81,6 @@ const goTo = (id: string) => {
                 </transition>
             </button>
 
-            <!-- Dropdown -->
             <transition
                 enter-active-class="transition duration-180 ease-out"
                 enter-from-class="opacity-0 -translate-y-2 scale-95"

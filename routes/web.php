@@ -13,6 +13,9 @@ Route::get('/', function () {
 Route::get('/stage', function () {
     return Inertia::render('Stage');
 })->name('stage');
+Route::get('/test', function () {
+    return Inertia::render('Test');
+})->name('stage');
 
 
 Route::get('/spotify/currently-playing', [SpotifyController::class, 'currentlyPlaying']);
