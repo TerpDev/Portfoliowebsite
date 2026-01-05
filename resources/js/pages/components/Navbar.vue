@@ -10,6 +10,7 @@ const sections = [
     { id: "timeline", label: "Timeline" },
     { id: "projects", label: "Projects" },
     { id: "skills", label: "Skills" },
+    { id: "contact", label: "Contact" },
 ];
 
 const goTo = (id: string) => {

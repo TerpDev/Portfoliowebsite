@@ -64,11 +64,10 @@ watch(
 
         <!-- Content -->
         <div
-            class="min-h-60 h-full rounded-xl border border-white/10 bg-[#11111198] bg-opacity-50 p-4 text-white shadow-[0_0_20px_rgba(0,0,0,0.2)] backdrop-blur-sm"
+            class=""
         >
             <Transition name="fade-slide" mode="out-in">
                 <div :key="activeTab">
-                    <!-- content wordt meegegeven via named slots: #tab.id -->
                     <slot :name="activeTab" />
                 </div>
             </Transition>

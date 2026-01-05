@@ -22,7 +22,7 @@ const handleConnectEmail = () => {
 </script>
 
 <template>
-    <section class="flex items-center justify-center px-6">
+    <section id="contact" class="flex items-center justify-center px-6">
         <div class="relative flex flex-col items-center gap-12">
 
             <!-- Success state - Connect button -->

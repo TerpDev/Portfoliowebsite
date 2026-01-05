@@ -3,49 +3,161 @@ import { Code, FileText, GitBranch } from 'lucide-vue-next';
 import { marked } from 'marked';
 import AnimatedTabs from "@/components/ui/stage/AnimatedTabs.vue";
 
-const cubeWikiReadme = `# Cube Wiki API – Multitenant Knowledge Management Platform
-Welcome to Cube Wiki, a multitenant knowledge-management platform built with Filament.
-Cube Wiki offers a structured way to manage documentation through Applications, Categories, and Pages.
+const cubeWikiReadme = `
+<div align="center">
 
-[//]: # (## Showcase)
+# 🧊 Cube Wiki
 
-[//]: # (### User)
+### Multitenant Knowledge Management Platform
 
-[//]: # (![User Dashboard]&#40;Docs/images/dashboarduser.png&#41;)
+[![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
+[![Laravel](https://img.shields.io/badge/Laravel-12.0-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![Filament](https://img.shields.io/badge/Filament-4.0-FDAE4B?style=for-the-badge)](https://filamentphp.com)
+[![REST API](https://img.shields.io/badge/REST-API-4F46E5?style=for-the-badge)](https://restfulapi.net)
 
-[//]: # (![User create tenant]&#40;Docs/images/createtenant.png&#41;)
+*Organize your documentation with Applications → Categories → Pages*
 
-[//]: # (![User application]&#40;Docs/images/appuser.png&#41;)
 
-[//]: # (![User application]&#40;Docs/images/catuser.png&#41;)
+**Want to integrate Cube Wiki in your own Filament project?**
+👉 [Check out the CubeWikiPackage](https://github.com/TerpDev/CubeWikiPackage)
 
-[//]: # (![User application]&#40;Docs/images/pageuser.png&#41;)
+</div>
 
+---
 ## Introduction
+
 Cube Wiki is a multitenant knowledge-management platform built with Filament.
-The system has two distinct roles: **Owner**, and **Member**. Users with the **Owner** role have full control over their tenant,
-including creating users. Users with the **Member** role
-can create and manage applications, categories, and pages. Every page is written in Markdown and stored in the Cube Wiki API.
+The system allows you to create and manage structured documentation within your own tenant(s).
+
+Each tenant can contain multiple **Applications**, each application can have multiple **Categories**,
+and each category contains **Pages** written in Markdown.
+
+### User Roles
+
+- **Owner** - Full control over the tenant, can manage users and all content also
+Owner can switch easy from member panel to tenant panel and back.
+- **Member** - Can create and manage applications, categories, and pages
 
 ## Features
+
 ### Multitenancy
-- Each user can belong to one or multiple tenants.
-- All data is fully isolated per tenant.
-- Tenants can create new tenants or switch between existing one if you joined them.
-- Users are put on selected tenants.
-### Tenant features
-- Create tenants - each tenant receives its own API token with Sanctum.
-- Create and manage users.
-- Assign users to one or multiple tenants.
-### Users features
-- Create and edit applications, categories and pages inside their tenants.
-- Write pages using the build in Markdown editor.
-- Switch between tenants if their in more than one.
+- Each user can belong to one or multiple tenants
+- All data is fully isolated per tenant
+- Easy switching between tenants
+- Create your own tenant or join existing ones
+
+### Structured Documentation
+- **Applications** - Top-level containers for your documentation
+- **Categories** - Organize content within applications
+- **Pages** - Write content in Markdown with a built-in editor
+
+### Markdown Support
+- Full Markdown editor for writing pages
+- Support for tables, code blocks, images, and more
+- Content is automatically converted to HTML via API
+
+### Automatic Slug Generation
+- Slugs are generated automatically from names
+- Slugs remain stable even when you rename content (links won't break)
+
+### REST API
+- Each tenant gets a unique API token
+- Access your documentation programmatically
+- Perfect for integrating with other applications
+- Use the [CubeWikiPackage](https://github.com/TerpDev/CubeWikiPackage) for seamless Filament integration
+
+## Getting Started
+
+### Creating Your Tenant
+
+1. Register for an account or log in
+2. Create your first tenant from the dashboard
+3. You'll automatically be assigned as the **Owner** of your new tenant
+
+### Managing Users
+
+As a tenant **Owner**, you can:
+- Invite users to your tenant
+- Assign them the **Owner** or **Member** role
+- Manage user permissions
+
+### Creating Documentation
+
+#### 1. Create an Application
+
+Applications are the top-level containers for your documentation.
+
+- Navigate to **Applications**
+- Click **New Application**
+- Enter a name (slug is generated automatically)
+- Save
+
+#### 2. Create Categories
+
+Categories help organize your content within an application.
+
+- Navigate to **Categories**
+- Click **New Category**
+- Enter a name and select the parent application
+- Save
+
+#### 3. Create Pages
+
+Pages contain your actual documentation content.
+
+- Navigate to **Pages**
+- Click **New Page**
+- Enter a title and select the parent category
+- Write your content using the Markdown editor
+- Save
+
+## Structure Example
+
+Here's how your documentation might be structured in JSON format:
+
+\`\`\`json
+{
+    "tenant": {
+        "id": 1,
+        "name": "Cube",
+        "slug": "cube"
+    },
+    "applications": [
+        {
+            "id": 10,
+            "tenant_id": 1,
+            "name": "Hint",
+            "slug": "hint",
+            "categories": [
+                {
+                    "id": 9,
+                    "tenant_id": 1,
+                    "application_id": 10,
+                    "name": "HintActions",
+                    "slug": "hintactions",
+                    "pages": [
+                        {
+                            "id": 9,
+                            "category_id": 9,
+                            "tenant_id": 1,
+                            "title": "Slug",
+                            "slug": "slug",
+                            "content_html": "\u003Ch1\u003EWhat is a slug?\u003C/h1\u003E\\n\u003Cp\u003EThis is a slug\u003C/p\u003E\\n"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+\`\`\`
 
 ## Applications, Categories and Pages
+
 ### Applications
-- Create applications with a name — slugs are generated automatically.
+- Create applications with a name — slugs are generated automatically
 - Applications act as the top level container for documentation
+
 \`\`\`php
 use Illuminate\\Database\\Eloquent\\Model;
 use Illuminate\\Database\\Eloquent\\Relations\\BelongsTo;
@@ -64,15 +176,18 @@ class Application extends Model
     {
         return $this->belongsTo(Tenants::class, 'tenant_id', 'id');
     }
+
     public function categories(): HasMany
     {
         return $this->hasMany(Category::class);
     }
 }
 \`\`\`
+
 ### Categories
-- Create categories with an auto-generated slug.
-- Each category must be linked to an application (selectable via dropdown).
+- Create categories with an auto-generated slug
+- Each category must be linked to an application (selectable via dropdown)
+
 \`\`\`php
 use Illuminate\\Database\\Eloquent\\Model;
 use Illuminate\\Database\\Eloquent\\Relations\\BelongsTo;
@@ -89,7 +204,7 @@ class Category extends Model
 
     public function tenant(): BelongsTo
     {
-        return $this->belongsTo(Tenants::class, 'tenant_id', 'id');
+        return $this->belongsTo(Tenants:: class, 'tenant_id', 'id');
     }
 
     public function application(): BelongsTo
@@ -101,19 +216,18 @@ class Category extends Model
     {
         return $this->hasMany(Page::class);
     }
-
 }
-
 \`\`\`
+
 ### Pages
-- Create pages with auto-generated slugs.
+- Create pages with auto-generated slugs
 - Each page must be linked to a category
-- Markdown editor for writing content.
-- Markdown is stored as is and served via the API.
+- Markdown editor for writing content
+- Markdown is stored as is and served via the API
+
 \`\`\`php
 use Illuminate\\Database\\Eloquent\\Model;
 use Illuminate\\Database\\Eloquent\\Relations\\BelongsTo;
-use Illuminate\\Database\\Eloquent\\Relations\\HasMany;
 use Spatie\\Sluggable\\HasSlug;
 use Spatie\\Sluggable\\SlugOptions;
 
@@ -126,7 +240,6 @@ class Page extends Model
 
     protected $fillable = ['tenant_id','category_id','title','slug','content'];
 
-
     public function tenant(): BelongsTo
     {
         return $this->belongsTo(Tenants::class, 'tenant_id', 'id');
@@ -134,7 +247,7 @@ class Page extends Model
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(Category::class, 'category_id', 'id');
+        return $this->belongsTo(Category:: class, 'category_id', 'id');
     }
 
     protected static function booted(): void
@@ -146,134 +259,77 @@ class Page extends Model
         });
     }
 }
-
 \`\`\`
-## Slug generation
-Slug is automatically generated from the name of the application, category or page with
-Spatie Sluggable package. When you create an application, category or page the slug will stay
-So if you edit the name the slug will not change. So the links to the pages will not break.
 
-Slug is used in the API for a cleaner URL structure.
+## Slug Generation
 
-#### Example of slug generation in a Model:
+Slugs are automatically generated from the name of your applications, categories, and pages using the Spatie Sluggable package.
+
+**Important:** When you edit the name of an item, the slug stays the same. This ensures that links to your pages won't break.
+
+Example:
+- Create page with title:  "Getting Started Guide"
+- Generated slug: \`getting-started-guide\`
+- Change title to: "Introduction Guide"
+- Slug remains: \`getting-started-guide\` ✅
+
+Slugs are used in the API for a cleaner URL structure.
+
+### Example of slug generation in a Model:
+
 \`\`\`php
 use Spatie\\Sluggable\\HasSlug;
 use Spatie\\Sluggable\\SlugOptions;
 
 use HasSlug;
 
-public function getSlugOptions(): SlugOptions    {
-     return SlugOptions::create()
-         ->generateSlugsFrom('name')
-         ->saveSlugsTo('slug')
-         ->slugsShouldBeNoLongerThan(64)
-         ->doNotGenerateSlugsOnUpdate();
-     }
+public function getSlugOptions(): SlugOptions
+{
+    return SlugOptions:: create()
+        ->generateSlugsFrom('name')
+        ->saveSlugsTo('slug')
+        ->slugsShouldBeNoLongerThan(64)
+        ->doNotGenerateSlugsOnUpdate();
+}
 \`\`\`
-## Markdown Pages
-### Tables support
-You can use regular Markdown syntax to create tables in your pages.
+
+## Markdown Features
+
+### Tables
+
+You can create tables using standard Markdown syntax:
+
 \`\`\`markdown
 | Syntax     |             Description (center)              |     Foo (right) | Bar (left)      |
 |------------|:---------------------------------------------:|----------------:|:----------------|
 | Header     |                     Title                     |       Something | Else            |
 | Paragraphs |  First paragraph. <br><br> Second paragraph.  | First paragraph | First paragraph |
 \`\`\`
-![Table Example](Docs/images/table.png)
 
 
+## Integration with Other Projects
 
-## API overview
-Each tenant receives one API token, generated by admin.
-This token provides access to all data belonging to that tenant.
-The API returns the complete hierarchical structure:
+Want to use your Cube Wiki documentation in your own Filament application?
 
-Tenant → Applications → Categories → Pages
-#### Example API responce
-\`\`\`json
-{
-  "tenant": {
-    "id": 1,
-    "name": "Cube",
-    "slug": "cube"
-  },
-  "applications": [
-    {
-      "id": 10,
-      "tenant_id": 1,
-      "name": "Hint",
-      "slug": "hint",
-      "categories": [
-        {
-          "id": 9,
-          "tenant_id": 1,
-          "application_id": 10,
-          "name": "HintActions",
-          "slug": "hintactions",
-          "pages": [
-            {
-              "id": 9,
-              "category_id": 9,
-              "tenant_id": 1,
-              "title": "Slug",
-              "slug": "slug",
-              "content_html": "\u003Ch1\u003EWhat is a slug?\u003C/h1\u003E\\n\u003Cp\u003EThis is a slug\u003C/p\u003E\\n"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-\`\`\`
-The content_html might look messy, but it is just the HTML generated from the Markdown content.
-In the markdown content it is just this from the page:
-#### Example of page content in Markdown:
-\`\`\`markdown
-# What is a slug?
-this is a slug
-\`\`\`
-## Package integration
-Cube Wiki can be easily integrated into other Laravel/Filament projects
-using the companion package
+Use the **CubeWikiPackage** to seamlessly integrate Cube Wiki into your project:
 
-[CubeWikiPackage](https://github.com/TerpDev/CubeWikiPackage)
+👉 [CubeWikiPackage on GitHub](https://github.com/TerpDev/CubeWikiPackage)
 
-You can see the README.md of that package for more information about the integration.
-## Summary
-Cube Wiki is flexible and scalable multitenant wiki System with:
-- Applications → Categories → Pages structure
-- Markdown support for the pages
-- API access per tenant
-- Automatic slug generation
-
-## Testing
-
-\`\`\`bash
-composer test
-\`\`\`
-
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+The package allows you to:
+- Display your Cube Wiki content in your own Filament panels
+- Navigate through applications, categories, and pages
+- Render Markdown content as HTML
+- Use your tenant's API token for authentication
 
 ## Credits
 
-- Spatie - Sluggable package is used for slug generation
-  of [Spatie's Sluggable ](https://github.com/spatie/laravel-sluggable)
+- [Spatie's Sluggable](https://github.com/spatie/laravel-sluggable) - Automatic slug generation
+- [Filament](https://filamentphp.com/) - Admin panel framework
+- [Laravel](https://laravel.com/) - PHP framework
 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
 `;
 const tabs = [
     { id: "cube", label: "Cube Wiki README" },
