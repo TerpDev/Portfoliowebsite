@@ -19,7 +19,7 @@ const projects = [
         title: 'Auto Horsthuis',
         description: 'Website for a garage in Hengelo built with TailwindCSS & Laravel (backend in progress).',
         imgSrc: '/images/autohorsthuis.png',
-        link: 'https://autohorsthuis.terpdev.nl/',
+        link: 'https://www.autohorsthuis.nl/',
     },
     {
         title: 'Cube Wiki',

@@ -153,12 +153,53 @@ onUnmounted(() => {
                             professional growth.
                         </p>
                     </div>
+                    <div class="flex flex-row gap-3">
+                        <a
+                            href="/documents/cv-DanielTerpstra.pdf"
+                            download="CV-Daniel-Terpstra.pdf"
+                            target="_blank"
+                            class="group inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-5 py-2.5 text-sm font-medium text-white/80 backdrop-blur-sm transition-all hover:bg-white/[0.08] hover:border-white/20 hover:text-white hover:shadow-lg hover:shadow-white/5"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4 transition-transform group-hover:translate-y-0.5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="7 10 12 15 17 10" />
+                                <line x1="12" y1="15" x2="12" y2="3" />
+                            </svg>
+                            Download CV
+                        </a>
+                        <a
+                            href="/documents/mbosoftwaredeveloper.pdf"
+                            download="mbosoftwaredeveloper.pdf"
+                            target="_blank"
+                            class="group inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-5 py-2.5 text-sm font-medium text-white/80 backdrop-blur-sm transition-all hover:bg-white/[0.08] hover:border-white/20 hover:text-white hover:shadow-lg hover:shadow-white/5"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4 transition-transform group-hover:translate-y-0.5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="7 10 12 15 17 10" />
+                                <line x1="12" y1="15" x2="12" y2="3" />
+                            </svg>
+                            Download Diploma
+                        </a>
+                    </div>
 
-                    <button
-                        class="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-rose-400 px-6 py-3 text-sm font-medium text-white transition-all hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-105"
-                    >
-                        Download CV
-                    </button>
                 </div>
 
                 <!-- RIGHT CARDS -->

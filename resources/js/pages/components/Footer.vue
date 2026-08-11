@@ -29,7 +29,7 @@ const props = withDefaults(
     {
         brandName: 'TerpDev',
         brandDescription:
-            "I'm a passionate student software developer dedicated to crafting beautiful and functional web applications. Let's connect and build something amazing together.",
+            "I'm a passionate junior software developer dedicated to crafting beautiful and functional web applications. Let's connect and build something amazing together.",
         creatorName: 'Daniel Terpstra',
         creatorUrl: 'https://terpdev.dev',
         className: '',
