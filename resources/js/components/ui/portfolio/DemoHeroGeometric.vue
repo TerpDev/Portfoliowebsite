@@ -6,7 +6,7 @@ import ShapeLandingHero from "./ShapeLandingHero.vue";
     <ShapeLandingHero
         title1="Hi I'm"
         title2="Daniel Terpstra"
-        badge="Student Software Developer"
+        badge="Junior Software Developer"
         badge2="Frontend Developer"
         badge3="Backend Developer"
     />
