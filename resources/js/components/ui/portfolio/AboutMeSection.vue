@@ -2,7 +2,7 @@
 import { Sparkles, Code2, Rocket, Cpu } from "lucide-vue-next";
 import SpotifyPreviewCard from "@/components/ui/Spotify/SpotifyPreviewCard.vue";
 
-const profileImage = "/images/placeholder.svg";
+const profileImage = "/images/pffotoDaniel.jpg";
 </script>
 
 <template>
@@ -59,12 +59,12 @@ const profileImage = "/images/placeholder.svg";
                         <p
                             class="text-base sm:text-lg text-white/45 leading-relaxed font-light tracking-wide max-w-xl"
                         >
-                            Hey, I'm Daniel — a 19 year old software developer who loves to
-                            code. I'm in my fourth year of
+                            Hey, I'm Daniel — a 20 year old software developer who loves to
+                            code. I have graduated from
                             <span class="text-white/80">
-                Software Development at ROC van Twente
+                ROC van Twente in Hengelo as a Software Developer.
               </span>
-                            in Hengelo. I enjoy creating modern, smooth and user friendly
+                             I enjoy creating modern, smooth and user friendly
                             websites & applications with
                             <span class="text-white/80">
                 Laravel, TailwindCSS, Vue.js & TypeScript
@@ -92,7 +92,7 @@ const profileImage = "/images/placeholder.svg";
               }"
                             class="rounded-2xl border border-white/[0.12] bg-white/[0.03] p-4 backdrop-blur-sm shadow-[0_18px_45px_rgba(0,0,0,0.6)]"
                         >
-                            <p class="text-2xl font-semibold text-white">4+</p>
+                            <p class="text-2xl font-semibold text-white">5+</p>
                             <p
                                 class="mt-1 text-[0.7rem] uppercase tracking-[0.2em] text-white/50"
                             >

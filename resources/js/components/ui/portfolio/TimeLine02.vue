@@ -62,11 +62,25 @@ const timelineItems: TimelineItem[] = [
             "as a Software Developer there, because in Hengelo they focused more on web & app development.",
     },
     {
-        date: "2024 - present",
+        date: "2024 - 2026",
         title: "MBO - Software Developer",
         location: "ROC van Twente, Hengelo",
         content:
-            "After two years I continued my education as a Software Developer at ROC van Twente in Hengelo. Here we dove more into the world of web development with a focus on fullstack development. This was new for me: we worked for the frontend with MVC applications, for the backend with .NET Core and for database we used MySQL. We worked with Azure DevOps for planning and version control with Git. In my free time I was learning more and more about modern frontend development, for example with Vue.js and TailwindCSS. Now I'm working an internship at Cube in Oldenzaal where I'm working specifically on the backend with Laravel & Filament.",
+            "After two years I continued my education as a Software Developer at ROC van Twente in Hengelo." +
+            " Here we dove more into the world of web development with a focus on fullstack development. " +
+            "This was new for me: we worked for the frontend with MVC applications, for the backend with " +
+            ".NET Core and for database we used MySQL. We worked with Azure DevOps for planning and version" +
+            " control with Git. In my free time I was learning more and more about modern frontend development, " +
+            "for example with Vue.js and TailwindCSS. Now I'm working an internship at Cube in Oldenzaal where" +
+            " I'm working specifically on the backend with Laravel & Filament.",
+    },
+    {
+        date: "2026 - present",
+        title: "Junior Software Developer",
+        location: "Enschede",
+        content:
+            "After four years of studying in Enschede and Hengelo I've graduated and received my diploma, and now" +
+            "looking for a job.",
     },
 ];
 

@@ -18,7 +18,7 @@ const props = withDefaults(
 
 // zinnen voor de loop onder de hero-tekst
 const loopItems = [
-    "Student Software Developer.",
+    "Junior Software Developer.",
     "Backend Developer.",
     "Frontend Developer.",
 ];

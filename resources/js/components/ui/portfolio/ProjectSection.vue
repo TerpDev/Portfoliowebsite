@@ -76,6 +76,10 @@ const projects = [
                     :link="project.link"
                     :index="i"
                 />
+                Currently working on more projects!
+
+            </div>
+            <div>
             </div>
         </div>
     </section>

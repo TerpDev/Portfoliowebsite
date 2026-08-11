@@ -295,26 +295,26 @@ onUnmounted(() => {
                                             {{ card.title }}
                                         </h2>
 
-                                        <a
-                                            v-if="card.id === 6"
-                                            href="/stage"
-                                            class="inline-flex items-center gap-1 rounded-full border border-indigo-400/30 bg-indigo-500/10 px-2.5 py-0.5 text-[10px] font-medium text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-400/50 transition-colors"
-                                        >
-                                            Read More
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                class="h-3 w-3"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <path d="M5 12h14" />
-                                                <path d="m12 5 7 7-7 7" />
-                                            </svg>
-                                        </a>
+<!--                                        <a-->
+<!--                                            v-if="card.id === 6"-->
+<!--                                            href="/stage"-->
+<!--                                            class="inline-flex items-center gap-1 rounded-full border border-indigo-400/30 bg-indigo-500/10 px-2.5 py-0.5 text-[10px] font-medium text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-400/50 transition-colors"-->
+<!--                                        >-->
+<!--                                            Read More-->
+<!--                                            <svg-->
+<!--                                                xmlns="http://www.w3.org/2000/svg"-->
+<!--                                                class="h-3 w-3"-->
+<!--                                                viewBox="0 0 24 24"-->
+<!--                                                fill="none"-->
+<!--                                                stroke="currentColor"-->
+<!--                                                stroke-width="2"-->
+<!--                                                stroke-linecap="round"-->
+<!--                                                stroke-linejoin="round"-->
+<!--                                            >-->
+<!--                                                <path d="M5 12h14" />-->
+<!--                                                <path d="m12 5 7 7-7 7" />-->
+<!--                                            </svg>-->
+<!--                                        </a>-->
                                     </div>
 
                                     <p
