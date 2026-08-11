@@ -23,13 +23,13 @@ const projects = [
     },
     {
         title: 'Cube Wiki',
-        description: 'Multitenant knowledge-management platform built with Laravel & Filament. Role-based access with Markdown-powered pages.',
+        description: 'Multitenant knowledge-management platform built with Laravel & Filament. Role-based access with Markdown-powered pages. (This is not live read the README.md)',
         imgSrc: '/images/cubewiki.png',
         link: 'https://github.com/TerpDev/CubeWiki',
     },
     {
         title: 'Filament Wiki',
-        description: 'Filament plugin that integrates Cube Wiki knowledge base into your panels with help actions, hints & inline documentation.',
+        description: 'Filament plugin that integrates Cube Wiki knowledge base into your panels with help actions, hints & inline documentation. (This is not live read the README.md)',
         imgSrc: '/images/filamentwiki.png',
         link: 'https://github.com/TerpDev/CubeWikiPackage',
     },
