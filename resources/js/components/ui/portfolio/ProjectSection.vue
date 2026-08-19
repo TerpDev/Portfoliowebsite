@@ -16,6 +16,12 @@ const projects = [
         link: 'https://mtfautomobielen.nl/',
     },
     {
+        title: 'Mschutprojecten',
+        description: 'Website i have build for a company that specialized in wood, simple website with only frontend.',
+        imgSrc: '/images/mschut.png',
+        link: 'https://msschut.terpdev.nl/',
+    },
+    {
         title: 'Auto Horsthuis',
         description: 'Website for a garage in Hengelo built with TailwindCSS & Laravel (backend in progress).',
         imgSrc: '/images/autohorsthuis.png',
