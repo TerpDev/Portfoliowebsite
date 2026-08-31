@@ -3,6 +3,7 @@ import AppLayout from "@/layouts/AppLayout.vue";
 import { Head } from "@inertiajs/vue3";
 import DemoHeroGeometric from "@/components/ui/portfolio/DemoHeroGeometric.vue";
 import AboutMeSection from "@/components/ui/portfolio/AboutMeSection.vue";
+import ProcessSection from "@/components/ui/portfolio/ProcessSection.vue";
 import Timeline02 from "@/components/ui/portfolio/TimeLine02.vue";
 import ProjectsSection from "@/components/ui/portfolio/ProjectSection.vue";
 import SkillsSection from "@/components/ui/portfolio/SkillsSection.vue";
@@ -64,6 +65,7 @@ onUnmounted(() => {
             <AppLayout>
                 <DemoHeroGeometric />
                 <AboutMeSection />
+                <ProcessSection />
                 <WorkSection/>
                 <Timeline02 />
                 <ProjectsSection />
